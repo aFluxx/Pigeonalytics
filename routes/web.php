@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ResultController@index');
+
+Route::get('/dropzone', 'DropzoneController@index')->name('dropzone.list');
+Route::get('/dropzone/create', 'DropzoneController@create')->name('dropzone.create');
+Route::post('/dropzone/store', 'DropzoneController@store')->name('dropzone.store');
+
+Route::get('/pigeon', 'PigeonController@index')->name('pigeon.list');
+Route::get('/pigeon/{pigeon}', 'PigeonController@show')->name('pigeon.show');
+
+Route::get('/race', 'RaceController@index')->name('race.list');
+Route::get('/race/create', 'RaceController@create')->name('race.create');
+Route::post('/race/store', 'RaceController@store')->name('race.store');
+Route::get('/race/{race}', 'RaceController@show')->name('race.show');
+
+Route::get('/result', 'ResultController@index')->name('result.list');
+Route::get('/result/manual/create', 'ResultManualController@create')->name('result.create.manual');
+Route::post('/result/manual/store', 'ResultManualController@store')->name('result.store.manual');
+Route::get('/result/upload/create', 'ResultUploadController@create')->name('result.create.upload');
+Route::post('/result/upload/store', 'ResultUploadController@store')->name('result.store.upload');

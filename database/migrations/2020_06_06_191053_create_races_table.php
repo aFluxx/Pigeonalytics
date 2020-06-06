@@ -19,8 +19,10 @@ class CreateRacesTable extends Migration
             $table->string('wind')->nullable();
             $table->string('overcast')->nullable();
             $table->string('rainfall')->nullable();
-            $table->int('year');
+            $table->unsignedBigInteger('year');
             $table->string('type');
+            $table->unsignedBigInteger('amount_of_pigeons');
+            $table->datetime('unloading_time');
             $table->timestamps();
 
             $table->foreign('dropzone_id')->references('id')->on('dropzones');

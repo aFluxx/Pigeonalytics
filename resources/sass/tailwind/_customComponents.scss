@@ -1,0 +1,41 @@
+.tw-label {
+    @apply tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2;
+}
+
+.tw-input {
+    @apply tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight;
+}
+
+.tw-input:focus {
+    outline: none;
+    background: #fff;
+}
+
+.tw-button {
+    @apply tw-shadow tw-bg-purple-500 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-cursor-pointer;
+}
+
+.tw-button:hover {
+    @apply tw-bg-purple-400;
+}
+
+.tw-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.tw-link {
+    @apply tw-text-blue-800;
+}
+
+.tw-link:hover {
+    color: #4299e1;
+}
+
+.tw-striped tr:nth-child(even) {
+    @apply .bg-gray-200;
+}
+
+.tw-striped tr:hover {
+    @apply .bg-gray-300;
+}

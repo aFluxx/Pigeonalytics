@@ -15,6 +15,8 @@ class CreateDropzonesTable extends Migration
     {
         Schema::create('dropzones', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('distance');
             $table->timestamps();
         });
     }
