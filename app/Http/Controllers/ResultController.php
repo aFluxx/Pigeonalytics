@@ -9,6 +9,11 @@ class ResultController extends Controller
 {
     public function index()
     {
-        return view('models/result/index')->with('results', Result::all());
+        return view('models/result/index')
+            ->with(
+                'results',
+                Result::with(['race', 'race.dropzone', 'pigeon'])
+                    ->get()
+            );
     }
 }

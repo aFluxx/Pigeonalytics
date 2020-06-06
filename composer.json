@@ -36,6 +36,9 @@
         }
     },
     "autoload": {
+        "files": [
+            "app/Helpers/time.php"
+        ],
         "psr-4": {
             "App\\": "app/"
         },

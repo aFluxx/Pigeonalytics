@@ -10,7 +10,7 @@ class RaceController extends Controller
 {
     public function index()
     {
-        return view('models/race/index')->with('races', Race::all());
+        return view('models/race/index')->with('races', Race::with(['dropzone'])->get());
     }
 
     public function create()

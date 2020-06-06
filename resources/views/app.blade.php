@@ -7,17 +7,20 @@
 
     @stack('css-before-main')
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
     @stack('css-after-main')
-
 </head>
 
 <body style="font-family: 'Roboto';">
 
     <div id="app">
-        @include('includes/nav')
-        <div class="tw-container tw-mx-auto tw-py-4">
-            @yield('content')
-        </div>
+        <v-app>
+            @include('includes/nav')
+            <div class="tw-container tw-mx-auto tw-py-4">
+                @yield('content')
+            </div>
+        </v-app>
     </div> <!-- #app -->
 
     <div id="scripts">
