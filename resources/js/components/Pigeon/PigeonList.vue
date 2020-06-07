@@ -8,8 +8,6 @@
         <v-data-table
             :headers="headers"
             :items="pigeonsData"
-            :sort-by="['mpm']"
-            :sort-desc="[true, false]"
             :search="search"
             multi-sort
             class="elevation-1"

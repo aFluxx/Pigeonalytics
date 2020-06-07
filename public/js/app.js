@@ -30,8 +30,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["dropzones"],
   data: function data() {
@@ -62,8 +60,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -136,18 +132,135 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["pigeon", "results"],
   data: function data() {
     return {
+      expanded: [],
+      search: "",
       headers: [{
         text: "Place (Personal)",
         sortable: true,
         value: "place_personal"
       }, {
-        text: "Dropzone",
+        text: "GT",
         sortable: true,
-        value: "race.dropzone.name"
+        value: "nominated"
       }, {
         text: "Unloading",
         sortable: true,
@@ -156,18 +269,38 @@ __webpack_require__.r(__webpack_exports__);
         text: "Arrival Time",
         value: "arrival_time"
       }, {
-        text: "Interval (min)",
-        value: "interval"
-      }, {
         text: "mpm",
         value: "mpm"
       }, {
-        text: "Type",
-        sortable: true,
-        value: "race.type"
+        text: "Place (Club)",
+        value: "place_club"
+      }, {
+        text: "Coeff (Club)",
+        value: "coefficient_club"
+      }, {
+        text: "Place (Provincial)",
+        value: "place_provincial"
+      }, {
+        text: "Coeff (Provincial)",
+        value: "coefficient_provincial"
+      }, {
+        text: "Place (Zone)",
+        value: "place_zone"
+      }, {
+        text: "Coeff (Zone)",
+        value: "coefficient_zone"
+      }, {
+        text: "Place (National)",
+        value: "place_national"
+      }, {
+        text: "Coeff (National)",
+        value: "coefficient_national"
+      }, {
+        text: "Actions",
+        sortable: false,
+        value: "actions"
       }],
-      resultsData: this.results,
-      search: ""
+      resultsData: this.results
     };
   }
 });
@@ -205,8 +338,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["races"],
   data: function data() {
@@ -215,6 +346,10 @@ __webpack_require__.r(__webpack_exports__);
         text: "Dropzone",
         sortable: true,
         value: "dropzone.name"
+      }, {
+        text: "Category",
+        sortable: true,
+        value: "category"
       }, {
         text: "Unloading",
         sortable: true,
@@ -292,38 +427,167 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["results"],
   data: function data() {
     return {
+      expanded: [],
+      search: "",
       headers: [{
         text: "Place (Personal)",
         sortable: true,
         value: "place_personal"
       }, {
+        text: "GT",
+        sortable: true,
+        value: "nominated"
+      }, {
         text: "Pigeon",
         sortable: true,
         value: "pigeon.ringnumber"
       }, {
-        text: "Dropzone",
-        sortable: true,
-        value: "race.dropzone.name"
-      }, {
-        text: "Unloading",
-        sortable: true,
-        value: "race.unloading_time"
-      }, {
         text: "Arrival Time",
         value: "arrival_time"
       }, {
-        text: "Interval (min)",
-        value: "interval"
-      }, {
         text: "mpm",
         value: "mpm"
+      }, {
+        text: "Place (Club)",
+        value: "place_club"
+      }, {
+        text: "Coeff (Club)",
+        value: "coefficient_club"
+      }, {
+        text: "Place (Provincial)",
+        value: "place_provincial"
+      }, {
+        text: "Coeff (Provincial)",
+        value: "coefficient_provincial"
+      }, {
+        text: "Place (Zone)",
+        value: "place_zone"
+      }, {
+        text: "Coeff (Zone)",
+        value: "coefficient_zone"
+      }, {
+        text: "Place (National)",
+        value: "place_national"
+      }, {
+        text: "Coeff (National)",
+        value: "coefficient_national"
+      }, {
+        text: "Actions",
+        sortable: false,
+        value: "actions"
       }],
-      resultsData: this.results,
-      search: ""
+      resultsData: this.results
     };
   }
 });
@@ -367,14 +631,123 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["results"],
   data: function data() {
     return {
+      expanded: [],
+      search: "",
       headers: [{
         text: "Place (Personal)",
         sortable: true,
         value: "place_personal"
+      }, {
+        text: "GT",
+        sortable: true,
+        value: "nominated"
       }, {
         text: "Pigeon",
         sortable: true,
@@ -383,22 +756,38 @@ __webpack_require__.r(__webpack_exports__);
         text: "Arrival Time",
         value: "arrival_time"
       }, {
-        text: "Interval",
-        value: "interval"
-      }, {
         text: "mpm",
         value: "mpm"
       }, {
-        text: "Race",
-        sortable: true,
-        value: "race.dropzone.name"
+        text: "Place (Club)",
+        value: "place_club"
       }, {
-        text: "Type",
-        sortable: true,
-        value: "race.type"
+        text: "Coeff (Club)",
+        value: "coefficient_club"
+      }, {
+        text: "Place (Provincial)",
+        value: "place_provincial"
+      }, {
+        text: "Coeff (Provincial)",
+        value: "coefficient_provincial"
+      }, {
+        text: "Place (Zone)",
+        value: "place_zone"
+      }, {
+        text: "Coeff (Zone)",
+        value: "coefficient_zone"
+      }, {
+        text: "Place (National)",
+        value: "place_national"
+      }, {
+        text: "Coeff (National)",
+        value: "coefficient_national"
+      }, {
+        text: "Actions",
+        sortable: false,
+        value: "actions"
       }],
-      resultsData: this.results,
-      search: ""
+      resultsData: this.results
     };
   }
 });
@@ -451,8 +840,6 @@ var render = function() {
         attrs: {
           headers: _vm.headers,
           items: _vm.dropzonesData,
-          "sort-by": ["name"],
-          "sort-desc": [true, false],
           search: _vm.search,
           "multi-sort": ""
         },
@@ -525,8 +912,6 @@ var render = function() {
         attrs: {
           headers: _vm.headers,
           items: _vm.pigeonsData,
-          "sort-by": ["mpm"],
-          "sort-desc": [true, false],
           search: _vm.search,
           "multi-sort": ""
         },
@@ -601,12 +986,49 @@ var render = function() {
         attrs: {
           headers: _vm.headers,
           items: _vm.resultsData,
-          "sort-by": ["place_personal"],
-          "sort-desc": [false, true],
           search: _vm.search,
+          "single-expand": false,
+          expanded: _vm.expanded,
+          "item-key": "id",
+          "show-expand": "",
           "multi-sort": ""
         },
+        on: {
+          "update:expanded": function($event) {
+            _vm.expanded = $event
+          }
+        },
         scopedSlots: _vm._u([
+          {
+            key: "expanded-item",
+            fn: function(ref) {
+              var headers = ref.headers
+              var item = ref.item
+              return [
+                _c("td", { attrs: { colspan: headers.length } }, [
+                  _c("p", { staticClass: "tw-mt-2" }, [
+                    _c("strong", [_vm._v("Dropzone:")]),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item.race.dropzone.name) +
+                        " (" +
+                        _vm._s(item.race.dropzone.distance) +
+                        ")\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("strong", [_vm._v("Type:")]),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item.race.type) +
+                        "\n                "
+                    )
+                  ])
+                ])
+              ]
+            }
+          },
           {
             key: "item.place_personal",
             fn: function(ref) {
@@ -622,10 +1044,261 @@ var render = function() {
             }
           },
           {
-            key: "item.race.dropzone.name",
+            key: "item.race.unloading_time",
             fn: function(ref) {
               var item = ref.item
-              return [_vm._v(_vm._s(item.race.dropzone.name))]
+              return [
+                _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                  _vm._v(_vm._s(item.race.unloading_time))
+                ])
+              ]
+            }
+          },
+          {
+            key: "item.arrival_time",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                  _vm._v(_vm._s(item.arrival_time))
+                ])
+              ]
+            }
+          },
+          {
+            key: "item.interval",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.interval
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (Math.round(item.interval * 100) / 100).toFixed(2)
+                        )
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.mpm",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.mpm
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s((Math.round(item.mpm * 100) / 100).toFixed(3))
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_club",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_club
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_club))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_club) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_club",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_club
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_club * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_provincial",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_provincial
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_provincial))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_provincial) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_provincial",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_provincial
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_provincial * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_zone",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_zone
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_zone))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_zone) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_zone",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_zone
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_zone * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_national",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_national
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_national))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_national) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_national",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_national
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_national * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.actions",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c(
+                  "div",
+                  { staticClass: "tw-flex tw-my-2" },
+                  [
+                    _c(
+                      "v-btn",
+                      {
+                        staticClass: "mx-2",
+                        attrs: {
+                          href: "/result/" + item.id + "/edit",
+                          target: "_blank",
+                          fab: "",
+                          "x-small": "",
+                          link: "",
+                          color: "green"
+                        }
+                      },
+                      [
+                        _c("v-icon", { attrs: { dark: "" } }, [
+                          _vm._v("mdi-pencil")
+                        ])
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-btn",
+                      {
+                        staticClass: "mx-2",
+                        attrs: {
+                          href: "/race/" + item.race.id,
+                          target: "_blank",
+                          fab: "",
+                          "x-small": "",
+                          link: "",
+                          color: "red"
+                        }
+                      },
+                      [
+                        _c("v-icon", { attrs: { dark: "" } }, [
+                          _vm._v("mdi-table-large")
+                        ])
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]
             }
           }
         ])
@@ -687,8 +1360,6 @@ var render = function() {
         attrs: {
           headers: _vm.headers,
           items: _vm.racesData,
-          "sort-by": ["unloading_time"],
-          "sort-desc": [true, false],
           search: _vm.search,
           "multi-sort": ""
         },
@@ -766,28 +1437,297 @@ var render = function() {
         attrs: {
           headers: _vm.headers,
           items: _vm.resultsData,
-          "sort-by": ["mpm"],
-          "sort-desc": [true, false],
           search: _vm.search,
+          "single-expand": false,
+          expanded: _vm.expanded,
+          "item-key": "id",
+          "show-expand": "",
           "multi-sort": ""
+        },
+        on: {
+          "update:expanded": function($event) {
+            _vm.expanded = $event
+          }
         },
         scopedSlots: _vm._u([
           {
-            key: "item.pigeon.ringnumber",
+            key: "expanded-item",
             fn: function(ref) {
+              var headers = ref.headers
               var item = ref.item
               return [
-                _c("a", { attrs: { href: "/pigeon/" + item.pigeon.id } }, [
-                  _vm._v(_vm._s(item.pigeon.ringnumber))
+                _c("td", { attrs: { colspan: headers.length } }, [
+                  _c("p", { staticClass: "tw-mt-2" }, [
+                    _c("strong", [_vm._v("Dropzone:")]),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item.race.dropzone.name) +
+                        " (" +
+                        _vm._s(item.race.dropzone.distance) +
+                        ")\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("strong", [_vm._v("Type:")]),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item.race.type) +
+                        "\n                "
+                    )
+                  ])
                 ])
               ]
             }
           },
           {
-            key: "item.race.dropzone.name",
+            key: "item.place_personal",
             fn: function(ref) {
               var item = ref.item
-              return [_vm._v(_vm._s(item.race.dropzone.name))]
+              return [
+                _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                  _c("strong", [_vm._v(_vm._s(item.place_personal))]),
+                  _vm._v(
+                    "\n                / " +
+                      _vm._s(item.race.amount_of_pigeons) +
+                      "\n            "
+                  )
+                ])
+              ]
+            }
+          },
+          {
+            key: "item.pigeon.ringnumber",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c(
+                  "a",
+                  {
+                    staticClass: "tw-whitespace-no-wrap",
+                    attrs: { href: "/pigeon/" + item.pigeon.id }
+                  },
+                  [_vm._v(_vm._s(item.pigeon.ringnumber))]
+                )
+              ]
+            }
+          },
+          {
+            key: "item.arrival_time",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                  _vm._v(_vm._s(item.arrival_time))
+                ])
+              ]
+            }
+          },
+          {
+            key: "item.interval",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.interval
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (Math.round(item.interval * 100) / 100).toFixed(2)
+                        )
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.mpm",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.mpm
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s((Math.round(item.mpm * 100) / 100).toFixed(3))
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_club",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_club
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_club))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_club) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_club",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_club
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_club * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_provincial",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_provincial
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_provincial))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_provincial) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_provincial",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_provincial
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_provincial * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_zone",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_zone
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_zone))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_zone) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_zone",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_zone
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_zone * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_national",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_national
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_national))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_national) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_national",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_national
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_national * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.actions",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c(
+                  "v-btn",
+                  {
+                    staticClass: "mx-2",
+                    attrs: {
+                      href: "/result/" + item.id + "/edit",
+                      fab: "",
+                      "x-small": "",
+                      link: "",
+                      color: "green"
+                    }
+                  },
+                  [
+                    _c("v-icon", { attrs: { dark: "" } }, [
+                      _vm._v("mdi-pencil")
+                    ])
+                  ],
+                  1
+                )
+              ]
             }
           }
         ])
@@ -847,23 +1787,62 @@ var render = function() {
         attrs: {
           headers: _vm.headers,
           items: _vm.resultsData,
-          "sort-by": ["place_personal"],
-          "sort-desc": [false, true],
           search: _vm.search,
+          "single-expand": false,
+          expanded: _vm.expanded,
+          "item-key": "id",
+          "show-expand": "",
           "multi-sort": ""
         },
+        on: {
+          "update:expanded": function($event) {
+            _vm.expanded = $event
+          }
+        },
         scopedSlots: _vm._u([
+          {
+            key: "expanded-item",
+            fn: function(ref) {
+              var headers = ref.headers
+              var item = ref.item
+              return [
+                _c("td", { attrs: { colspan: headers.length } }, [
+                  _c("p", { staticClass: "tw-mt-2" }, [
+                    _c("strong", [_vm._v("Dropzone:")]),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item.race.dropzone.name) +
+                        " (" +
+                        _vm._s(item.race.dropzone.distance) +
+                        ")\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("strong", [_vm._v("Type:")]),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item.race.type) +
+                        "\n                "
+                    )
+                  ])
+                ])
+              ]
+            }
+          },
           {
             key: "item.place_personal",
             fn: function(ref) {
               var item = ref.item
               return [
-                _c("strong", [_vm._v(_vm._s(item.place_personal))]),
-                _vm._v(
-                  "\n            / " +
-                    _vm._s(item.race.amount_of_pigeons) +
-                    "\n        "
-                )
+                _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                  _c("strong", [_vm._v(_vm._s(item.place_personal))]),
+                  _vm._v(
+                    "\n                / " +
+                      _vm._s(item.race.amount_of_pigeons) +
+                      "\n            "
+                  )
+                ])
               ]
             }
           },
@@ -872,17 +1851,233 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c("a", { attrs: { href: "/pigeon/" + item.pigeon.id } }, [
-                  _vm._v(_vm._s(item.pigeon.ringnumber))
+                _c(
+                  "a",
+                  {
+                    staticClass: "tw-whitespace-no-wrap",
+                    attrs: { href: "/pigeon/" + item.pigeon.id }
+                  },
+                  [_vm._v(_vm._s(item.pigeon.ringnumber))]
+                )
+              ]
+            }
+          },
+          {
+            key: "item.arrival_time",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                  _vm._v(_vm._s(item.arrival_time))
                 ])
               ]
             }
           },
           {
-            key: "item.race.dropzone.name",
+            key: "item.interval",
             fn: function(ref) {
               var item = ref.item
-              return [_vm._v(_vm._s(item.race.dropzone.name))]
+              return [
+                item.interval
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (Math.round(item.interval * 100) / 100).toFixed(2)
+                        )
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.mpm",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.mpm
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s((Math.round(item.mpm * 100) / 100).toFixed(3))
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_club",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_club
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_club))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_club) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_club",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_club
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_club * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_provincial",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_provincial
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_provincial))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_provincial) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_provincial",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_provincial
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_provincial * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_zone",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_zone
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_zone))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_zone) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_zone",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_zone
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_zone * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.place_national",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.place_national
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_national))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.amount_pigeons_national) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.coefficient_national",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.coefficient_national
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (
+                            Math.round(item.coefficient_national * 100) / 100
+                          ).toFixed(2)
+                        ) + "%"
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          },
+          {
+            key: "item.actions",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c(
+                  "v-btn",
+                  {
+                    staticClass: "mx-2",
+                    attrs: {
+                      href: "/result/" + item.id + "/edit",
+                      fab: "",
+                      "x-small": "",
+                      link: "",
+                      color: "green"
+                    }
+                  },
+                  [
+                    _c("v-icon", { attrs: { dark: "" } }, [
+                      _vm._v("mdi-pencil")
+                    ])
+                  ],
+                  1
+                )
+              ]
             }
           }
         ])
@@ -1321,15 +2516,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************************!*\
   !*** ./resources/js/components/Result/AllResultsDataTable.vue ***!
   \****************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AllResultsDataTable_vue_vue_type_template_id_7fca9470___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AllResultsDataTable.vue?vue&type=template&id=7fca9470& */ "./resources/js/components/Result/AllResultsDataTable.vue?vue&type=template&id=7fca9470&");
 /* harmony import */ var _AllResultsDataTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AllResultsDataTable.vue?vue&type=script&lang=js& */ "./resources/js/components/Result/AllResultsDataTable.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _AllResultsDataTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _AllResultsDataTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -1359,7 +2553,7 @@ component.options.__file = "resources/js/components/Result/AllResultsDataTable.v
 /*!*****************************************************************************************!*\
   !*** ./resources/js/components/Result/AllResultsDataTable.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

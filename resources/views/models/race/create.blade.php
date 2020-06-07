@@ -65,8 +65,8 @@ Create New Race
 
     <label for="race_year" class="tw-label">Year</label>
     <select name="race_year" id="race_year" class="tw-input">
-        <option value="2016">2020</option>
-        <option value="2016">2019</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
         <option value="2018">2018</option>
         <option value="2017">2017</option>
         <option value="2016">2016</option>
@@ -76,6 +76,14 @@ Create New Race
     <select name="race_type" id="race_type" class="tw-input">
         <option value="training">Training</option>
         <option value="competition">Competition</option>
+    </select>
+
+    <label for="race_category" class="tw-label">Category</label>
+    <select name="race_category" id="race_category" class="tw-input">
+        <option value="youngster">Youngster</option>
+        <option value="yearlings">Yearlings</option>
+        <option value="old_birds">Old birds</option>
+        <option value="mix">Mix</option>
     </select>
 
     <label for="race_amount_pigeons" class="tw-label">Amount of pigeons</label>

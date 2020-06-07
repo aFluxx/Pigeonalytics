@@ -8,8 +8,6 @@
         <v-data-table
             :headers="headers"
             :items="racesData"
-            :sort-by="['unloading_time']"
-            :sort-desc="[true, false]"
             :search="search"
             multi-sort
             class="elevation-1"
@@ -33,6 +31,11 @@ export default {
                     text: "Dropzone",
                     sortable: true,
                     value: "dropzone.name"
+                },
+                {
+                    text: "Category",
+                    sortable: true,
+                    value: "category"
                 },
                 {
                     text: "Unloading",

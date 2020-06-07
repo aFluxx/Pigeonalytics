@@ -21,7 +21,7 @@ class ResultManualController extends Controller
 
         $interval = calculateInterval($race->unloading_time, $request->result_arrival_time);
 
-        Result::firstOrCreate([
+        $result = Result::firstOrCreate([
             'pigeon_id' => $pigeon->id,
             'race_id' => $race->id,
             'place_personal' => $request->result_place_personal,
@@ -30,8 +30,8 @@ class ResultManualController extends Controller
             'mpm' => calculateMeterPerMinute($race, $interval)
         ]);
 
-        return view('models/result/manual/create')->with([
-            'message' => 'Imported result',
+        return redirect()->route('result.edit', $result->id)->with('status', 'Profile updated!')->with([
+            'message' => 'Imported result, start editing now!',
             'races' => Race::with(['dropzone'])->orderBy('unloading_time', 'DESC')->get(),
         ]);
     }

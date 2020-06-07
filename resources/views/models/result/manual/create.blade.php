@@ -16,7 +16,9 @@ Manually create a result
     <label for="result_race" class="tw-label">Choose race:</label>
     <select name="result_race" id="result_race" class="tw-input">
         @foreach($races as $race)
-        <option value="{{ $race->id }}">{{ $race->unloading_time }} {{ $race->dropzone->name }}</option>
+        <option value="{{ $race->id }}">{{ $race->unloading_time }} -- {{ $race->dropzone->name }}
+            ({{ $race->category }})
+        </option>
         @endforeach
     </select>
 
@@ -28,6 +30,9 @@ Manually create a result
 
     <label for="result_arrival_time" class="tw-label">Arrival time:</label>
     <input type="datetime-local" name="result_arrival_time" id="result_arrival_time" step="1" class="tw-input">
+
+    {{-- <label for="result_mpm" class="tw-label">mpm:</label>
+    <input type="number" name="result_mpm" id="result_mpm" class="tw-input" step="0.001"> --}}
 
     <input type="submit" value="Submit" class="tw-button" />
 </form>

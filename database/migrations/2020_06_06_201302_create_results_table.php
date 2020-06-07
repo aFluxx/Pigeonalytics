@@ -22,22 +22,23 @@ class CreateResultsTable extends Migration
             $table->double('mpm');
 
             $table->unsignedBigInteger('place_personal')->nullable();
+            $table->unsignedBigInteger('nominated')->nullable();
 
             $table->unsignedBigInteger('place_club')->nullable();
             $table->unsignedBigInteger('amount_pigeons_club')->nullable();
-            $table->unsignedBigInteger('coefficient_club')->nullable();
+            $table->double('coefficient_club')->nullable();
 
             $table->unsignedBigInteger('place_provincial')->nullable();
             $table->unsignedBigInteger('amount_pigeons_provincial')->nullable();
-            $table->unsignedBigInteger('coefficient_provincial')->nullable();
+            $table->double('coefficient_provincial')->nullable();
 
             $table->unsignedBigInteger('place_zone')->nullable();
             $table->unsignedBigInteger('amount_pigeons_zone')->nullable();
-            $table->unsignedBigInteger('coefficient_zone')->nullable();
+            $table->double('coefficient_zone')->nullable();
 
             $table->unsignedBigInteger('place_national')->nullable();
             $table->unsignedBigInteger('amount_pigeons_national')->nullable();
-            $table->unsignedBigInteger('coefficient_national')->nullable();
+            $table->double('coefficient_national')->nullable();
 
             $table->timestamps();
 

@@ -30,6 +30,7 @@ class RaceController extends Controller
             'unloading_time' => $request->race_unloading_time,
             'year' => $request->race_year,
             'type' => $request->race_type,
+            'category' => $request->race_category,
             'amount_of_pigeons' => $request->race_amount_pigeons,
         ]);
 

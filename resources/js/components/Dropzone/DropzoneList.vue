@@ -8,8 +8,6 @@
         <v-data-table
             :headers="headers"
             :items="dropzonesData"
-            :sort-by="['name']"
-            :sort-desc="[true, false]"
             :search="search"
             multi-sort
             class="elevation-1"
