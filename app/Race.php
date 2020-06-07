@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Race extends Model
 {
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['dropzone'];
+
     protected $guarded = [];
 
     public function dropzone()

@@ -9,6 +9,9 @@ Upload results
 
 <form action="{{ route('result.store.upload') }}" enctype="multipart/form-data" method="POST"
     class="tw-w-full tw-max-w-lg">
+    @if($message ?? '')
+    <p class="tw-bg-green-300 tw-text-green-700">{{ $message ?? '' }}</p>
+    @endif
     @csrf
     <label for="result_list" class="tw-label">Choose csv:</label>
     <input type="file" id="result_list" name="result_list" accept=".csv" class="tw-input" />
@@ -16,7 +19,7 @@ Upload results
     <label for="result_race" class="tw-label">Choose race:</label>
     <select name="result_race" id="result_race" class="tw-input">
         @foreach($races as $race)
-        <option value="{{ $race->id }}">{{ $race->name }}</option>
+        <option value="{{ $race->id }}">{{ $race->unloading_time }} {{ $race->dropzone->name }}</option>
         @endforeach
     </select>
 

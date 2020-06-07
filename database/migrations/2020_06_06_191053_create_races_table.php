@@ -17,6 +17,7 @@ class CreateRacesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('dropzone_id');
             $table->string('wind')->nullable();
+            $table->string('wind_strength')->nullable();
             $table->string('overcast')->nullable();
             $table->string('rainfall')->nullable();
             $table->unsignedBigInteger('year');

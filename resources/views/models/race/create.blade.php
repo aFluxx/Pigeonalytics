@@ -7,6 +7,9 @@ Create New Race
 @section('content')
 <h2 class="tw-font-bold tw-text-2xl tw-mb-2">Create New Race</h2>
 <form action="{{ route('race.store') }}" enctype="multipart/form-data" method="POST" class="tw-w-full tw-max-w-lg">
+    @if($message ?? '')
+    <p class="tw-bg-green-300 tw-text-green-700">{{ $message ?? '' }}</p>
+    @endif
     @csrf
     <label for="race_dropzone" class="tw-label">Choose dropzone:</label>
     <select name="race_dropzone" id="race_dropzone" class="tw-input">
@@ -28,6 +31,15 @@ Create New Race
         <option value="south_west">South West</option>
         <option value="west">West</option>
         <option value="north_west">North West</option>
+    </select>
+
+    <label for="race_wind_strength" class="tw-label">Wind Strength</label>
+    <select name="race_wind_strength" id="race_wind_strength" class="tw-input">
+        <option value="windless">Windless</option>
+        <option value="light_breeze">Light breeze (licht)</option>
+        <option value="gentle_breeze">Gentle breeze (matig)</option>
+        <option value="strong_wind">Strong wind</option>
+        <option value="storm_wind">Storm wind</option>
     </select>
 
     <label for="race_overcast" class="tw-label">Overcast</label>

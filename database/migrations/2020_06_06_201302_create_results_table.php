@@ -21,6 +21,8 @@ class CreateResultsTable extends Migration
             $table->double('interval');
             $table->double('mpm');
 
+            $table->unsignedBigInteger('place_personal')->nullable();
+
             $table->unsignedBigInteger('place_club')->nullable();
             $table->unsignedBigInteger('amount_pigeons_club')->nullable();
             $table->unsignedBigInteger('coefficient_club')->nullable();

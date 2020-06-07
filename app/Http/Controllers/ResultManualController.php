@@ -11,31 +11,28 @@ class ResultManualController extends Controller
 {
     public function create()
     {
-        return view('models/result/manual/create')->with('races', Race::all());
+        return view('models/result/manual/create')->with('races', Race::with(['dropzone'])->orderBy('unloading_time', 'DESC')->get());
     }
 
     public function store(Request $request)
     {
-        $pigeon = Pigeon::where('ringnumber', $request->result_ringnumber)->first();
+        $pigeon = Pigeon::firstOrCreate(['ringnumber' => $request->result_ringnumber]);
         $race = Race::where('id', $request->result_race)->first();
 
-        $result = new Result();
+        $interval = calculateInterval($race->unloading_time, $request->result_arrival_time);
 
-        if ($pigeon) {
-            $result->pigeon_id      = $pigeon->id;
-        } else {
-            $result->pigeon_id      = (new Pigeon(['ringnumber' => $request->result_ringnumber]))->save();
-        }
-        $result->race_id            = $race->id;
-        $result->arrival_time       = $request->result_arrival_time;
-        $result->interval           = $result->calculateInterval($race->unloading_time, $request->result_arrival_time);
-        $result->mpm                = $result->calculateMeterPerMinute($race, $result->interval);
-
-        $result->save();
+        Result::firstOrCreate([
+            'pigeon_id' => $pigeon->id,
+            'race_id' => $race->id,
+            'place_personal' => $request->result_place_personal,
+            'arrival_time' => $request->result_arrival_time,
+            'interval' =>  $interval,
+            'mpm' => calculateMeterPerMinute($race, $interval)
+        ]);
 
         return view('models/result/manual/create')->with([
             'message' => 'Imported result',
-            'races' => Race::all(),
+            'races' => Race::with(['dropzone'])->orderBy('unloading_time', 'DESC')->get(),
         ]);
     }
 }

@@ -19,13 +19,13 @@ class DropzoneController extends Controller
 
     public function store(Request $request)
     {
-        $dropzone = new Dropzone([
+        Dropzone::firstOrCreate([
             'name'      => $request->dropzone_name,
             'distance'  => $request->dropzone_distance,
         ]);
 
-        $dropzone->save();
-
-        return redirect()->route('dropzone.create')->with('success', 'Dropzone added!');
+        return view('models/dropzone/create')->with([
+            'message' => 'Dropzone: ' . $request->dropzone_name . ' added!'
+        ]);
     }
 }

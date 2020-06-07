@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['pigeon', 'race'];
+
     protected $guarded = [];
 
     public function race()

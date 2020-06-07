@@ -24,6 +24,7 @@ class RaceController extends Controller
 
         $race = new Race([
             'wind' => $request->race_wind,
+            'wind_strength' => $request->race_wind_strength,
             'overcast' => $request->race_overcast,
             'rainfall' => $request->race_rainfall,
             'unloading_time' => $request->race_unloading_time,
