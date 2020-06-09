@@ -20,7 +20,7 @@ class CreateRacesTable extends Migration
             $table->string('wind_strength')->nullable();
             $table->string('overcast')->nullable();
             $table->string('rainfall')->nullable();
-            $table->unsignedBigInteger('year');
+            $table->unsignedBigInteger('year')->nullable();
             $table->string('type');
             $table->string('category');
             $table->unsignedBigInteger('amount_of_pigeons');

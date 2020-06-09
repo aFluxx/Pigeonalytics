@@ -247,6 +247,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["pigeon", "results"],
   data: function data() {
@@ -256,45 +287,55 @@ __webpack_require__.r(__webpack_exports__);
       headers: [{
         text: "Place (Personal)",
         sortable: true,
-        value: "place_personal"
+        value: "place_personal",
+        align: "end"
       }, {
         text: "GT",
         sortable: true,
-        value: "nominated"
-      }, {
-        text: "Unloading",
-        sortable: true,
-        value: "race.unloading_time"
-      }, {
-        text: "Arrival Time",
-        value: "arrival_time"
-      }, {
+        value: "nominated",
+        align: "end"
+      }, // {
+      //     text: "Unloading",
+      //     sortable: true,
+      //     value: "race.unloading_time"
+      // },
+      // { text: "Arrival Time", value: "arrival_time" },
+      {
         text: "mpm",
-        value: "mpm"
+        value: "mpm",
+        align: "end"
       }, {
         text: "Place (Club)",
-        value: "place_club"
+        value: "place_club",
+        align: "end"
       }, {
         text: "Coeff (Club)",
-        value: "coefficient_club"
+        value: "coefficient_club",
+        align: "end"
       }, {
         text: "Place (Provincial)",
-        value: "place_provincial"
+        value: "place_provincial",
+        align: "end"
       }, {
         text: "Coeff (Provincial)",
-        value: "coefficient_provincial"
+        value: "coefficient_provincial",
+        align: "end"
       }, {
         text: "Place (Zone)",
-        value: "place_zone"
+        value: "place_zone",
+        align: "end"
       }, {
         text: "Coeff (Zone)",
-        value: "coefficient_zone"
+        value: "coefficient_zone",
+        align: "end"
       }, {
         text: "Place (National)",
-        value: "place_national"
+        value: "place_national",
+        align: "end"
       }, {
         text: "Coeff (National)",
-        value: "coefficient_national"
+        value: "coefficient_national",
+        align: "end"
       }, {
         text: "Actions",
         sortable: false,
@@ -338,10 +379,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["races"],
   data: function data() {
     return {
+      racesData: this.races,
+      search: "",
       headers: [{
         text: "Dropzone",
         sortable: true,
@@ -349,27 +422,15 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: "Category",
         sortable: true,
-        value: "category"
+        value: "category_formatted"
       }, {
-        text: "Unloading",
+        text: "# Pigeons",
+        sortable: true,
+        value: "amount_of_pigeons"
+      }, {
+        text: "Unloading Time",
         sortable: true,
         value: "unloading_time"
-      }, {
-        text: "Wind",
-        sortable: true,
-        value: "wind"
-      }, {
-        text: "Wind Strength",
-        sortable: true,
-        value: "wind_strength"
-      }, {
-        text: "Overcast",
-        sortable: true,
-        value: "overcast"
-      }, {
-        text: "Rainfall",
-        sortable: true,
-        value: "rainfall"
       }, {
         text: "Year",
         sortable: true,
@@ -377,19 +438,41 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: "Type",
         sortable: true,
-        value: "type"
+        value: "type_formatted"
       }, {
-        text: "Amount of pigeons",
+        text: "Wind",
         sortable: true,
-        value: "amount_of_pigeons"
+        value: "wind_formatted"
+      }, {
+        text: "Wind Strength",
+        sortable: true,
+        value: "wind_strength_formatted"
+      }, {
+        text: "Overcast",
+        sortable: true,
+        value: "overcast_formatted"
+      }, {
+        text: "Rainfall",
+        sortable: true,
+        value: "rainfall_formatted"
       }, {
         text: "Details",
         sortable: true,
         value: "race_details"
-      }],
-      racesData: this.races,
-      search: ""
+      }, {
+        text: "Actions",
+        sortable: false,
+        value: "actions"
+      }]
     };
+  },
+  methods: {
+    getColorCategory: function getColorCategory(category) {
+      if (category == "Old birds") return "red lighten-1";else if (category == "Yearlings") return "blue darken-1";else return "teal darken-1";
+    },
+    getColorType: function getColorType(type) {
+      if (type == "Competition") return "deep-purple lighten-1";else if (type == "Training") return "light-green darken-3";
+    }
   }
 });
 
@@ -404,6 +487,26 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -734,6 +837,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["results"],
   data: function data() {
@@ -743,7 +866,8 @@ __webpack_require__.r(__webpack_exports__);
       headers: [{
         text: "Place (Personal)",
         sortable: true,
-        value: "place_personal"
+        value: "place_personal",
+        align: "end"
       }, {
         text: "GT",
         sortable: true,
@@ -757,35 +881,52 @@ __webpack_require__.r(__webpack_exports__);
         value: "arrival_time"
       }, {
         text: "mpm",
-        value: "mpm"
+        value: "mpm",
+        align: "end"
       }, {
         text: "Place (Club)",
-        value: "place_club"
+        value: "place_club",
+        align: "end"
       }, {
         text: "Coeff (Club)",
-        value: "coefficient_club"
+        value: "coefficient_club",
+        align: "end"
       }, {
         text: "Place (Provincial)",
-        value: "place_provincial"
+        value: "place_provincial",
+        align: "end"
       }, {
         text: "Coeff (Provincial)",
-        value: "coefficient_provincial"
+        value: "coefficient_provincial",
+        align: "end"
       }, {
         text: "Place (Zone)",
-        value: "place_zone"
+        value: "place_zone",
+        align: "end"
       }, {
         text: "Coeff (Zone)",
-        value: "coefficient_zone"
+        value: "coefficient_zone",
+        align: "end"
       }, {
         text: "Place (National)",
-        value: "place_national"
+        value: "place_national",
+        align: "end"
       }, {
         text: "Coeff (National)",
-        value: "coefficient_national"
+        value: "coefficient_national",
+        align: "end"
       }, {
         text: "Actions",
         sortable: false,
         value: "actions"
+      }, {
+        text: "Dropzone",
+        value: "race.dropzone.name",
+        align: " d-none"
+      }, {
+        text: "Type",
+        value: "race.type",
+        align: " d-none"
       }],
       resultsData: this.results
     };
@@ -1024,6 +1165,14 @@ var render = function() {
                         _vm._s(item.race.type) +
                         "\n                "
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                    _vm._v(_vm._s(item.race.unloading_time))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                    _vm._v(_vm._s(item.arrival_time))
                   ])
                 ])
               ]
@@ -1034,34 +1183,24 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c("strong", [_vm._v(_vm._s(item.place_personal))]),
-                _vm._v(
-                  "\n            / " +
-                    _vm._s(item.race.amount_of_pigeons) +
-                    "\n        "
-                )
+                item.place_personal != 1000000
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_personal))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.race.amount_of_pigeons) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
               ]
             }
           },
           {
-            key: "item.race.unloading_time",
-            fn: function(ref) {
-              var item = ref.item
+            key: "selection",
+            fn: function(data) {
               return [
-                _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
-                  _vm._v(_vm._s(item.race.unloading_time))
-                ])
-              ]
-            }
-          },
-          {
-            key: "item.arrival_time",
-            fn: function(ref) {
-              var item = ref.item
-              return [
-                _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
-                  _vm._v(_vm._s(item.arrival_time))
-                ])
+                _vm._v(_vm._s(data.item.name) + ", " + _vm._s(data.item.group))
               ]
             }
           },
@@ -1102,7 +1241,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_club
+                item.place_club && item.place_club != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_club))]),
                       _vm._v(
@@ -1120,7 +1259,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_club
+                item.coefficient_club && item.coefficient_club != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -1139,7 +1278,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_provincial
+                item.place_provincial && item.place_provincial != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_provincial))]),
                       _vm._v(
@@ -1157,7 +1296,8 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_provincial
+                item.coefficient_provincial &&
+                item.coefficient_provincial != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -1176,7 +1316,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_zone
+                item.place_zone && item.place_zone != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_zone))]),
                       _vm._v(
@@ -1194,7 +1334,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_zone
+                item.coefficient_zone && item.coefficient_zone != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -1213,7 +1353,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_national
+                item.place_national && item.place_national != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_national))]),
                       _vm._v(
@@ -1231,7 +1371,8 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_national
+                item.coefficient_national &&
+                item.coefficient_national != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -1255,45 +1396,108 @@ var render = function() {
                   { staticClass: "tw-flex tw-my-2" },
                   [
                     _c(
-                      "v-btn",
+                      "v-tooltip",
                       {
-                        staticClass: "mx-2",
-                        attrs: {
-                          href: "/result/" + item.id + "/edit",
-                          target: "_blank",
-                          fab: "",
-                          "x-small": "",
-                          link: "",
-                          color: "green"
-                        }
+                        attrs: { bottom: "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          staticClass: "mx-2",
+                                          attrs: {
+                                            href:
+                                              "/result/" +
+                                              item.pigeon_id +
+                                              "/edit",
+                                            target: "_blank",
+                                            fab: "",
+                                            "x-small": "",
+                                            link: "",
+                                            color: "green"
+                                          }
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", { attrs: { dark: "" } }, [
+                                        _vm._v("mdi-pencil")
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          true
+                        )
                       },
-                      [
-                        _c("v-icon", { attrs: { dark: "" } }, [
-                          _vm._v("mdi-pencil")
-                        ])
-                      ],
-                      1
+                      [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
                     ),
                     _vm._v(" "),
                     _c(
-                      "v-btn",
+                      "v-tooltip",
                       {
-                        staticClass: "mx-2",
-                        attrs: {
-                          href: "/race/" + item.race.id,
-                          target: "_blank",
-                          fab: "",
-                          "x-small": "",
-                          link: "",
-                          color: "red"
-                        }
+                        attrs: { bottom: "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          staticClass: "mx-2",
+                                          attrs: {
+                                            href: "/race/" + item.race.id,
+                                            target: "_blank",
+                                            fab: "",
+                                            "x-small": "",
+                                            link: "",
+                                            color: "red"
+                                          }
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", { attrs: { dark: "" } }, [
+                                        _vm._v("mdi-table-large")
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          true
+                        )
                       },
-                      [
-                        _c("v-icon", { attrs: { dark: "" } }, [
-                          _vm._v("mdi-table-large")
-                        ])
-                      ],
-                      1
+                      [_vm._v(" "), _c("span", [_vm._v("See race details")])]
                     )
                   ],
                   1
@@ -1372,6 +1576,42 @@ var render = function() {
             }
           },
           {
+            key: "item.category_formatted",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c(
+                  "v-chip",
+                  {
+                    attrs: {
+                      color: _vm.getColorCategory(item.category_formatted),
+                      dark: ""
+                    }
+                  },
+                  [_vm._v(_vm._s(item.category_formatted))]
+                )
+              ]
+            }
+          },
+          {
+            key: "item.type_formatted",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c(
+                  "v-chip",
+                  {
+                    attrs: {
+                      color: _vm.getColorType(item.type_formatted),
+                      dark: ""
+                    }
+                  },
+                  [_vm._v(_vm._s(item.type_formatted))]
+                )
+              ]
+            }
+          },
+          {
             key: "item.race_details",
             fn: function(ref) {
               var item = ref.item
@@ -1379,6 +1619,64 @@ var render = function() {
                 _c("a", { attrs: { href: "/race/" + item.id } }, [
                   _vm._v("See race details")
                 ])
+              ]
+            }
+          },
+          {
+            key: "item.actions",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c(
+                  "v-tooltip",
+                  {
+                    attrs: { bottom: "" },
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "activator",
+                          fn: function(ref) {
+                            var on = ref.on
+                            var attrs = ref.attrs
+                            return [
+                              _c(
+                                "v-btn",
+                                _vm._g(
+                                  _vm._b(
+                                    {
+                                      staticClass: "mx-2",
+                                      attrs: {
+                                        href: "/race/" + item.id + "/edit",
+                                        target: "_blank",
+                                        fab: "",
+                                        "x-small": "",
+                                        link: "",
+                                        color: "green"
+                                      }
+                                    },
+                                    "v-btn",
+                                    attrs,
+                                    false
+                                  ),
+                                  on
+                                ),
+                                [
+                                  _c("v-icon", { attrs: { dark: "" } }, [
+                                    _vm._v("mdi-pencil")
+                                  ])
+                                ],
+                                1
+                              )
+                            ]
+                          }
+                        }
+                      ],
+                      null,
+                      true
+                    )
+                  },
+                  [_vm._v(" "), _c("span", [_vm._v("Edit race")])]
+                )
               ]
             }
           }
@@ -1485,14 +1783,16 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
-                  _c("strong", [_vm._v(_vm._s(item.place_personal))]),
-                  _vm._v(
-                    "\n                / " +
-                      _vm._s(item.race.amount_of_pigeons) +
-                      "\n            "
-                  )
-                ])
+                item.place_personal != 1000000
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_personal))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.race.amount_of_pigeons) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
               ]
             }
           },
@@ -1560,7 +1860,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_club
+                item.place_club && item.place_club != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_club))]),
                       _vm._v(
@@ -1578,7 +1878,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_club
+                item.coefficient_club && item.coefficient_club != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -1597,7 +1897,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_provincial
+                item.place_provincial && item.place_provincial != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_provincial))]),
                       _vm._v(
@@ -1615,7 +1915,8 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_provincial
+                item.coefficient_provincial &&
+                item.coefficient_provincial != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -1634,7 +1935,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_zone
+                item.place_zone && item.place_zone != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_zone))]),
                       _vm._v(
@@ -1652,7 +1953,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_zone
+                item.coefficient_zone && item.coefficient_zone != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -1671,7 +1972,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_national
+                item.place_national && item.place_national != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_national))]),
                       _vm._v(
@@ -1689,7 +1990,8 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_national
+                item.coefficient_national &&
+                item.coefficient_national != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -1709,23 +2011,54 @@ var render = function() {
               var item = ref.item
               return [
                 _c(
-                  "v-btn",
+                  "v-tooltip",
                   {
-                    staticClass: "mx-2",
-                    attrs: {
-                      href: "/result/" + item.id + "/edit",
-                      fab: "",
-                      "x-small": "",
-                      link: "",
-                      color: "green"
-                    }
+                    attrs: { bottom: "" },
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "activator",
+                          fn: function(ref) {
+                            var on = ref.on
+                            var attrs = ref.attrs
+                            return [
+                              _c(
+                                "v-btn",
+                                _vm._g(
+                                  _vm._b(
+                                    {
+                                      staticClass: "mx-2",
+                                      attrs: {
+                                        href: "/result/" + item.id + "/edit",
+                                        target: "_blank",
+                                        fab: "",
+                                        "x-small": "",
+                                        link: "",
+                                        color: "green"
+                                      }
+                                    },
+                                    "v-btn",
+                                    attrs,
+                                    false
+                                  ),
+                                  on
+                                ),
+                                [
+                                  _c("v-icon", { attrs: { dark: "" } }, [
+                                    _vm._v("mdi-pencil")
+                                  ])
+                                ],
+                                1
+                              )
+                            ]
+                          }
+                        }
+                      ],
+                      null,
+                      true
+                    )
                   },
-                  [
-                    _c("v-icon", { attrs: { dark: "" } }, [
-                      _vm._v("mdi-pencil")
-                    ])
-                  ],
-                  1
+                  [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
                 )
               ]
             }
@@ -1835,14 +2168,16 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
-                  _c("strong", [_vm._v(_vm._s(item.place_personal))]),
-                  _vm._v(
-                    "\n                / " +
-                      _vm._s(item.race.amount_of_pigeons) +
-                      "\n            "
-                  )
-                ])
+                item.place_personal != 1000000
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _c("strong", [_vm._v(_vm._s(item.place_personal))]),
+                      _vm._v(
+                        "\n                / " +
+                          _vm._s(item.race.amount_of_pigeons) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
               ]
             }
           },
@@ -1910,7 +2245,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_club
+                item.place_club && item.place_club != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_club))]),
                       _vm._v(
@@ -1928,7 +2263,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_club
+                item.coefficient_club && item.coefficient_club != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -1947,7 +2282,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_provincial
+                item.place_provincial && item.place_provincial != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_provincial))]),
                       _vm._v(
@@ -1965,7 +2300,8 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_provincial
+                item.coefficient_provincial &&
+                item.coefficient_provincial != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -1984,7 +2320,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_zone
+                item.place_zone && item.place_zone != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_zone))]),
                       _vm._v(
@@ -2002,7 +2338,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_zone
+                item.coefficient_zone && item.coefficient_zone != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -2021,7 +2357,7 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.place_national
+                item.place_national && item.place_national != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _c("strong", [_vm._v(_vm._s(item.place_national))]),
                       _vm._v(
@@ -2039,7 +2375,8 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                item.coefficient_national
+                item.coefficient_national &&
+                item.coefficient_national != 1000000
                   ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
                       _vm._v(
                         _vm._s(
@@ -2059,23 +2396,54 @@ var render = function() {
               var item = ref.item
               return [
                 _c(
-                  "v-btn",
+                  "v-tooltip",
                   {
-                    staticClass: "mx-2",
-                    attrs: {
-                      href: "/result/" + item.id + "/edit",
-                      fab: "",
-                      "x-small": "",
-                      link: "",
-                      color: "green"
-                    }
+                    attrs: { bottom: "" },
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "activator",
+                          fn: function(ref) {
+                            var on = ref.on
+                            var attrs = ref.attrs
+                            return [
+                              _c(
+                                "v-btn",
+                                _vm._g(
+                                  _vm._b(
+                                    {
+                                      staticClass: "mx-2",
+                                      attrs: {
+                                        href: "/result/" + item.id + "/edit",
+                                        target: "_blank",
+                                        fab: "",
+                                        "x-small": "",
+                                        link: "",
+                                        color: "green"
+                                      }
+                                    },
+                                    "v-btn",
+                                    attrs,
+                                    false
+                                  ),
+                                  on
+                                ),
+                                [
+                                  _c("v-icon", { attrs: { dark: "" } }, [
+                                    _vm._v("mdi-pencil")
+                                  ])
+                                ],
+                                1
+                              )
+                            ]
+                          }
+                        }
+                      ],
+                      null,
+                      true
+                    )
                   },
-                  [
-                    _c("v-icon", { attrs: { dark: "" } }, [
-                      _vm._v("mdi-pencil")
-                    ])
-                  ],
-                  1
+                  [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
                 )
               ]
             }

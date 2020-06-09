@@ -15,6 +15,13 @@ class Race extends Model
      */
     protected $with = ['dropzone'];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['wind_formatted', 'wind_strength_formatted', 'overcast_formatted', 'rainfall_formatted', 'type_formatted', 'category_formatted'];
+
     protected $guarded = [];
 
     public function dropzone()
@@ -33,9 +40,11 @@ class Race extends Model
      * @param  string  $value
      * @return string
      */
-    public function getWindAttribute($value)
+    public function getWindFormattedAttribute()
     {
-        switch ($value) {
+        switch ($this->wind) {
+            case 'na':
+                return '';
             case 'north':
                 return 'North';
             case 'north_east':
@@ -71,9 +80,11 @@ class Race extends Model
      * @param  string  $value
      * @return string
      */
-    public function getWindStrengthAttribute($value)
+    public function getWindStrengthFormattedAttribute()
     {
-        switch ($value) {
+        switch ($this->wind_strength) {
+            case 'na':
+                return '';
             case 'windless':
                 return 'Windless';
             case 'light_breeze':
@@ -97,9 +108,11 @@ class Race extends Model
      * @param  string  $value
      * @return string
      */
-    public function getOvercastAttribute($value)
+    public function getOvercastFormattedAttribute()
     {
-        switch ($value) {
+        switch ($this->overcast) {
+            case 'na':
+                return '';
             case 'no_clouds':
                 return 'No clouds';
             case 'very_light_clouds':
@@ -126,9 +139,11 @@ class Race extends Model
      * @param  string  $value
      * @return string
      */
-    public function getRainfallAttribute($value)
+    public function getRainfallFormattedAttribute()
     {
-        switch ($value) {
+        switch ($this->rainfall) {
+            case 'na':
+                return '';
             case 'no_rain':
                 return 'No rain';
             case 'very_light_rain':
@@ -158,9 +173,9 @@ class Race extends Model
      * @param  string  $value
      * @return string
      */
-    public function getTypeAttribute($value)
+    public function getTypeFormattedAttribute()
     {
-        switch ($value) {
+        switch ($this->type) {
             case 'training':
                 return 'Training';
             case 'competition':
@@ -175,12 +190,12 @@ class Race extends Model
      * @param  string  $value
      * @return string
      */
-    public function getCategoryAttribute($value)
+    public function getCategoryFormattedAttribute()
     {
-        switch ($value) {
+        switch ($this->category) {
             case 'mix':
                 return 'Mix';
-            case 'youngsters':
+            case 'youngster':
                 return "Youngsters";
             case 'yearlings':
                 return "Yearlings";

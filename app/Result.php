@@ -56,4 +56,76 @@ class Result extends Model
 
         return $mpm;
     }
+
+    // public function getPlacePersonalAttribute($value)
+    // {
+    //     if ($value === 1000000) {
+    //         return '';
+    //     }
+    //     return $value;
+    // }
+
+    // public function getPlaceClubAttribute($value)
+    // {
+    //     if ($value === 1000000) {
+    //         return '';
+    //     }
+    //     return $value;
+    // }
+
+    // public function getAmountPigeonsClubAttribute($value)
+    // {
+    //     if ($value === 1000000) {
+    //         return '';
+    //     }
+    //     return $value;
+    // }
+
+    // public function getPlaceProvincialAttribute($value)
+    // {
+    //     if ($value === 1000000) {
+    //         return '';
+    //     }
+    //     return $value;
+    // }
+
+    // public function getAmountPigeonsProvincialAttribute($value)
+    // {
+    //     if ($value === 1000000) {
+    //         return '';
+    //     }
+    //     return $value;
+    // }
+
+    // public function getPlaceZoneAttribute($value)
+    // {
+    //     if ($value === 1000000) {
+    //         return '';
+    //     }
+    //     return $value;
+    // }
+
+    // public function getAmountPigeonsZoneAttribute($value)
+    // {
+    //     if ($value === 1000000) {
+    //         return '';
+    //     }
+    //     return $value;
+    // }
+
+    // public function getPlaceNationalAttribute($value)
+    // {
+    //     if ($value === 1000000) {
+    //         return '';
+    //     }
+    //     return $value;
+    // }
+
+    // public function getAmountPigeonsNationalAttribute($value)
+    // {
+    //     if ($value === 1000000) {
+    //         return '';
+    //     }
+    //     return $value;
+    // }
 }

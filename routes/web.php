@@ -26,6 +26,8 @@ Route::get('/race', 'RaceController@index')->name('race.list');
 Route::get('/race/create', 'RaceController@create')->name('race.create');
 Route::post('/race/store', 'RaceController@store')->name('race.store');
 Route::get('/race/{race}', 'RaceController@show')->name('race.show');
+Route::get('/race/{race}/edit', 'RaceController@edit')->name('race.edit');
+Route::post('/race/{race}/update', 'RaceController@update')->name('race.update')->middleware('web');
 
 Route::get('/result', 'ResultController@index')->name('result.list');
 Route::get('/result/manual/create', 'ResultManualController@create')->name('result.create.manual');

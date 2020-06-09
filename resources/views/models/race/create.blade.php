@@ -23,6 +23,7 @@ Create New Race
 
     <label for="race_wind" class="tw-label">Wind</label>
     <select name="race_wind" id="race_wind" class="tw-input">
+        <option value="na">Not applicable</option>
         <option value="north">North</option>
         <option value="north_east">North East</option>
         <option value="east">East</option>
@@ -35,6 +36,7 @@ Create New Race
 
     <label for="race_wind_strength" class="tw-label">Wind Strength</label>
     <select name="race_wind_strength" id="race_wind_strength" class="tw-input">
+        <option value="na">Not applicable</option>
         <option value="windless">Windless</option>
         <option value="light_breeze">Light breeze (licht)</option>
         <option value="gentle_breeze">Gentle breeze (matig)</option>
@@ -44,6 +46,7 @@ Create New Race
 
     <label for="race_overcast" class="tw-label">Overcast</label>
     <select name="race_overcast" id="race_overcast" class="tw-input">
+        <option value="na">Not applicable</option>
         <option value="no_clouds">No clouds</option>
         <option value="very_light_clouds">Very light clouds</option>
         <option value="light_clouds">Light clouds</option>
@@ -54,6 +57,7 @@ Create New Race
 
     <label for="race_rainfall" class="tw-label">Rainfall</label>
     <select name="race_rainfall" id="race_rainfall" class="tw-input">
+        <option value="na">Not applicable</option>
         <option value="no_rain">No rain</option>
         <option value="very_light_rain">Very light rain</option>
         <option value="light_rain">Light rain</option>
@@ -61,15 +65,6 @@ Create New Race
         <option value="heavy_rain">Heavy rain</option>
         <option value="very_heavy_rain">Very heavy rain</option>
         <option value="downpour_hail">Downpour / Hail</option>
-    </select>
-
-    <label for="race_year" class="tw-label">Year</label>
-    <select name="race_year" id="race_year" class="tw-input">
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-        <option value="2018">2018</option>
-        <option value="2017">2017</option>
-        <option value="2016">2016</option>
     </select>
 
     <label for="race_type" class="tw-label">Type</label>
@@ -80,7 +75,7 @@ Create New Race
 
     <label for="race_category" class="tw-label">Category</label>
     <select name="race_category" id="race_category" class="tw-input">
-        <option value="youngster">Youngster</option>
+        <option value="youngster">Youngsters</option>
         <option value="yearlings">Yearlings</option>
         <option value="old_birds">Old birds</option>
         <option value="mix">Mix</option>
