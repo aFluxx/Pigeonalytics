@@ -19,7 +19,9 @@ Upload results
     <label for="result_race" class="tw-label">Choose race:</label>
     <select name="result_race" id="result_race" class="tw-input">
         @foreach($races as $race)
-        <option value="{{ $race->id }}">{{ $race->unloading_time }} {{ $race->dropzone->name }}</option>
+        <option value="{{ $race->id }}">{{ $race->unloading_time }} -- {{ $race->dropzone->name }}
+            ({{ $race->category_formatted }})
+        </option>
         @endforeach
     </select>
 

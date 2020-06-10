@@ -28,4 +28,23 @@ class DropzoneController extends Controller
             'message' => 'Dropzone: ' . $request->dropzone_name . ' added!'
         ]);
     }
+
+    public function edit(Dropzone $dropzone)
+    {
+        return view('models/dropzone/edit')->with('dropzone', $dropzone);
+    }
+
+    public function update(Request $request, Dropzone $dropzone)
+    {
+        $dropzone->name = $request->dropzone_name;
+        $dropzone->distance = $request->dropzone_distance;
+
+        $dropzone->save();
+
+        return redirect()
+            ->route('dropzone.edit', $dropzone->id)
+            ->with([
+                'message' => 'Dropzone: ' . $request->dropzone_name . ' updated!'
+            ]);
+    }
 }

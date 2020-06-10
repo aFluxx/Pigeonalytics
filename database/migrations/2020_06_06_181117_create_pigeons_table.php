@@ -16,6 +16,7 @@ class CreatePigeonsTable extends Migration
         Schema::create('pigeons', function (Blueprint $table) {
             $table->id();
             $table->string('ringnumber');
+            $table->string('gender');
             $table->timestamps();
         });
     }

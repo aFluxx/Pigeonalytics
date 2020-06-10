@@ -15,6 +15,28 @@
             <template v-slot:item.ringnumber="{ item }">
                 <a :href="'/pigeon/' + item.id">{{ item.ringnumber }}</a>
             </template>
+            <template v-slot:item.actions="{ item }">
+                <div class="tw-flex tw-my-2">
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                                :href="'/dropzone/' + item.id + '/edit'"
+                                target="_blank"
+                                class="mx-2"
+                                fab
+                                x-small
+                                link
+                                color="green"
+                                v-bind="attrs"
+                                v-on="on"
+                            >
+                                <v-icon dark>mdi-table-large</v-icon>
+                            </v-btn>
+                        </template>
+                        <span>Edit dropzone</span>
+                    </v-tooltip>
+                </div>
+            </template>
         </v-data-table>
     </v-card>
 </template>
@@ -25,6 +47,8 @@ export default {
 
     data() {
         return {
+            search: "",
+            dropzonesData: this.dropzones,
             headers: [
                 {
                     text: "Name",
@@ -35,11 +59,9 @@ export default {
                     text: "Distance (in meter)",
                     sortable: true,
                     value: "distance"
-                }
-            ],
-            dropzonesData: this.dropzones,
-
-            search: ""
+                },
+                { text: "Actions", sortable: false, value: "actions" }
+            ]
         };
     }
 };

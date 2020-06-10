@@ -16,7 +16,7 @@ class RaceController extends Controller
 
     public function create()
     {
-        return view('models/race/create')->with('dropzones', Dropzone::all());
+        return view('models/race/create')->with('dropzones', Dropzone::orderBy('name', 'ASC')->get());
     }
 
     public function store(Request $request)
@@ -40,7 +40,7 @@ class RaceController extends Controller
 
         return view('models/race/create')->with([
             'message' => 'Race created!',
-            'dropzones' => Dropzone::all(),
+            'dropzones' => Dropzone::orderBy('name', 'ASC')->get(),
         ]);
     }
 
@@ -52,7 +52,7 @@ class RaceController extends Controller
     public function edit(Race $race)
     {
         return view('models/race/edit')->with([
-            'dropzones' => Dropzone::all(),
+            'dropzones' => Dropzone::orderBy('name', 'ASC')->get(),
             'race' => $race
         ]);
     }
@@ -74,7 +74,7 @@ class RaceController extends Controller
 
         return redirect()->route('race.edit', $race->id)->with([
             'message' => 'Race updated!',
-            'dropzones' => Dropzone::all(),
+            'dropzones' => Dropzone::orderBy('name', 'ASC')->get(),
             'race' => $race
         ]);
     }

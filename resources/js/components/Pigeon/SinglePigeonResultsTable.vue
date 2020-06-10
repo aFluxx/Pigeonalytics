@@ -24,12 +24,18 @@
                     </p>
                     <p>
                         <strong>Type:</strong>
-                        {{ item.race.type }}
+                        {{ item.race.type_formatted }}
                     </p>
 
-                    <span class="tw-whitespace-no-wrap">{{ item.race.unloading_time }}</span>
+                    <p class="tw-whitespace-no-wrap text-md">
+                        <strong>Released:</strong>
+                        {{ item.race.unloading_time }}
+                    </p>
 
-                    <span class="tw-whitespace-no-wrap">{{ item.arrival_time }}</span>
+                    <p class="tw-whitespace-no-wrap text-md">
+                        <strong>Arrived:</strong>
+                        {{ item.arrival_time }}
+                    </p>
                 </td>
             </template>
 
@@ -178,6 +184,11 @@ export default {
             expanded: [],
             search: "",
             headers: [
+                {
+                    text: "Drop",
+                    sortable: true,
+                    value: "race.dropzone.name"
+                },
                 {
                     text: "Place (Personal)",
                     sortable: true,

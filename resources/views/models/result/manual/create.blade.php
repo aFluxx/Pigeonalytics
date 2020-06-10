@@ -17,7 +17,7 @@ Manually create a result
     <select name="result_race" id="result_race" class="tw-input">
         @foreach($races as $race)
         <option value="{{ $race->id }}">{{ $race->unloading_time }} -- {{ $race->dropzone->name }}
-            ({{ $race->category }})
+            ({{ $race->category_formatted }})
         </option>
         @endforeach
     </select>

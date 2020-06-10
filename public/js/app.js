@@ -30,10 +30,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["dropzones"],
   data: function data() {
     return {
+      search: "",
+      dropzonesData: this.dropzones,
       headers: [{
         text: "Name",
         sortable: true,
@@ -42,9 +66,11 @@ __webpack_require__.r(__webpack_exports__);
         text: "Distance (in meter)",
         sortable: true,
         value: "distance"
-      }],
-      dropzonesData: this.dropzones,
-      search: ""
+      }, {
+        text: "Actions",
+        sortable: false,
+        value: "actions"
+      }]
     };
   }
 });
@@ -278,6 +304,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["pigeon", "results"],
   data: function data() {
@@ -285,6 +317,10 @@ __webpack_require__.r(__webpack_exports__);
       expanded: [],
       search: "",
       headers: [{
+        text: "Drop",
+        sortable: true,
+        value: "race.dropzone.name"
+      }, {
         text: "Place (Personal)",
         sortable: true,
         value: "place_personal",
@@ -995,6 +1031,72 @@ var render = function() {
                 ])
               ]
             }
+          },
+          {
+            key: "item.actions",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c(
+                  "div",
+                  { staticClass: "tw-flex tw-my-2" },
+                  [
+                    _c(
+                      "v-tooltip",
+                      {
+                        attrs: { bottom: "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          staticClass: "mx-2",
+                                          attrs: {
+                                            href:
+                                              "/dropzone/" + item.id + "/edit",
+                                            target: "_blank",
+                                            fab: "",
+                                            "x-small": "",
+                                            link: "",
+                                            color: "green"
+                                          }
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", { attrs: { dark: "" } }, [
+                                        _vm._v("mdi-table-large")
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          true
+                        )
+                      },
+                      [_vm._v(" "), _c("span", [_vm._v("Edit dropzone")])]
+                    )
+                  ],
+                  1
+                )
+              ]
+            }
           }
         ])
       })
@@ -1162,17 +1264,27 @@ var render = function() {
                     _c("strong", [_vm._v("Type:")]),
                     _vm._v(
                       "\n                    " +
-                        _vm._s(item.race.type) +
+                        _vm._s(item.race.type_formatted) +
                         "\n                "
                     )
                   ]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
-                    _vm._v(_vm._s(item.race.unloading_time))
+                  _c("p", { staticClass: "tw-whitespace-no-wrap text-md" }, [
+                    _c("strong", [_vm._v("Released:")]),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item.race.unloading_time) +
+                        "\n                "
+                    )
                   ]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
-                    _vm._v(_vm._s(item.arrival_time))
+                  _c("p", { staticClass: "tw-whitespace-no-wrap text-md" }, [
+                    _c("strong", [_vm._v("Arrived:")]),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item.arrival_time) +
+                        "\n                "
+                    )
                   ])
                 ])
               ]

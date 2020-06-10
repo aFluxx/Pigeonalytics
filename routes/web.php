@@ -18,6 +18,8 @@ Route::get('/', 'ResultController@index');
 Route::get('/dropzone', 'DropzoneController@index')->name('dropzone.list');
 Route::get('/dropzone/create', 'DropzoneController@create')->name('dropzone.create');
 Route::post('/dropzone/store', 'DropzoneController@store')->name('dropzone.store');
+Route::get('/dropzone/{dropzone}/edit', 'DropzoneController@edit')->name('dropzone.edit');
+Route::post('/dropzone/{dropzone}/update', 'DropzoneController@update')->name('dropzone.update');
 
 Route::get('/pigeon', 'PigeonController@index')->name('pigeon.list');
 Route::get('/pigeon/{pigeon}', 'PigeonController@show')->name('pigeon.show');

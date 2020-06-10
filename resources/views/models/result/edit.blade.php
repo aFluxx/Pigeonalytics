@@ -17,11 +17,10 @@ Edit result
         <div class="tw-w-1/2 tw-pr-2">
             <label for="result_race" class="tw-label">Choose race:</label>
             <select name="result_race" id="result_race" class="tw-input">
-                <option value="{{ $result->race->id }}" selected>{{ $result->race->unloading_time }}
-                    {{ $result->race->dropzone->name }}</option>
                 @foreach($races as $race)
-                <option value="{{ $race->id }}">{{ $race->unloading_time }} -- {{ $race->dropzone->name }}
-                    ({{ $race->category }})</option>
+                <option value="{{ $race->id }}" {{($race->id === $result->race->id) ? 'selected' : '' }}>
+                    {{ $race->unloading_time }} -- {{ $race->dropzone->name }}
+                    ({{ $race->category_formatted }})</option>
                 @endforeach
             </select>
 
