@@ -32,7 +32,7 @@
             <template v-slot:item.place_personal="{ item }">
                 <span class="tw-whitespace-no-wrap" v-if="item.place_personal != 1000000">
                     <strong>{{ item.place_personal }}</strong>
-                    / {{ item.race.amount_of_pigeons }}
+                    / {{ item.race._personal }}
                 </span>
             </template>
 
@@ -64,7 +64,7 @@
             <template v-slot:item.place_club="{ item }">
                 <span
                     class="tw-whitespace-no-wrap"
-                    v-if="item.place_club && item.place_club  != 1000000"
+                    v-if="item.place_club && item.place_club != 1000000"
                 >
                     <strong>{{ item.place_club }}</strong>
                     / {{ item.amount_pigeons_club }}
@@ -112,7 +112,7 @@
             <template v-slot:item.place_national="{ item }">
                 <span
                     class="tw-whitespace-no-wrap"
-                    v-if="item.place_national && item.place_national  != 1000000"
+                    v-if="item.place_national && item.place_national != 1000000"
                 >
                     <strong>{{ item.place_national }}</strong>
                     / {{ item.amount_pigeons_national }}
@@ -135,7 +135,7 @@
                             fab
                             x-small
                             link
-                            color="green"
+                            color="green lighten-2"
                             v-bind="attrs"
                             v-on="on"
                         >

@@ -39,20 +39,16 @@ class ResultController extends Controller
         $result->nominated  = $request->result_nominated;
 
         $result->place_club = $request->result_place_club ?: 1000000;
-        $result->amount_pigeons_club = $request->result_amount_pigeons_club ?: 1000000;
-        $result->coefficient_club = calculateCoefficient($request->result_place_club, $request->result_amount_pigeons_club) ?: 1000000;
+        $result->coefficient_club = $race->amount_of_pigeons_club ? calculateCoefficient($request->result_place_club, $race->amount_of_pigeons_club) : 1000000;
 
         $result->place_provincial = $request->result_place_provincial ?: 1000000;
-        $result->amount_pigeons_provincial = $request->result_amount_pigeons_provincial ?: 1000000;
-        $result->coefficient_provincial = calculateCoefficient($request->result_place_provincial, $request->result_amount_pigeons_provincial) ?: 1000000;
+        $result->coefficient_provincial = $race->amount_of_pigeons_provincial ? calculateCoefficient($request->result_place_provincial, $race->amount_of_pigeons_provincial) : 1000000;
 
         $result->place_zone = $request->result_place_zone ?: 1000000;
-        $result->amount_pigeons_zone = $request->result_amount_pigeons_zone ?: 1000000;
-        $result->coefficient_zone = calculateCoefficient($request->result_place_zone, $request->result_amount_pigeons_zone) ?: 1000000;
+        $result->coefficient_zone = $race->amount_of_pigeons_zone ? calculateCoefficient($request->result_place_zone, $race->amount_of_pigeons_zone) : 1000000;
 
         $result->place_national = $request->result_place_national ?: 1000000;
-        $result->amount_pigeons_national = $request->result_amount_pigeons_national ?: 1000000;
-        $result->coefficient_national = calculateCoefficient($request->result_place_national, $request->result_amount_pigeons_national) ?: 1000000;
+        $result->coefficient_national = $race->amount_of_pigeons_national ? calculateCoefficient($request->result_place_national, $race->amount_of_pigeons_national) : 1000000;
 
         $result->save();
 

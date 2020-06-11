@@ -57,15 +57,6 @@ Edit result
                     value="{{ old('result_place_club', $result->place_club) }}">
                 @endif
 
-                <label for="result_amount_pigeons_club" class="tw-label">Amount of pigeons (Club):</label>
-                @if($result->amount_pigeons_club === 1000000)
-                <input type="number" name="result_amount_pigeons_club" id="result_amount_pigeons_club" class="tw-input"
-                    value="{{ old('result_amount_pigeons_club') }}">
-                @else
-                <input type="number" name="result_amount_pigeons_club" id="result_amount_pigeons_club" class="tw-input"
-                    value="{{ old('result_amount_pigeons_club', $result->amount_pigeons_club) }}">
-                @endif
-
                 <label for="result_place_provincial" class="tw-label">Place (Provincial):</label>
                 @if($result->place_provincial === 1000000)
                 <input type="number" name="result_place_provincial" id="result_place_provincial" class="tw-input"
@@ -74,17 +65,6 @@ Edit result
                 <input type="number" name="result_place_provincial" id="result_place_provincial" class="tw-input"
                     value="{{ old('result_place_provincial', $result->place_provincial) }}">
                 @endif
-
-                <label for="result_amount_pigeons_provincial" class="tw-label">Amount of pigeons (Provincial):</label>
-                @if($result->amount_pigeons_provincial === 1000000)
-                <input type="number" name="result_amount_pigeons_provincial" id="result_amount_pigeons_provincial"
-                    class="tw-input" value="{{ old('result_amount_pigeons_provincial') }}">
-                @else
-                <input type="number" name="result_amount_pigeons_provincial" id="result_amount_pigeons_provincial"
-                    class="tw-input"
-                    value="{{ old('result_amount_pigeons_provincial', $result->amount_pigeons_provincial) }}">
-                @endif
-
             </div>
 
             <div>
@@ -97,15 +77,6 @@ Edit result
                     value="{{ old('result_place_zone', $result->place_zone) }}">
                 @endif
 
-                <label for="result_amount_pigeons_zone" class="tw-label">Amount of pigeons (Zone):</label>
-                @if($result->amount_pigeons_zone === 1000000)
-                <input type="number" name="result_amount_pigeons_zone" id="result_amount_pigeons_zone" class="tw-input"
-                    value="{{ old('result_amount_pigeons_zone') }}">
-                @else
-                <input type="number" name="result_amount_pigeons_zone" id="result_amount_pigeons_zone" class="tw-input"
-                    value="{{ old('result_amount_pigeons_zone', $result->amount_pigeons_zone) }}">
-                @endif
-
                 <label for="result_place_national" class="tw-label">Place (National):</label>
                 @if($result->place_national === 1000000)
                 <input type="number" name="result_place_national" id="result_place_national" class="tw-input"
@@ -114,23 +85,9 @@ Edit result
                 <input type="number" name="result_place_national" id="result_place_national" class="tw-input"
                     value="{{ old('result_place_national', $result->place_national) }}">
                 @endif
-
-                <label for="result_amount_pigeons_national" class="tw-label">Amount of pigeons (National):</label>
-                @if($result->amount_pigeons_national === 1000000)
-                <input type="number" name="result_amount_pigeons_national" id="result_amount_pigeons_national"
-                    class="tw-input" value="{{ old('result_amount_pigeons_national') }}">
-                @else
-                <input type="number" name="result_amount_pigeons_national" id="result_amount_pigeons_national"
-                    class="tw-input"
-                    value="{{ old('result_amount_pigeons_national', $result->amount_pigeons_national) }}">
-                @endif
-
             </div>
-
         </div>
     </div>
-
-
     <input type="submit" value="Update result" class="tw-button" />
 </form>
 @endsection

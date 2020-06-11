@@ -31,7 +31,7 @@
             <template v-slot:item.place_personal="{ item }">
                 <span class="tw-whitespace-no-wrap" v-if="item.place_personal != 1000000">
                     <strong>{{ item.place_personal }}</strong>
-                    / {{ item.race.amount_of_pigeons }}
+                    / {{ item.race.amount_of_pigeons_personal }}
                 </span>
             </template>
 
@@ -134,7 +134,7 @@
                             fab
                             x-small
                             link
-                            color="green"
+                            color="green lighten-2"
                             v-bind="attrs"
                             v-on="on"
                         >

@@ -16,15 +16,19 @@ class CreateRacesTable extends Migration
         Schema::create('races', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('dropzone_id');
+            $table->string('category');
+            $table->string('type');
             $table->string('wind')->nullable();
             $table->string('wind_strength')->nullable();
             $table->string('overcast')->nullable();
             $table->string('rainfall')->nullable();
-            $table->unsignedBigInteger('year')->nullable();
-            $table->string('type');
-            $table->string('category');
-            $table->unsignedBigInteger('amount_of_pigeons');
+            $table->unsignedBigInteger('amount_of_pigeons_personal');
+            $table->unsignedBigInteger('amount_of_pigeons_club')->nullable();
+            $table->unsignedBigInteger('amount_of_pigeons_provincial')->nullable();
+            $table->unsignedBigInteger('amount_of_pigeons_zone')->nullable();
+            $table->unsignedBigInteger('amount_of_pigeons_national')->nullable();
             $table->datetime('unloading_time');
+            $table->unsignedBigInteger('year')->nullable();
             $table->timestamps();
 
             $table->foreign('dropzone_id')->references('id')->on('dropzones');

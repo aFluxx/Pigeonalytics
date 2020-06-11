@@ -29,10 +29,14 @@ class RaceController extends Controller
             'overcast' => $request->race_overcast,
             'rainfall' => $request->race_rainfall,
             'unloading_time' => $request->race_unloading_time,
-            'year' => $request->race_year,
+            'year' => Carbon::parse($request->race_unloading_time)->format('Y'),
             'type' => $request->race_type,
             'category' => $request->race_category,
-            'amount_of_pigeons' => $request->race_amount_pigeons,
+            'amount_of_pigeons_personal' => $request->race_amount_pigeons_personal ?: 1000000,
+            'amount_of_pigeons_club' => $request->race_amount_pigeons_club ?: 1000000,
+            'amount_of_pigeons_provincial' => $request->race_amount_pigeons_provincial ?: 1000000,
+            'amount_of_pigeons_zone' => $request->race_amount_pigeons_zone ?: 1000000,
+            'amount_of_pigeons_national' => $request->race_amount_pigeons_national ?: 1000000,
         ]);
 
         $race->dropzone()->associate($dropzone);
@@ -68,7 +72,11 @@ class RaceController extends Controller
         $race->year = Carbon::parse($request->race_unloading_time)->format('Y');
         $race->type = $request->race_type;
         $race->category = $request->race_category;
-        $race->amount_of_pigeons = $request->race_dropzone;
+        $race->amount_of_pigeons_personal = $request->race_amount_of_pigeons_personal;
+        $race->amount_of_pigeons_club = $request->race_amount_of_pigeons_club;
+        $race->amount_of_pigeons_provincial = $request->race_amount_of_pigeons_provincial;
+        $race->amount_of_pigeons_zone = $request->race_amount_of_pigeons_zone;
+        $race->amount_of_pigeons_national = $request->race_amount_of_pigeons_national;
 
         $race->save();
 

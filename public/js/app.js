@@ -445,6 +445,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["races"],
   data: function data() {
@@ -456,33 +473,21 @@ __webpack_require__.r(__webpack_exports__);
         sortable: true,
         value: "dropzone.name"
       }, {
-        text: "Category",
-        sortable: true,
-        value: "category_formatted"
-      }, {
         text: "# Pigeons",
         sortable: true,
-        value: "amount_of_pigeons"
+        value: "amount_of_pigeons_personal"
       }, {
         text: "Unloading Time",
         sortable: true,
         value: "unloading_time"
       }, {
-        text: "Year",
+        text: "Wind Strength",
         sortable: true,
-        value: "year"
-      }, {
-        text: "Type",
-        sortable: true,
-        value: "type_formatted"
+        value: "wind_strength_formatted"
       }, {
         text: "Wind",
         sortable: true,
         value: "wind_formatted"
-      }, {
-        text: "Wind Strength",
-        sortable: true,
-        value: "wind_strength_formatted"
       }, {
         text: "Overcast",
         sortable: true,
@@ -491,6 +496,14 @@ __webpack_require__.r(__webpack_exports__);
         text: "Rainfall",
         sortable: true,
         value: "rainfall_formatted"
+      }, {
+        text: "Category",
+        sortable: true,
+        value: "category_formatted"
+      }, {
+        text: "Type",
+        sortable: true,
+        value: "type_formatted"
       }, {
         text: "Details",
         sortable: true,
@@ -504,10 +517,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getColorCategory: function getColorCategory(category) {
-      if (category == "Old birds") return "red lighten-1";else if (category == "Yearlings") return "blue darken-1";else return "teal darken-1";
+      if (category == "Old birds") return "lime lighten-4";else if (category == "Yearlings") return "teal lighten-4";else return "blue lighten-3";
     },
     getColorType: function getColorType(type) {
-      if (type == "Competition") return "deep-purple lighten-1";else if (type == "Training") return "light-green darken-3";
+      if (type == "Competition") return "green lighten-3";else if (type == "Training") return "pink lighten-4";
     }
   }
 });
@@ -1066,7 +1079,7 @@ var render = function() {
                                             fab: "",
                                             "x-small": "",
                                             link: "",
-                                            color: "green"
+                                            color: "green lighten-2"
                                           }
                                         },
                                         "v-btn",
@@ -1300,7 +1313,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_personal))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.race.amount_of_pigeons) +
+                          _vm._s(item.race.amount_of_pigeons_personal) +
                           "\n            "
                       )
                     ])
@@ -1358,7 +1371,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_club))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.amount_pigeons_club) +
+                          _vm._s(item.race.amount_of_pigeons_club) +
                           "\n            "
                       )
                     ])
@@ -1395,7 +1408,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_provincial))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.amount_pigeons_provincial) +
+                          _vm._s(item.race.amount_of_pigeons_provincial) +
                           "\n            "
                       )
                     ])
@@ -1433,7 +1446,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_zone))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.amount_pigeons_zone) +
+                          _vm._s(item.race.amount_of_pigeons_zone) +
                           "\n            "
                       )
                     ])
@@ -1470,7 +1483,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_national))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.amount_pigeons_national) +
+                          _vm._s(item.race.amount_of_pigeons_national) +
                           "\n            "
                       )
                     ])
@@ -1527,14 +1540,12 @@ var render = function() {
                                           staticClass: "mx-2",
                                           attrs: {
                                             href:
-                                              "/result/" +
-                                              item.pigeon_id +
-                                              "/edit",
+                                              "/result/" + item.id + "/edit",
                                             target: "_blank",
                                             fab: "",
                                             "x-small": "",
                                             link: "",
-                                            color: "green"
+                                            color: "green lighten-2"
                                           }
                                         },
                                         "v-btn",
@@ -1657,6 +1668,35 @@ var render = function() {
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
+          _vm.search
+            ? _c(
+                "v-btn",
+                {
+                  staticClass: "ma-2",
+                  attrs: {
+                    tile: "",
+                    outlined: "",
+                    color: "failure",
+                    small: ""
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.search = ""
+                    }
+                  }
+                },
+                [
+                  _c("v-icon", { attrs: { left: "" } }, [
+                    _vm._v("mdi-close-circle")
+                  ]),
+                  _vm._v("Cancel search\n        ")
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
           _c("v-text-field", {
             attrs: { "append-icon": "mdi-magnify", label: "Search" },
             model: {
@@ -1696,8 +1736,12 @@ var render = function() {
                   "v-chip",
                   {
                     attrs: {
-                      color: _vm.getColorCategory(item.category_formatted),
-                      dark: ""
+                      color: _vm.getColorCategory(item.category_formatted)
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.search = item.category_formatted
+                      }
                     }
                   },
                   [_vm._v(_vm._s(item.category_formatted))]
@@ -1713,9 +1757,11 @@ var render = function() {
                 _c(
                   "v-chip",
                   {
-                    attrs: {
-                      color: _vm.getColorType(item.type_formatted),
-                      dark: ""
+                    attrs: { color: _vm.getColorType(item.type_formatted) },
+                    on: {
+                      click: function($event) {
+                        _vm.search = item.type_formatted
+                      }
                     }
                   },
                   [_vm._v(_vm._s(item.type_formatted))]
@@ -1728,9 +1774,25 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c("a", { attrs: { href: "/race/" + item.id } }, [
-                  _vm._v("See race details")
-                ])
+                _c(
+                  "div",
+                  { staticClass: "my-2" },
+                  [
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: {
+                          text: "",
+                          small: "",
+                          href: "/race/" + item.id,
+                          color: "primary"
+                        }
+                      },
+                      [_vm._v("See race details")]
+                    )
+                  ],
+                  1
+                )
               ]
             }
           },
@@ -1763,7 +1825,7 @@ var render = function() {
                                         fab: "",
                                         "x-small": "",
                                         link: "",
-                                        color: "green"
+                                        color: "green lighten-2"
                                       }
                                     },
                                     "v-btn",
@@ -1900,7 +1962,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_personal))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.race.amount_of_pigeons) +
+                          _vm._s(item.race.amount_of_pigeons_personal) +
                           "\n            "
                       )
                     ])
@@ -2146,7 +2208,7 @@ var render = function() {
                                         fab: "",
                                         "x-small": "",
                                         link: "",
-                                        color: "green"
+                                        color: "green lighten-2"
                                       }
                                     },
                                     "v-btn",
@@ -2285,7 +2347,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_personal))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.race.amount_of_pigeons) +
+                          _vm._s(item.race._personal) +
                           "\n            "
                       )
                     ])
@@ -2531,7 +2593,7 @@ var render = function() {
                                         fab: "",
                                         "x-small": "",
                                         link: "",
-                                        color: "green"
+                                        color: "green lighten-2"
                                       }
                                     },
                                     "v-btn",

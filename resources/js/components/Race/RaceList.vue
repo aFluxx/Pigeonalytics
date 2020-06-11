@@ -3,6 +3,18 @@
         <v-card-title>
             <span v-text="'List of all races'"></span>
             <v-spacer></v-spacer>
+            <v-btn
+                class="ma-2"
+                tile
+                outlined
+                color="failure"
+                v-if="search"
+                @click="search = ''"
+                small
+            >
+                <v-icon left>mdi-close-circle</v-icon>Cancel search
+            </v-btn>
+            <v-spacer></v-spacer>
             <v-text-field v-model="search" append-icon="mdi-magnify" label="Search"></v-text-field>
         </v-card-title>
         <v-data-table
@@ -15,15 +27,20 @@
             <template v-slot:item.dropzone.name="{ item }">{{ item.dropzone.name }}</template>
             <template v-slot:item.category_formatted="{ item }">
                 <v-chip
+                    @click="search = item.category_formatted"
                     :color="getColorCategory(item.category_formatted)"
-                    dark
                 >{{ item.category_formatted }}</v-chip>
             </template>
             <template v-slot:item.type_formatted="{ item }">
-                <v-chip :color="getColorType(item.type_formatted)" dark>{{ item.type_formatted }}</v-chip>
+                <v-chip
+                    @click="search = item.type_formatted"
+                    :color="getColorType(item.type_formatted)"
+                >{{ item.type_formatted }}</v-chip>
             </template>
             <template v-slot:item.race_details="{ item }">
-                <a :href="'/race/' + item.id">See race details</a>
+                <div class="my-2">
+                    <v-btn text small :href="'/race/' + item.id" color="primary">See race details</v-btn>
+                </div>
             </template>
 
             <template v-slot:item.actions="{ item }">
@@ -36,7 +53,7 @@
                             fab
                             x-small
                             link
-                            color="green"
+                            color="green lighten-2"
                             v-bind="attrs"
                             v-on="on"
                         >
@@ -65,14 +82,9 @@ export default {
                     value: "dropzone.name"
                 },
                 {
-                    text: "Category",
-                    sortable: true,
-                    value: "category_formatted"
-                },
-                {
                     text: "# Pigeons",
                     sortable: true,
-                    value: "amount_of_pigeons"
+                    value: "amount_of_pigeons_personal"
                 },
                 {
                     text: "Unloading Time",
@@ -80,24 +92,14 @@ export default {
                     value: "unloading_time"
                 },
                 {
-                    text: "Year",
+                    text: "Wind Strength",
                     sortable: true,
-                    value: "year"
-                },
-                {
-                    text: "Type",
-                    sortable: true,
-                    value: "type_formatted"
+                    value: "wind_strength_formatted"
                 },
                 {
                     text: "Wind",
                     sortable: true,
                     value: "wind_formatted"
-                },
-                {
-                    text: "Wind Strength",
-                    sortable: true,
-                    value: "wind_strength_formatted"
                 },
                 {
                     text: "Overcast",
@@ -108,6 +110,16 @@ export default {
                     text: "Rainfall",
                     sortable: true,
                     value: "rainfall_formatted"
+                },
+                {
+                    text: "Category",
+                    sortable: true,
+                    value: "category_formatted"
+                },
+                {
+                    text: "Type",
+                    sortable: true,
+                    value: "type_formatted"
                 },
                 {
                     text: "Details",
@@ -121,14 +133,14 @@ export default {
 
     methods: {
         getColorCategory(category) {
-            if (category == "Old birds") return "red lighten-1";
-            else if (category == "Yearlings") return "blue darken-1";
-            else return "teal darken-1";
+            if (category == "Old birds") return "lime lighten-4";
+            else if (category == "Yearlings") return "teal lighten-4";
+            else return "blue lighten-3";
         },
 
         getColorType(type) {
-            if (type == "Competition") return "deep-purple lighten-1";
-            else if (type == "Training") return "light-green darken-3";
+            if (type == "Competition") return "green lighten-3";
+            else if (type == "Training") return "pink lighten-4";
         }
     }
 };

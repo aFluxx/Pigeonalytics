@@ -26,7 +26,7 @@
                                 fab
                                 x-small
                                 link
-                                color="green"
+                                color="green lighten-2"
                                 v-bind="attrs"
                                 v-on="on"
                             >

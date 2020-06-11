@@ -42,7 +42,7 @@
             <template v-slot:item.place_personal="{ item }">
                 <span class="tw-whitespace-no-wrap" v-if="item.place_personal != 1000000">
                     <strong>{{ item.place_personal }}</strong>
-                    / {{ item.race.amount_of_pigeons }}
+                    / {{ item.race.amount_of_pigeons_personal }}
                 </span>
             </template>
             <template slot="selection" slot-scope="data">{{ data.item.name }}, {{ data.item.group }}</template>
@@ -73,7 +73,7 @@
                     v-if="item.place_club &&  item.place_club != 1000000"
                 >
                     <strong>{{ item.place_club }}</strong>
-                    / {{ item.amount_pigeons_club }}
+                    / {{ item.race.amount_of_pigeons_club }}
                 </span>
             </template>
             <template v-slot:item.coefficient_club="{ item }">
@@ -89,7 +89,7 @@
                     v-if="item.place_provincial && item.place_provincial  != 1000000"
                 >
                     <strong>{{ item.place_provincial }}</strong>
-                    / {{ item.amount_pigeons_provincial }}
+                    / {{ item.race.amount_of_pigeons_provincial }}
                 </span>
             </template>
             <template v-slot:item.coefficient_provincial="{ item }">
@@ -105,7 +105,7 @@
                     v-if="item.place_zone && item.place_zone  != 1000000"
                 >
                     <strong>{{ item.place_zone }}</strong>
-                    / {{ item.amount_pigeons_zone }}
+                    / {{ item.race.amount_of_pigeons_zone }}
                 </span>
             </template>
             <template v-slot:item.coefficient_zone="{ item }">
@@ -121,7 +121,7 @@
                     v-if="item.place_national && item.place_national != 1000000"
                 >
                     <strong>{{ item.place_national }}</strong>
-                    / {{ item.amount_pigeons_national }}
+                    / {{ item.race.amount_of_pigeons_national }}
                 </span>
             </template>
             <template v-slot:item.coefficient_national="{ item }">
@@ -136,13 +136,13 @@
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn
-                                :href="'/result/' + item.pigeon_id + '/edit'"
+                                :href="'/result/' + item.id + '/edit'"
                                 target="_blank"
                                 class="mx-2"
                                 fab
                                 x-small
                                 link
-                                color="green"
+                                color="green lighten-2"
                                 v-bind="attrs"
                                 v-on="on"
                             >
