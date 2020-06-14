@@ -29,7 +29,14 @@ Manually create a result
     <input type="text" name="result_ringnumber" id="result_ringnumber" class="tw-input" placeholder="BE-18-4441444">
 
     <label for="result_arrival_time" class="tw-label">Arrival time:</label>
-    <input type="datetime-local" name="result_arrival_time" id="result_arrival_time" step="1" class="tw-input">
+
+    <input type="time" id="result_arrival_time" name="result_arrival_time" step="1" class="tw-input">
+
+    <input type="checkbox" id="result_arrival_date_required" name="result_arrival_date_required"
+        onchange="toggleCheckbox(this)">
+    <label for="result_arrival_date_required" class="tw-label">Overnight flight</label>
+
+    <input type="date" id="result_arrival_date" name="result_arrival_date" step="1" class="tw-input tw-hidden">
 
     {{-- <label for="result_mpm" class="tw-label">mpm:</label>
     <input type="number" name="result_mpm" id="result_mpm" class="tw-input" step="0.001"> --}}
@@ -37,3 +44,18 @@ Manually create a result
     <input type="submit" value="Submit" class="tw-button" />
 </form>
 @endsection
+
+@push('scripts-after-main')
+<script>
+    function toggleCheckbox(element) {
+        var checkBox = document.getElementById("result_arrival_date_required");
+        var text = document.getElementById("result_arrival_date");
+
+        if (checkBox.checked == true){
+            text.classList.remove("tw-hidden");
+        } else {
+            text.classList.add("tw-hidden");
+        }
+    }
+</script>
+@endpush

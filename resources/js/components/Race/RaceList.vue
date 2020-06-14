@@ -24,7 +24,13 @@
             multi-sort
             class="elevation-1"
         >
-            <template v-slot:item.dropzone.name="{ item }">{{ item.dropzone.name }}</template>
+            <template v-slot:item.dropzone.name="{ item }">
+                <v-chip
+                    @click="search = item.dropzone.name"
+                    class="ma-2"
+                    label
+                >{{ item.dropzone.name }}</v-chip>
+            </template>
             <template v-slot:item.category_formatted="{ item }">
                 <v-chip
                     @click="search = item.category_formatted"

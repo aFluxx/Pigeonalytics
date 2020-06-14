@@ -29,12 +29,12 @@ class ResultController extends Controller
     public function update(Request $request, Result $result)
     {
         $race = Race::where('id', $request->result_race)->first();
-        $interval = calculateInterval($race->unloading_time, $request->result_arrival_time);
+        $interval = !$request->result_arrival_time ? null : calculateInterval($race->unloading_time, $request->result_arrival_time);
 
         $result->race_id = $request->result_race;
         $result->arrival_time  = $request->result_arrival_time;
         $result->interval = $interval;
-        $result->mpm = calculateMeterPerMinute($race, $interval);
+        $result->mpm = !$request->result_arrival_time ? $result->mpm : calculateMeterPerMinute($race, $interval);
         $result->place_personal  = $request->result_place_personal ?: 1000000;
         $result->nominated  = $request->result_nominated;
 
@@ -52,7 +52,7 @@ class ResultController extends Controller
 
         $result->save();
 
-        return view('models/result/edit')->with([
+        return redirect()->route('result.edit', $result->id)->with([
             'message' => 'Result updated!',
             'result' => $result,
             'races' => Race::with(['dropzone'])->orderBy('unloading_time', 'DESC')->get(),

@@ -17,9 +17,9 @@ class CreateResultsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pigeon_id');
             $table->unsignedBigInteger('race_id');
-            $table->datetime('arrival_time');
-            $table->double('interval');
-            $table->double('mpm');
+            $table->datetime('arrival_time')->nullable();
+            $table->double('interval')->nullable();
+            $table->double('mpm')->nullable();
 
             $table->unsignedBigInteger('place_personal')->nullable();
             $table->unsignedBigInteger('nominated')->nullable();

@@ -107,9 +107,15 @@ Edit race
         </div>
 
         <div>
-            <label for="race_amount_pigeons" class="tw-label">Amount of pigeons (Personal)</label>
-            <input type="number" id="race_amount_pigeons" name="race_amount_pigeons" class="tw-input"
-                value="{{ old('race_amount_pigeons_personal', $race->amount_of_pigeons_personal) }}" />
+            <label for="race_amount_of_pigeons_personal" class="tw-label">Amount of pigeons (Personal)</label>
+            @if($race->amount_of_pigeons_club === 1000000)
+            <input type="number" id="race_amount_of_pigeons_personal" name="race_amount_of_pigeons_personal"
+                class="tw-input" value="{{ old('race_amount_of_pigeons_personal') }}" />
+            @else
+            <input type="number" id="race_amount_of_pigeons_personal" name="race_amount_of_pigeons_personal"
+                class="tw-input"
+                value="{{ old('race_amount_of_pigeons_personal', $race->amount_of_pigeons_personal) }}" />
+            @endif
 
             <label for="race_amount_of_pigeons_club" class="tw-label">Amount of pigeons (Club):</label>
             @if($race->amount_of_pigeons_club === 1000000)

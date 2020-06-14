@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pigeon;
 use App\Race;
 use App\Result;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ResultManualController extends Controller
@@ -16,8 +17,8 @@ class ResultManualController extends Controller
 
     public function store(Request $request)
     {
-        $pigeon = Pigeon::firstOrCreate(['ringnumber' => $request->result_ringnumber]);
         $race = Race::where('id', $request->result_race)->first();
+        $pigeon = Pigeon::firstOrCreate(['ringnumber' => $request->result_ringnumber]);
 
         $interval = calculateInterval($race->unloading_time, $request->result_arrival_time);
 
@@ -25,7 +26,9 @@ class ResultManualController extends Controller
             'pigeon_id' => $pigeon->id,
             'race_id' => $race->id,
             'place_personal' => $request->result_place_personal,
-            'arrival_time' => $request->result_arrival_time,
+            'arrival_time' =>
+            $request->result_arrival_date ? $request->result_arrival_date . ' ' . $request->result_arrival_time :
+                Carbon::parse($race->unloading_time)->format('Y-m-d') . ' ' . $request->result_arrival_time,
             'interval' =>  $interval,
             'mpm' => calculateMeterPerMinute($race, $interval)
         ]);
@@ -35,4 +38,17 @@ class ResultManualController extends Controller
             'races' => Race::with(['dropzone'])->orderBy('unloading_time', 'DESC')->get(),
         ]);
     }
+
+    // private function getArrivalTime($requestArrivalDate, $requestArrivalTime, $mpm, $unloadingTime)
+    // {
+    //     if (!$mpm) {
+    //         if ($requestArrivalTime) {
+    //             return $requestArrivalDate . ' ' . $requestArrivalTime;
+    //         } else {
+    //             return  Carbon::parse($unloadingTime)->format('Y-m-d') . ' ' . $request->result_arrival_time;
+    //         }
+    //     } else {
+    //         return null;
+    //     }
+    // }
 }
