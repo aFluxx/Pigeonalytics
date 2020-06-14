@@ -21,6 +21,8 @@
             :headers="headers"
             :items="racesData"
             :search="search"
+            :sort-by="['unloading_time']"
+            :sort-desc="true"
             multi-sort
             class="elevation-1"
         >

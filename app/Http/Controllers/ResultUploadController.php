@@ -33,17 +33,13 @@ class ResultUploadController extends Controller
                 'interval' =>  $interval,
                 'mpm' => calculateMeterPerMinute($race, $interval),
                 'place_club' => 1000000,
-                'amount_pigeons_club' => 1000000,
                 'coefficient_club' => 1000000,
                 'place_provincial' => 1000000,
-                'amount_pigeons_provincial' => 1000000,
                 'coefficient_provincial' => 1000000,
                 'place_zone' => 1000000,
-                'amount_pigeons_zone' => 1000000,
                 'coefficient_zone' => 1000000,
                 'place_national' => 1000000,
-                'amount_pigeons_national' => 1000000,
-                'place_amount_pigeons_nationalclub' => 1000000,
+                'coefficient_national' => 1000000,
             ]);
         }
 

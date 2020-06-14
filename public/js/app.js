@@ -468,6 +468,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["races"],
   data: function data() {
@@ -1723,6 +1725,8 @@ var render = function() {
           headers: _vm.headers,
           items: _vm.racesData,
           search: _vm.search,
+          "sort-by": ["unloading_time"],
+          "sort-desc": true,
           "multi-sort": ""
         },
         scopedSlots: _vm._u([
@@ -2367,7 +2371,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_personal))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.race._personal) +
+                          _vm._s(item.race.amount_of_pigeons_personal) +
                           "\n            "
                       )
                     ])
@@ -2444,7 +2448,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_club))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.amount_pigeons_club) +
+                          _vm._s(item.race.amount_of_pigeons_club) +
                           "\n            "
                       )
                     ])
@@ -2481,7 +2485,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_provincial))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.amount_pigeons_provincial) +
+                          _vm._s(item.race.amount_of_pigeons_provincial) +
                           "\n            "
                       )
                     ])
@@ -2519,7 +2523,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_zone))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.amount_pigeons_zone) +
+                          _vm._s(item.race.amount_of_pigeons_zone) +
                           "\n            "
                       )
                     ])
@@ -2556,7 +2560,7 @@ var render = function() {
                       _c("strong", [_vm._v(_vm._s(item.place_national))]),
                       _vm._v(
                         "\n                / " +
-                          _vm._s(item.amount_pigeons_national) +
+                          _vm._s(item.race.amount_of_pigeons_national) +
                           "\n            "
                       )
                     ])
