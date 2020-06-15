@@ -144,7 +144,10 @@ export default {
         getColorCategory(category) {
             if (category == "Old birds") return "lime lighten-4";
             else if (category == "Yearlings") return "teal lighten-4";
-            else return "blue lighten-3";
+            else if (category == "Youngsters") return "green lighten-3";
+            else if (category == "Mix Yearling / Old")
+                return "purple lighten-4";
+            else if (category == "Mix Varia") return "indigo lighten-3";
         },
 
         getColorType(type) {

@@ -28,6 +28,7 @@ Create New Race
                 <option value="youngster">Youngsters</option>
                 <option value="yearlings">Yearlings</option>
                 <option value="old_birds">Old birds</option>
+                <option value="mix_yearling_old">Mix (yearling/old)</option>
                 <option value="mix">Mix</option>
             </select>
 
@@ -136,18 +137,13 @@ Create New Race
             url: '/api/dropzone/' + valueSelected + '/get-discipline',
             context: document.body
         }).done(function(res) {
-            console.log(res);
-            console.log(hfo.includes(res));
-            console.log(fon.includes(res));
             if(hfo.includes(res)) {
-                console.log('h');
                 $('#fon_races').removeClass('tw-block');
                 $('#fon_races').addClass('tw-hidden');
 
                 $('#hfo_races').removeClass('tw-hidden');
                 $('#hfo_races').addClass('tw-block');
             } else if (fon.includes(res)) {
-                console.log('t');
                 $('#hfo_races').removeClass('tw-block');
                 $('#hfo_races').addClass('tw-hidden');
 

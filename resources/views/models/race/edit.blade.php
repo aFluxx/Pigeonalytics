@@ -31,6 +31,8 @@ Edit race
                 <option value="youngster" {{($race->category ==='youngster') ? 'selected' : ''}}>Youngsters</option>
                 <option value="yearlings" {{($race->category ==='yearlings') ? 'selected' : ''}}>Yearlings</option>
                 <option value="old_birds" {{($race->category ==='old_birds') ? 'selected' : ''}}>Old birds</option>
+                <option value="mix_yearling_old" {{($race->category ==='mix_yearling_old') ? 'selected' : ''}}>Mix
+                    (yearling/old)</option>
                 <option value="mix" {{($race->category ==='mix') ? 'selected' : ''}}>Mix</option>
             </select>
 
@@ -108,7 +110,7 @@ Edit race
 
         <div>
             <label for="race_amount_of_pigeons_personal" class="tw-label">Amount of pigeons (Personal)</label>
-            @if($race->amount_of_pigeons_club === 1000000)
+            @if($race->amount_of_pigeons_personal === 1000000)
             <input type="number" id="race_amount_of_pigeons_personal" name="race_amount_of_pigeons_personal"
                 class="tw-input" value="{{ old('race_amount_of_pigeons_personal') }}" />
             @else
@@ -117,46 +119,128 @@ Edit race
                 value="{{ old('race_amount_of_pigeons_personal', $race->amount_of_pigeons_personal) }}" />
             @endif
 
-            <label for="race_amount_of_pigeons_club" class="tw-label">Amount of pigeons (Club):</label>
-            @if($race->amount_of_pigeons_club === 1000000)
-            <input type="number" name="race_amount_of_pigeons_club" id="race_amount_of_pigeons_club" class="tw-input"
-                value="{{ old('race_amount_of_pigeons_club') }}">
-            @else
-            <input type="number" name="race_amount_of_pigeons_club" id="race_amount_of_pigeons_club" class="tw-input"
-                value="{{ old('race_amount_of_pigeons_club', $race->amount_of_pigeons_club) }}">
-            @endif
+            <div id="fon_races" class="tw-hidden">
+                <label for="race_amount_of_pigeons_club" class="tw-label">Amount of pigeons (Club):</label>
+                @if($race->amount_of_pigeons_club === 1000000)
+                <input type="number" name="race_amount_of_pigeons_club" id="race_amount_of_pigeons_club"
+                    class="tw-input" value="{{ old('race_amount_of_pigeons_club') }}">
+                @else
+                <input type="number" name="race_amount_of_pigeons_club" id="race_amount_of_pigeons_club"
+                    class="tw-input" value="{{ old('race_amount_of_pigeons_club', $race->amount_of_pigeons_club) }}">
+                @endif
 
-            <label for="race_amount_of_pigeons_provincial" class="tw-label">Amount of pigeons (Provincial):</label>
-            @if($race->amount_of_pigeons_provincial === 1000000)
-            <input type="number" name="race_amount_of_pigeons_provincial" id="race_amount_of_pigeons_provincial"
-                class="tw-input" value="{{ old('race_amount_of_pigeons_provincial') }}">
-            @else
-            <input type="number" name="race_amount_of_pigeons_provincial" id="race_amount_of_pigeons_provincial"
-                class="tw-input"
-                value="{{ old('race_amount_of_pigeons_provincial', $race->amount_of_pigeons_provincial) }}">
-            @endif
+                <label for="race_amount_of_pigeons_provincial" class="tw-label">Amount of pigeons (Provincial):</label>
+                @if($race->amount_of_pigeons_provincial === 1000000)
+                <input type="number" name="race_amount_of_pigeons_provincial" id="race_amount_of_pigeons_provincial"
+                    class="tw-input" value="{{ old('race_amount_of_pigeons_provincial') }}">
+                @else
+                <input type="number" name="race_amount_of_pigeons_provincial" id="race_amount_of_pigeons_provincial"
+                    class="tw-input"
+                    value="{{ old('race_amount_of_pigeons_provincial', $race->amount_of_pigeons_provincial) }}">
+                @endif
 
-            <label for="race_amount_of_pigeons_zone" class="tw-label">Amount of pigeons (Zone):</label>
-            @if($race->amount_of_pigeons_zone === 1000000)
-            <input type="number" name="race_amount_of_pigeons_zone" id="race_amount_of_pigeons_zone" class="tw-input"
-                value="{{ old('race_amount_of_pigeons_zone') }}">
-            @else
-            <input type="number" name="race_amount_of_pigeons_zone" id="race_amount_of_pigeons_zone" class="tw-input"
-                value="{{ old('race_amount_of_pigeons_zone', $race->amount_of_pigeons_zone) }}">
-            @endif
+                <label for="race_amount_of_pigeons_zone" class="tw-label">Amount of pigeons (Zone):</label>
+                @if($race->amount_of_pigeons_zone === 1000000)
+                <input type="number" name="race_amount_of_pigeons_zone" id="race_amount_of_pigeons_zone"
+                    class="tw-input" value="{{ old('race_amount_of_pigeons_zone') }}">
+                @else
+                <input type="number" name="race_amount_of_pigeons_zone" id="race_amount_of_pigeons_zone"
+                    class="tw-input" value="{{ old('race_amount_of_pigeons_zone', $race->amount_of_pigeons_zone) }}">
+                @endif
 
-            <label for="race_amount_of_pigeons_national" class="tw-label">Amount of pigeons (National):</label>
-            @if($race->amount_of_pigeons_national === 1000000)
-            <input type="number" name="race_amount_of_pigeons_national" id="race_amount_of_pigeons_national"
-                class="tw-input" value="{{ old('race_amount_of_pigeons_national') }}">
-            @else
-            <input type="number" name="race_amount_of_pigeons_national" id="race_amount_of_pigeons_national"
-                class="tw-input"
-                value="{{ old('race_amount_of_pigeons_national', $race->amount_of_pigeons_national) }}">
-            @endif
+                <label for="race_amount_of_pigeons_national" class="tw-label">Amount of pigeons (National):</label>
+                @if($race->amount_of_pigeons_national === 1000000)
+                <input type="number" name="race_amount_of_pigeons_national" id="race_amount_of_pigeons_national"
+                    class="tw-input" value="{{ old('race_amount_of_pigeons_national') }}">
+                @else
+                <input type="number" name="race_amount_of_pigeons_national" id="race_amount_of_pigeons_national"
+                    class="tw-input"
+                    value="{{ old('race_amount_of_pigeons_national', $race->amount_of_pigeons_national) }}">
+                @endif
+            </div>
+
+            <div id="hfo_races" class="tw-hidden">
+                <label for="race_amount_of_pigeons_regio" class="tw-label">Amount of pigeons (Regio):</label>
+                @if($race->amount_of_pigeons_regio === 1000000)
+                <input type="number" id="race_amount_of_pigeons_regio" name="race_amount_of_pigeons_regio"
+                    class="tw-input" value="{{ old('race_amount_of_pigeons_regio') }}" />
+                @else
+                <input type="number" id="race_amount_of_pigeons_regio" name="race_amount_of_pigeons_regio"
+                    class="tw-input"
+                    value="{{ old('race_amount_of_pigeons_regio', $race->amount_of_pigeons_regio) }}" />
+                @endif
+
+                <label for="race_amount_of_pigeons_overkoepeling" class="tw-label">Amount of pigeons
+                    (Overkoepeling):</label>
+                @if($race->amount_of_pigeons_regio === 1000000)
+                <input type="number" id="race_amount_of_pigeons_overkoepeling"
+                    name="race_amount_of_pigeons_overkoepeling" class="tw-input"
+                    value="{{ old('race_amount_of_pigeons_overkoepeling') }}" />
+                @else
+                <input type="number" id="race_amount_of_pigeons_overkoepeling"
+                    name="race_amount_of_pigeons_overkoepeling" class="tw-input"
+                    value="{{ old('race_amount_of_pigeons_overkoepeling', $race->amount_of_pigeons_overkoepeling) }}" />
+                @endif
+            </div>
         </div>
-    </div>
 
+    </div>
     <input type="submit" value="Submit" class="tw-button" />
 </form>
 @endsection
+
+@push('scripts-after-main')
+<script>
+    var dropzoneId = {!! json_encode($race->dropzone->id) !!};
+
+    $(function() {
+        $.ajax({
+            url: '/api/dropzone/' + dropzoneId + '/get-discipline',
+            context: document.body
+        }).done(function(res) {
+            if(hfo.includes(res)) {
+                $('#fon_races').removeClass('tw-block');
+                $('#fon_races').addClass('tw-hidden');
+
+                $('#hfo_races').removeClass('tw-hidden');
+                $('#hfo_races').addClass('tw-block');
+            } else if (fon.includes(res)) {
+                $('#hfo_races').removeClass('tw-block');
+                $('#hfo_races').addClass('tw-hidden');
+
+                $('#fon_races').removeClass('tw-hidden');
+                $('#fon_races').addClass('tw-block');
+            }
+        });
+    });
+
+    var selectedDropzone = $('#race_dropzone');
+
+    var hfo = ['vit', 'hfo'];
+    var fon = ['kle', 'fon', 'gfo'];
+
+    selectedDropzone.on('change', function (e) {
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+
+        $.ajax({
+            url: '/api/dropzone/' + valueSelected + '/get-discipline',
+            context: document.body
+        }).done(function(res) {
+            if(hfo.includes(res)) {
+                $('#fon_races').removeClass('tw-block');
+                $('#fon_races').addClass('tw-hidden');
+
+                $('#hfo_races').removeClass('tw-hidden');
+                $('#hfo_races').addClass('tw-block');
+            } else if (fon.includes(res)) {
+                $('#hfo_races').removeClass('tw-block');
+                $('#hfo_races').addClass('tw-hidden');
+
+                $('#fon_races').removeClass('tw-hidden');
+                $('#fon_races').addClass('tw-block');
+            }
+        });
+    });
+</script>
+@endpush

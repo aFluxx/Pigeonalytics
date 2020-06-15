@@ -37,6 +37,8 @@ class RaceController extends Controller
             'amount_of_pigeons_provincial' => $request->race_amount_pigeons_provincial ?: 1000000,
             'amount_of_pigeons_zone' => $request->race_amount_pigeons_zone ?: 1000000,
             'amount_of_pigeons_national' => $request->race_amount_pigeons_national ?: 1000000,
+            'amount_of_pigeons_regio' => $request->race_amount_pigeons_regio ?: 1000000,
+            'amount_of_pigeons_overkoepeling' => $request->race_amount_pigeons_overkoepeling ?: 1000000,
         ]);
 
         $race->dropzone()->associate($dropzone);
@@ -72,19 +74,45 @@ class RaceController extends Controller
         $race->year = Carbon::parse($request->race_unloading_time)->format('Y');
         $race->type = $request->race_type;
         $race->category = $request->race_category;
-        $race->amount_of_pigeons_personal = $request->race_amount_of_pigeons_personal;
-        $race->amount_of_pigeons_club = $request->race_amount_of_pigeons_club;
-        $race->amount_of_pigeons_provincial = $request->race_amount_of_pigeons_provincial;
-        $race->amount_of_pigeons_zone = $request->race_amount_of_pigeons_zone;
-        $race->amount_of_pigeons_national = $request->race_amount_of_pigeons_national;
-        $race->amount_of_pigeons_regio = $request->race_amount_of_pigeons_regio;
-        $race->amount_of_pigeons_overkoepeling = $request->race_amount_of_pigeons_overkoepeling;
+        $race->amount_of_pigeons_personal = $request->race_amount_of_pigeons_personal ?: 1000000;
+        $race->amount_of_pigeons_club = $request->race_amount_of_pigeons_club ?: 1000000;
+        $race->amount_of_pigeons_provincial = $request->race_amount_of_pigeons_provincial ?: 1000000;
+        $race->amount_of_pigeons_zone = $request->race_amount_of_pigeons_zone ?: 1000000;
+        $race->amount_of_pigeons_national = $request->race_amount_of_pigeons_national ?: 1000000;
+        $race->amount_of_pigeons_regio = $request->race_amount_of_pigeons_regio ?: 1000000;
+        $race->amount_of_pigeons_overkoepeling = $request->race_amount_of_pigeons_overkoepeling ?: 1000000;
 
         $race->save();
 
         return redirect()->route('race.edit', $race->id)->with([
             'message' => 'Race updated!',
             'dropzones' => Dropzone::orderBy('name', 'ASC')->get(),
+            'race' => $race
+        ]);
+    }
+
+    public function closeRace(Race $race)
+    {
+        $resultsToClose = $race->closableResults;
+
+        foreach ($resultsToClose as $result) {
+            $result->place_club = 1000000;
+            $result->coefficient_club = 1000000;
+            $result->place_provincial = 1000000;
+            $result->coefficient_provincial = 1000000;
+            $result->place_zone = 1000000;
+            $result->coefficient_zone = 1000000;
+            $result->place_national = 1000000;
+            $result->coefficient_national = 1000000;
+            $result->place_regio = 1000000;
+            $result->coefficient_regio = 1000000;
+            $result->place_overkoepeling = 1000000;
+            $result->coefficient_overkoepeling = 1000000;
+            $result->save();
+        }
+
+        return redirect()->route('race.show', $race->id)->with([
+            'message' => 'Closed off the race',
             'race' => $race
         ]);
     }

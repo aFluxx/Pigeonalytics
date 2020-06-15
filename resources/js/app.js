@@ -6,7 +6,8 @@ import vuetify from './plugins/vuetify';
 Vue.component('dropzone-list', require('./components/Dropzone/DropzoneList.vue').default);
 
 Vue.component('race-list', require('./components/Race/RaceList.vue').default);
-Vue.component('single-race-results-table', require('./components/Race/SingleRaceResultsTable.vue').default);
+Vue.component('halve-fond-results', require('./components/Race/HalveFondResults.vue').default);
+Vue.component('fond-results', require('./components/Race/FondResults.vue').default);
 
 Vue.component('all-results-data-table', require('./components/Result/AllResultsDataTable.vue').default);
 

@@ -22,5 +22,11 @@
     <p><strong>Year:</strong> {{ $race->year }}</p>
     <p><strong>Type:</strong> {{ $race->type_formatted }}</p>
 </div>
-<single-race-results-table :results="{{ $race->results }}"></single-race-results-table>
+@if($race->amount_of_pigeons_regio === 1000000 || $race->amount_of_pigeons_regio === null)
+<fond-results :results="{{ $race->results }}"></fond-results>
+@else
+<halve-fond-results :results="{{ $race->results }}"></halve-fond-results>
+@endif
+
+<a href="{{ route('race.close', $race->id) }}">Close race</a>
 @endsection

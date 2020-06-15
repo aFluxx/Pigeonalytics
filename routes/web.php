@@ -30,6 +30,7 @@ Route::post('/race/store', 'RaceController@store')->name('race.store');
 Route::get('/race/{race}', 'RaceController@show')->name('race.show');
 Route::get('/race/{race}/edit', 'RaceController@edit')->name('race.edit');
 Route::post('/race/{race}/update', 'RaceController@update')->name('race.update')->middleware('web');
+Route::get('/race/{race}/close', 'RaceController@closeRace')->name('race.close');
 
 Route::get('/result', 'ResultController@index')->name('result.list');
 Route::get('/result/vit', 'ResultController@indexVitesse')->name('result.vitesse');

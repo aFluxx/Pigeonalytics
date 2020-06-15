@@ -2,10 +2,8 @@
 
 function calculateCoefficient($place, $amountOfPigeons)
 {
-    // dump($place);
-    // dd($amountOfPigeons);
     if (!$place || !$amountOfPigeons) {
-        return 0;
+        return 1000000;
     }
 
     return ($place * 100) / $amountOfPigeons;

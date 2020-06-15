@@ -34,6 +34,11 @@ class Race extends Model
         return $this->hasMany(Result::class);
     }
 
+    public function closableResults()
+    {
+        return $this->hasMany(Result::class)->where('nominated', null);
+    }
+
     /**
      * Properly format the wind attribute
      *
@@ -194,7 +199,9 @@ class Race extends Model
     {
         switch ($this->category) {
             case 'mix':
-                return 'Mix';
+                return 'Mix Varia';
+            case 'mix_yearling_old':
+                return 'Mix Yearling / Old';
             case 'youngster':
                 return "Youngsters";
             case 'yearlings':

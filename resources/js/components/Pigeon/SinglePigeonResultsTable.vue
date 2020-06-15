@@ -132,6 +132,38 @@
                 >{{ (Math.round(item.coefficient_national * 100) / 100).toFixed(2) }}%</span>
             </template>
 
+            <template v-slot:item.place_regio="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.place_regio && item.place_regio != 1000000"
+                >
+                    <strong>{{ item.place_regio }}</strong>
+                    / {{ item.race.amount_of_pigeons_regio }}
+                </span>
+            </template>
+            <template v-slot:item.coefficient_regio="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.coefficient_regio && item.coefficient_regio != 1000000"
+                >{{ (Math.round(item.coefficient_regio * 100) / 100).toFixed(2) }}%</span>
+            </template>
+
+            <template v-slot:item.place_overkoepeling="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.place_overkoepeling && item.place_overkoepeling != 1000000"
+                >
+                    <strong>{{ item.place_overkoepeling }}</strong>
+                    / {{ item.race.amount_of_pigeons_overkoepeling }}
+                </span>
+            </template>
+            <template v-slot:item.coefficient_overkoepeling="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.coefficient_overkoepeling && item.coefficient_overkoepeling != 1000000"
+                >{{ (Math.round(item.coefficient_overkoepeling * 100) / 100).toFixed(2) }}%</span>
+            </template>
+
             <template v-slot:item.actions="{ item }">
                 <div class="tw-flex tw-my-2">
                     <v-tooltip bottom>
@@ -185,8 +217,9 @@ export default {
             expanded: [],
             search: "",
             headers: [
+                { text: "Actions", sortable: false, value: "actions" },
                 {
-                    text: "Drop",
+                    text: "Dropzone",
                     sortable: true,
                     value: "race.dropzone.name"
                 },
@@ -202,12 +235,6 @@ export default {
                     value: "nominated",
                     align: "end"
                 },
-                // {
-                //     text: "Unloading",
-                //     sortable: true,
-                //     value: "race.unloading_time"
-                // },
-                // { text: "Arrival Time", value: "arrival_time" },
                 { text: "mpm", value: "mpm", align: "end" },
                 {
                     text: "Place (Club)",
@@ -249,7 +276,13 @@ export default {
                     value: "coefficient_national",
                     align: "end"
                 },
-                { text: "Actions", sortable: false, value: "actions" }
+                { text: "Place (Regio)", value: "place_regio" },
+                { text: "Coeff (Regio)", value: "coefficient_regio" },
+                { text: "Place (Overkoepeling)", value: "place_overkoepeling" },
+                {
+                    text: "Coeff (Overkoepeling)",
+                    value: "coefficient_overkoepeling"
+                }
             ],
             resultsData: this.results
         };
