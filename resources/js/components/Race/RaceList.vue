@@ -23,6 +23,7 @@
             :search="search"
             :sort-by="['unloading_time']"
             :sort-desc="true"
+            :footer-props="{'items-per-page-options':[10, 30, 50, 100, -1]}"
             multi-sort
             class="elevation-1"
         >

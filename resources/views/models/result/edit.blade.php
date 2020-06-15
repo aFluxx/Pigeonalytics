@@ -46,6 +46,7 @@ Edit result
                 value="{{ old('result_nominated', $result->nominated) }}">
         </div>
 
+        @if(in_array($result->race->dropzone->discipline, ['gfo', 'fon', 'kle']))
         <div class="tw-flex tw-w-1/2 tw-pl-2">
             <div class="tw-w-1/2">
                 <label for="result_place_club" class="tw-label">Place (Club):</label>
@@ -87,6 +88,34 @@ Edit result
                 @endif
             </div>
         </div>
+        @endif
+
+        @if(in_array($result->race->dropzone->discipline, ['vit', 'hfo']))
+        <div class="tw-flex tw-w-1/2 tw-pl-2">
+            <div class="tw-w-1/2">
+                <label for="result_place_regio" class="tw-label">Place (Regio):</label>
+                @if($result->place_regio === 1000000)
+                <input type="number" name="result_place_regio" id="result_place_regio" class="tw-input"
+                    value="{{ old('result_place_regio') }}">
+                @else
+                <input type="number" name="result_place_regio" id="result_place_regio" class="tw-input"
+                    value="{{ old('result_place_regio', $result->place_regio) }}">
+                @endif
+            </div>
+
+            <div>
+                <label for="result_place_overkoepeling" class="tw-label">Place (Overkoepeling):</label>
+                @if($result->place_overkoepeling === 1000000)
+                <input type="number" name="result_place_overkoepeling" id="result_place_overkoepeling" class="tw-input"
+                    value="{{ old('result_place_overkoepeling') }}">
+                @else
+                <input type="number" name="result_place_overkoepeling" id="result_place_overkoepeling" class="tw-input"
+                    value="{{ old('result_place_overkoepeling', $result->place_overkoepeling) }}">
+                @endif
+            </div>
+        </div>
+        @endif
+
     </div>
     <input type="submit" value="Update result" class="tw-button" />
 </form>

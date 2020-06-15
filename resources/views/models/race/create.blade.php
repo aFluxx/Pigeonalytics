@@ -85,26 +85,76 @@ Create New Race
         </div>
 
         <div>
-            <label for="race_amount_pigeons_personal" class="tw-label">Amount of pigeons (Personal)</label>
-            <input type="number" id="race_amount_pigeons_personal" name="race_amount_pigeons_personal"
-                class="tw-input" />
+            <div id="fon_races" class="tw-hidden">
+                <label for="race_amount_pigeons_personal" class="tw-label">Amount of pigeons (Personal)</label>
+                <input type="number" id="race_amount_pigeons_personal" name="race_amount_pigeons_personal"
+                    class="tw-input" />
 
-            <label for="race_amount_pigeons_club" class="tw-label">Amount of pigeons (Club):</label>
-            <input type="number" id="race_amount_pigeons_club" name="race_amount_pigeons_club" class="tw-input" />
+                <label for="race_amount_pigeons_club" class="tw-label">Amount of pigeons (Club):</label>
+                <input type="number" id="race_amount_pigeons_club" name="race_amount_pigeons_club" class="tw-input" />
 
-            <label for="race_amount_pigeons_provincial" class="tw-label">Amount of pigeons (Provincial):</label>
-            <input type="number" id="race_amount_pigeons_provincial" name="race_amount_pigeons_provincial"
-                class="tw-input" />
+                <label for="race_amount_pigeons_provincial" class="tw-label">Amount of pigeons (Provincial):</label>
+                <input type="number" id="race_amount_pigeons_provincial" name="race_amount_pigeons_provincial"
+                    class="tw-input" />
 
-            <label for="race_amount_pigeons_zone" class="tw-label">Amount of pigeons (Zone):</label>
-            <input type="number" id="race_amount_pigeons_zone" name="race_amount_pigeons_zone" class="tw-input" />
+                <label for="race_amount_pigeons_zone" class="tw-label">Amount of pigeons (Zone):</label>
+                <input type="number" id="race_amount_pigeons_zone" name="race_amount_pigeons_zone" class="tw-input" />
 
-            <label for="race_amount_pigeons_national" class="tw-label">Amount of pigeons (National):</label>
-            <input type="number" id="race_amount_pigeons_national" name="race_amount_pigeons_national"
-                class="tw-input" />
+                <label for="race_amount_pigeons_national" class="tw-label">Amount of pigeons (National):</label>
+                <input type="number" id="race_amount_pigeons_national" name="race_amount_pigeons_national"
+                    class="tw-input" />
+            </div>
+
+            <div id="hfo_races" class="tw-hidden">
+                <label for="race_amount_pigeons_regio" class="tw-label">Amount of pigeons (Regio):</label>
+                <input type="number" id="race_amount_pigeons_regio" name="race_amount_pigeons_regio" class="tw-input" />
+
+                <label for="race_amount_pigeons_overkoepeling" class="tw-label">Amount of pigeons
+                    (Overkoepeling):</label>
+                <input type="number" id="race_amount_pigeons_overkoepeling" name="race_amount_pigeons_overkoepeling"
+                    class="tw-input" />
+            </div>
         </div>
     </div>
 
     <input type="submit" value="Submit" class="tw-button" />
 </form>
 @endsection
+
+@push('scripts-after-main')
+<script>
+    var selectedDropzone = $('#race_dropzone');
+
+    var hfo = ['vit', 'hfo'];
+    var fon = ['kle', 'fon', 'gfo'];
+
+    selectedDropzone.on('change', function (e) {
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+
+        $.ajax({
+            url: '/api/dropzone/' + valueSelected + '/get-discipline',
+            context: document.body
+        }).done(function(res) {
+            console.log(res);
+            console.log(hfo.includes(res));
+            console.log(fon.includes(res));
+            if(hfo.includes(res)) {
+                console.log('h');
+                $('#fon_races').removeClass('tw-block');
+                $('#fon_races').addClass('tw-hidden');
+
+                $('#hfo_races').removeClass('tw-hidden');
+                $('#hfo_races').addClass('tw-block');
+            } else if (fon.includes(res)) {
+                console.log('t');
+                $('#hfo_races').removeClass('tw-block');
+                $('#hfo_races').addClass('tw-hidden');
+
+                $('#fon_races').removeClass('tw-hidden');
+                $('#fon_races').addClass('tw-block');
+            }
+        });
+    });
+</script>
+@endpush

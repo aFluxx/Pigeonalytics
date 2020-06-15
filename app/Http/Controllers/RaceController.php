@@ -77,6 +77,8 @@ class RaceController extends Controller
         $race->amount_of_pigeons_provincial = $request->race_amount_of_pigeons_provincial;
         $race->amount_of_pigeons_zone = $request->race_amount_of_pigeons_zone;
         $race->amount_of_pigeons_national = $request->race_amount_of_pigeons_national;
+        $race->amount_of_pigeons_regio = $request->race_amount_of_pigeons_regio;
+        $race->amount_of_pigeons_overkoepeling = $request->race_amount_of_pigeons_overkoepeling;
 
         $race->save();
 

@@ -10,6 +10,7 @@
             :search="search"
             :single-expand="false"
             :expanded.sync="expanded"
+            :footer-props="{'items-per-page-options':[10, 30, 50, 100, -1]}"
             item-key="id"
             show-expand
             multi-sort

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Race;
 use App\Result;
 use Illuminate\Database\Eloquent\Model;
 

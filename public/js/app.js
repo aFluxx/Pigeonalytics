@@ -52,6 +52,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["dropzones"],
   data: function data() {
@@ -107,17 +108,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["pigeons"],
   data: function data() {
     return {
+      pigeonsData: this.pigeons,
+      search: "",
       headers: [{
         text: "Ringnumber",
         sortable: true,
         value: "ringnumber"
-      }],
-      pigeonsData: this.pigeons,
-      search: ""
+      }, {
+        text: "Amount Result Logged",
+        sortable: true,
+        value: "results_count"
+      }]
     };
   }
 });
@@ -133,6 +144,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -470,6 +482,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["races"],
   data: function data() {
@@ -694,6 +707,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["results"],
   data: function data() {
@@ -754,6 +768,78 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["data"],
+  data: function data() {
+    return {
+      resultsData: this.data,
+      search: "",
+      headers: [{
+        text: "Pigeon",
+        sortable: true,
+        value: "ringnumber"
+      }, {
+        text: "Average MPM",
+        sortable: true,
+        value: "average"
+      }, {
+        text: "Amount of races",
+        sortable: true,
+        value: "count"
+      }]
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Result/AllResultsDataTable.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Result/AllResultsDataTable.vue?vue&type=script&lang=js& ***!
@@ -763,6 +849,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -1039,6 +1126,7 @@ var render = function() {
           headers: _vm.headers,
           items: _vm.dropzonesData,
           search: _vm.search,
+          "footer-props": { "items-per-page-options": [10, 30, 50, 100, -1] },
           "multi-sort": ""
         },
         scopedSlots: _vm._u([
@@ -1177,7 +1265,14 @@ var render = function() {
           headers: _vm.headers,
           items: _vm.pigeonsData,
           search: _vm.search,
+          "footer-props": { "items-per-page-options": [10, 30, 50, 100, -1] },
+          pagination: _vm.pagination,
           "multi-sort": ""
+        },
+        on: {
+          "update:pagination": function($event) {
+            _vm.pagination = $event
+          }
         },
         scopedSlots: _vm._u([
           {
@@ -1188,6 +1283,17 @@ var render = function() {
                 _c("a", { attrs: { href: "/pigeon/" + item.id } }, [
                   _vm._v(_vm._s(item.ringnumber))
                 ])
+              ]
+            }
+          },
+          {
+            key: "item.results_count",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c("span", {
+                  domProps: { textContent: _vm._s(item.results_count) }
+                })
               ]
             }
           }
@@ -1253,6 +1359,7 @@ var render = function() {
           search: _vm.search,
           "single-expand": false,
           expanded: _vm.expanded,
+          "footer-props": { "items-per-page-options": [10, 30, 50, 100, -1] },
           "item-key": "id",
           "show-expand": "",
           "multi-sort": ""
@@ -1727,6 +1834,7 @@ var render = function() {
           search: _vm.search,
           "sort-by": ["unloading_time"],
           "sort-desc": true,
+          "footer-props": { "items-per-page-options": [10, 30, 50, 100, -1] },
           "multi-sort": ""
         },
         scopedSlots: _vm._u([
@@ -1936,6 +2044,7 @@ var render = function() {
           search: _vm.search,
           "single-expand": false,
           expanded: _vm.expanded,
+          "footer-props": { "items-per-page-options": [10, 30, 50, 100, -1] },
           "item-key": "id",
           "show-expand": "",
           "multi-sort": ""
@@ -2274,6 +2383,115 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=template&id=71868028&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=template&id=71868028& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-card",
+    [
+      _c(
+        "v-card-title",
+        [
+          _c("span", { domProps: { textContent: _vm._s("Average MPM") } }),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
+          _vm.search
+            ? _c(
+                "v-btn",
+                {
+                  staticClass: "ma-2",
+                  attrs: {
+                    tile: "",
+                    outlined: "",
+                    color: "failure",
+                    small: ""
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.search = ""
+                    }
+                  }
+                },
+                [
+                  _c("v-icon", { attrs: { left: "" } }, [
+                    _vm._v("mdi-close-circle")
+                  ]),
+                  _vm._v("Cancel search\n        ")
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
+          _c("v-text-field", {
+            attrs: { "append-icon": "mdi-magnify", label: "Search" },
+            model: {
+              value: _vm.search,
+              callback: function($$v) {
+                _vm.search = $$v
+              },
+              expression: "search"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("v-data-table", {
+        staticClass: "elevation-1",
+        attrs: {
+          headers: _vm.headers,
+          items: _vm.resultsData,
+          search: _vm.search,
+          "sort-desc": true,
+          "footer-props": { "items-per-page-options": [10, 30, 50, 100, -1] },
+          "multi-sort": ""
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "item.average",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                item.average
+                  ? _c("span", { staticClass: "tw-whitespace-no-wrap" }, [
+                      _vm._v(
+                        _vm._s(
+                          (Math.round(item.average * 100) / 100).toFixed(3)
+                        )
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            }
+          }
+        ])
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Result/AllResultsDataTable.vue?vue&type=template&id=7fca9470&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Result/AllResultsDataTable.vue?vue&type=template&id=7fca9470& ***!
@@ -2321,6 +2539,7 @@ var render = function() {
           search: _vm.search,
           "single-expand": false,
           expanded: _vm.expanded,
+          "footer-props": { "items-per-page-options": [10, 30, 50, 100, -1] },
           "item-key": "id",
           "show-expand": "",
           "multi-sort": ""
@@ -2681,6 +2900,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('single-race-results-table'
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('all-results-data-table', __webpack_require__(/*! ./components/Result/AllResultsDataTable.vue */ "./resources/js/components/Result/AllResultsDataTable.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('pigeon-list', __webpack_require__(/*! ./components/Pigeon/PigeonList.vue */ "./resources/js/components/Pigeon/PigeonList.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('single-pigeon-results-table', __webpack_require__(/*! ./components/Pigeon/SinglePigeonResultsTable.vue */ "./resources/js/components/Pigeon/SinglePigeonResultsTable.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('average-year-mpm', __webpack_require__(/*! ./components/Rapport/AverageYearMpm.vue */ "./resources/js/components/Rapport/AverageYearMpm.vue")["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   vuetify: _plugins_vuetify__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -3073,6 +3293,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleRaceResultsTable_vue_vue_type_template_id_744019d4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleRaceResultsTable_vue_vue_type_template_id_744019d4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Rapport/AverageYearMpm.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Rapport/AverageYearMpm.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AverageYearMpm_vue_vue_type_template_id_71868028___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AverageYearMpm.vue?vue&type=template&id=71868028& */ "./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=template&id=71868028&");
+/* harmony import */ var _AverageYearMpm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AverageYearMpm.vue?vue&type=script&lang=js& */ "./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AverageYearMpm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AverageYearMpm_vue_vue_type_template_id_71868028___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AverageYearMpm_vue_vue_type_template_id_71868028___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Rapport/AverageYearMpm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AverageYearMpm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AverageYearMpm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AverageYearMpm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=template&id=71868028&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=template&id=71868028& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AverageYearMpm_vue_vue_type_template_id_71868028___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AverageYearMpm.vue?vue&type=template&id=71868028& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Rapport/AverageYearMpm.vue?vue&type=template&id=71868028&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AverageYearMpm_vue_vue_type_template_id_71868028___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AverageYearMpm_vue_vue_type_template_id_71868028___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

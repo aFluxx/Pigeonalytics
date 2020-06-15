@@ -40,6 +40,12 @@ class CreateResultsTable extends Migration
             $table->unsignedBigInteger('amount_pigeons_national')->nullable();
             $table->double('coefficient_national')->nullable();
 
+            $table->unsignedBigInteger('place_regio')->nullable();
+            $table->double('coefficient_regio')->nullable();
+
+            $table->unsignedBigInteger('place_overkoepeling')->nullable();
+            $table->double('coefficient_overkoepeling')->nullable();
+
             $table->timestamps();
 
             $table->foreign('pigeon_id')->references('id')->on('pigeons');

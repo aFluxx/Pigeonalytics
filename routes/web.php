@@ -32,9 +32,20 @@ Route::get('/race/{race}/edit', 'RaceController@edit')->name('race.edit');
 Route::post('/race/{race}/update', 'RaceController@update')->name('race.update')->middleware('web');
 
 Route::get('/result', 'ResultController@index')->name('result.list');
+Route::get('/result/vit', 'ResultController@indexVitesse')->name('result.vitesse');
+Route::get('/result/hfo', 'ResultController@indexHalveFond')->name('result.halvefond');
+Route::get('/result/kle', 'ResultController@indexKleineFond')->name('result.kleinefond');
+Route::get('/result/fon', 'ResultController@indexFond')->name('result.fond');
+Route::get('/result/gro', 'ResultController@indexGroteFond')->name('result.grotefond');
 Route::get('/result/manual/create', 'ResultManualController@create')->name('result.create.manual');
 Route::post('/result/manual/store', 'ResultManualController@store')->name('result.store.manual');
 Route::get('/result/upload/create', 'ResultUploadController@create')->name('result.create.upload');
 Route::post('/result/upload/store', 'ResultUploadController@store')->name('result.store.upload');
 Route::get('/result/{result}/edit', 'ResultController@edit')->name('result.edit');
 Route::post('/result/{result}/update', 'ResultController@update')->name('result.update');
+
+
+Route::get('/rapport/average-year-mpm', 'BestPigeonController@averageYearMpm')->name('rapport.average-year-mpm');
+
+
+Route::get('/api/dropzone/{dropzone}/get-discipline', 'DropzoneApiController@getDiscipline');

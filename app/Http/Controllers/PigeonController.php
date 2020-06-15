@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Pigeon;
-use Illuminate\Http\Request;
 
 class PigeonController extends Controller
 {
     public function index()
     {
-        return view('models/pigeon/index')->with('pigeons', Pigeon::all());
+        return view('models/pigeon/index')->with('pigeons', Pigeon::withCount('results')->get());
     }
 
     public function show(Pigeon $pigeon)

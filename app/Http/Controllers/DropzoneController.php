@@ -20,8 +20,9 @@ class DropzoneController extends Controller
     public function store(Request $request)
     {
         Dropzone::firstOrCreate([
-            'name'      => $request->dropzone_name,
-            'distance'  => $request->dropzone_distance,
+            'name'       => $request->dropzone_name,
+            'distance'   => $request->dropzone_distance,
+            'discipline' => $request->dropzone_discipline,
         ]);
 
         return view('models/dropzone/create')->with([
@@ -38,6 +39,7 @@ class DropzoneController extends Controller
     {
         $dropzone->name = $request->dropzone_name;
         $dropzone->distance = $request->dropzone_distance;
+        $dropzone->discipline = $request->dropzone_discipline;
 
         $dropzone->save();
 

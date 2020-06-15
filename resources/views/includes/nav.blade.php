@@ -50,6 +50,9 @@
                 <li>
                     <a class="tw-link" href="{{ route('pigeon.list') }}">All Pigeons</a>
                 </li>
+                <li>
+                    <a class="tw-link" href="{{ route('rapport.average-year-mpm') }}">Average MPM</a>
+                </li>
             </ul>
         </div>
     </div>

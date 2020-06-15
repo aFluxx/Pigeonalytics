@@ -20,6 +20,15 @@ Edit {{ $dropzone->name }}
     <input type="number" id="dropzone_distance" name="dropzone_distance" class="tw-input"
         value="{{ old('dropzone_distance', $dropzone->distance) }}" />
 
+    <label for="dropzone_discipline" class="tw-label">Discipline</label>
+    <select name="dropzone_discipline" id="dropzone_discipline" class="tw-input">
+        <option value="vit" {{($dropzone->discipline ==='vit') ? 'selected' : ''}}>Vitesse</option>
+        <option value="hfo" {{($dropzone->discipline ==='hfo') ? 'selected' : ''}}>Halve fond</option>
+        <option value="kle" {{($dropzone->discipline ==='kle') ? 'selected' : ''}}>Kleine fond</option>
+        <option value="fon" {{($dropzone->discipline ==='fon') ? 'selected' : ''}}>Fond</option>
+        <option value="gfo" {{($dropzone->discipline ==='gfo') ? 'selected' : ''}}>Grote fond</option>
+    </select>
+
     <input type="submit" value="Submit" class="tw-button" />
 </form>
 @endsection

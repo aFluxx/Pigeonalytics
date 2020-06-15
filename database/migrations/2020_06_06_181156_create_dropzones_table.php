@@ -17,6 +17,7 @@ class CreateDropzonesTable extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('distance');
+            $table->string('discipline');
             $table->timestamps();
         });
     }

@@ -9,6 +9,7 @@
             :headers="headers"
             :items="dropzonesData"
             :search="search"
+            :footer-props="{'items-per-page-options':[10, 30, 50, 100, -1]}"
             multi-sort
             class="elevation-1"
         >

@@ -13,6 +13,8 @@ Vue.component('all-results-data-table', require('./components/Result/AllResultsD
 Vue.component('pigeon-list', require('./components/Pigeon/PigeonList.vue').default);
 Vue.component('single-pigeon-results-table', require('./components/Pigeon/SinglePigeonResultsTable.vue').default);
 
+Vue.component('average-year-mpm', require('./components/Rapport/AverageYearMpm.vue').default);
+
 const app = new Vue({
     el: '#app',
     vuetify,

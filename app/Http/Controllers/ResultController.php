@@ -18,6 +18,61 @@ class ResultController extends Controller
             );
     }
 
+    public function indexVitesse()
+    {
+        return view('models/result/index-vitesse')
+            ->with(
+                'results',
+                Result::with(['race', 'race.dropzone', 'pigeon'])
+                    ->where('race.dropzone.discipline', 'vit')
+                    ->get()
+            );
+    }
+
+    public function indexHalveFond()
+    {
+        return view('models/result/index-halve-fond')
+            ->with(
+                'results',
+                Result::with(['race', 'race.dropzone', 'pigeon'])
+                    ->where('race.dropzone.discipline', 'hfo')
+                    ->get()
+            );
+    }
+
+    public function indexKleineFond()
+    {
+        return view('models/result/index-kleine-fond')
+            ->with(
+                'results',
+                Result::with(['race', 'race.dropzone', 'pigeon'])
+                    ->where('race.dropzone.discipline', 'kle')
+                    ->get()
+            );
+    }
+
+    public function indexFond()
+    {
+        return view('models/result/index-fond')
+            ->with(
+                'results',
+                Result::with(['race', 'race.dropzone', 'pigeon'])
+                    ->where('race.dropzone.discipline', 'fon')
+                    ->get()
+            );
+    }
+
+    public function indexGroteFond()
+    {
+        return view('models/result/index-grote-fond')
+            ->with(
+                'results',
+                Result::with(['race', 'race.dropzone', 'pigeon'])
+                    ->where('race.dropzone.discipline', 'gfo')
+                    ->get()
+            );
+    }
+
     public function edit(Result $result)
     {
         return view('models/result/edit')->with([
@@ -46,6 +101,12 @@ class ResultController extends Controller
 
         $result->place_zone = $request->result_place_zone ?: 1000000;
         $result->coefficient_zone = $race->amount_of_pigeons_zone ? calculateCoefficient($request->result_place_zone, $race->amount_of_pigeons_zone) : 1000000;
+
+        $result->place_national = $request->result_place_national ?: 1000000;
+        $result->coefficient_national = $race->amount_of_pigeons_national ? calculateCoefficient($request->result_place_national, $race->amount_of_pigeons_national) : 1000000;
+
+        $result->place_regio = $request->result_place_national ?: 1000000;
+        $result->coefficient_national = $race->amount_of_pigeons_national ? calculateCoefficient($request->result_place_national, $race->amount_of_pigeons_national) : 1000000;
 
         $result->place_national = $request->result_place_national ?: 1000000;
         $result->coefficient_national = $race->amount_of_pigeons_national ? calculateCoefficient($request->result_place_national, $race->amount_of_pigeons_national) : 1000000;

@@ -17,6 +17,15 @@ Create new Dropzone
     <label for="dropzone_distance" class="tw-label">Distance</label>
     <input type="number" id="dropzone_distance" name="dropzone_distance" class="tw-input" />
 
+    <label for="dropzone_discipline" class="tw-label">Discipline</label>
+    <select name="dropzone_discipline" id="dropzone_discipline" class="tw-input">
+        <option value="vit">Vitesse</option>
+        <option value="hfo">Halve fond</option>
+        <option value="kle">Kleine fond</option>
+        <option value="fon">Fond</option>
+        <option value="gfo">Grote fond</option>
+    </select>
+
     <input type="submit" value="Submit" class="tw-button" />
 </form>
 @endsection
