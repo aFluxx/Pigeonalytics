@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-card-title>
-            <span v-text="'All results'"></span>
+            <span v-text="pigeon.ringnumber + ' - Kleine Fond / Fond / Grote Fond'"></span>
             <v-spacer></v-spacer>
             <v-text-field v-model="search" append-icon="mdi-magnify" label="Search"></v-text-field>
         </v-card-title>
@@ -25,7 +25,17 @@
                     </p>
                     <p>
                         <strong>Type:</strong>
-                        {{ item.race.type }}
+                        {{ item.race.type_formatted }}
+                    </p>
+
+                    <p class="tw-whitespace-no-wrap text-md">
+                        <strong>Released:</strong>
+                        {{ item.race.unloading_time }}
+                    </p>
+
+                    <p class="tw-whitespace-no-wrap text-md">
+                        <strong>Arrived:</strong>
+                        {{ item.arrival_time }}
                     </p>
                 </td>
             </template>
@@ -36,17 +46,13 @@
                     / {{ item.race.amount_of_pigeons_personal }}
                 </span>
             </template>
+            <template slot="selection" slot-scope="data">{{ data.item.name }}, {{ data.item.group }}</template>
 
-            <template v-slot:item.pigeon.ringnumber="{ item }">
-                <a
-                    :href="'/pigeon/' + item.pigeon.id"
-                    class="tw-whitespace-no-wrap"
-                >{{ item.pigeon.ringnumber }}</a>
+            <!-- <template v-slot:item.race.unloading_time="{ item }">
             </template>
 
             <template v-slot:item.arrival_time="{ item }">
-                <span class="tw-whitespace-no-wrap">{{ item.arrival_time }}</span>
-            </template>
+            </template>-->
 
             <template v-slot:item.interval="{ item }">
                 <span
@@ -65,7 +71,7 @@
             <template v-slot:item.place_club="{ item }">
                 <span
                     class="tw-whitespace-no-wrap"
-                    v-if="item.place_club && item.place_club != 1000000"
+                    v-if="item.place_club &&  item.place_club != 1000000"
                 >
                     <strong>{{ item.place_club }}</strong>
                     / {{ item.race.amount_of_pigeons_club }}
@@ -81,7 +87,7 @@
             <template v-slot:item.place_provincial="{ item }">
                 <span
                     class="tw-whitespace-no-wrap"
-                    v-if="item.place_provincial && item.place_provincial != 1000000"
+                    v-if="item.place_provincial && item.place_provincial  != 1000000"
                 >
                     <strong>{{ item.place_provincial }}</strong>
                     / {{ item.race.amount_of_pigeons_provincial }}
@@ -126,25 +132,77 @@
                 >{{ (Math.round(item.coefficient_national * 100) / 100).toFixed(2) }}%</span>
             </template>
 
+            <template v-slot:item.place_regio="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.place_regio && item.place_regio != 1000000"
+                >
+                    <strong>{{ item.place_regio }}</strong>
+                    / {{ item.race.amount_of_pigeons_regio }}
+                </span>
+            </template>
+            <template v-slot:item.coefficient_regio="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.coefficient_regio && item.coefficient_regio != 1000000"
+                >{{ (Math.round(item.coefficient_regio * 100) / 100).toFixed(2) }}%</span>
+            </template>
+
+            <template v-slot:item.place_overkoepeling="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.place_overkoepeling && item.place_overkoepeling != 1000000"
+                >
+                    <strong>{{ item.place_overkoepeling }}</strong>
+                    / {{ item.race.amount_of_pigeons_overkoepeling }}
+                </span>
+            </template>
+            <template v-slot:item.coefficient_overkoepeling="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.coefficient_overkoepeling && item.coefficient_overkoepeling != 1000000"
+                >{{ (Math.round(item.coefficient_overkoepeling * 100) / 100).toFixed(2) }}%</span>
+            </template>
+
             <template v-slot:item.actions="{ item }">
-                <v-tooltip bottom v-if="authed">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn
-                            :href="'/result/' + item.id + '/edit'"
-                            target="_blank"
-                            class="mx-2"
-                            fab
-                            x-small
-                            link
-                            color="green lighten-2"
-                            v-bind="attrs"
-                            v-on="on"
-                        >
-                            <v-icon dark>mdi-pencil</v-icon>
-                        </v-btn>
-                    </template>
-                    <span>Edit result</span>
-                </v-tooltip>
+                <div class="tw-flex tw-my-2" v-if="authed">
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                                :href="'/result/' + item.id + '/edit'"
+                                target="_blank"
+                                class="mx-2"
+                                fab
+                                x-small
+                                link
+                                color="green lighten-2"
+                                v-bind="attrs"
+                                v-on="on"
+                            >
+                                <v-icon dark>mdi-pencil</v-icon>
+                            </v-btn>
+                        </template>
+                        <span>Edit result</span>
+                    </v-tooltip>
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                                :href="'/race/' + item.race.id"
+                                target="_blank"
+                                class="mx-2"
+                                fab
+                                x-small
+                                link
+                                color="red"
+                                v-bind="attrs"
+                                v-on="on"
+                            >
+                                <v-icon dark>mdi-table-large</v-icon>
+                            </v-btn>
+                        </template>
+                        <span>See race details</span>
+                    </v-tooltip>
+                </div>
             </template>
         </v-data-table>
     </v-card>
@@ -152,7 +210,7 @@
 
 <script>
 export default {
-    props: ["results"],
+    props: ["pigeon", "results"],
 
     data() {
         return {
@@ -160,6 +218,12 @@ export default {
             search: "",
             authed: typeof authed !== "undefined",
             headers: [
+                { text: "Actions", sortable: false, value: "actions" },
+                {
+                    text: "Dropzone",
+                    sortable: true,
+                    value: "race.dropzone.name"
+                },
                 {
                     text: "Place (Personal)",
                     sortable: true,
@@ -169,10 +233,9 @@ export default {
                 {
                     text: "GT",
                     sortable: true,
-                    value: "nominated"
+                    value: "nominated",
+                    align: "end"
                 },
-                { text: "Pigeon", sortable: true, value: "pigeon.ringnumber" },
-                { text: "Arrival Time", value: "arrival_time" },
                 { text: "mpm", value: "mpm", align: "end" },
                 {
                     text: "Place (Club)",
@@ -213,17 +276,6 @@ export default {
                     text: "Coeff (National)",
                     value: "coefficient_national",
                     align: "end"
-                },
-                { text: "Actions", sortable: false, value: "actions" },
-                {
-                    text: "Dropzone",
-                    value: "race.dropzone.name",
-                    align: " d-none"
-                },
-                {
-                    text: "Type",
-                    value: "race.type",
-                    align: " d-none"
                 }
             ],
             resultsData: this.results

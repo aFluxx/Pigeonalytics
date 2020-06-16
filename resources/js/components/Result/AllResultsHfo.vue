@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-card-title>
-            <span v-text="'All results'"></span>
+            <span v-text="'All results (Vitesse, Halve Fond)'"></span>
             <v-spacer></v-spacer>
             <v-text-field v-model="search" append-icon="mdi-magnify" label="Search"></v-text-field>
         </v-card-title>
@@ -62,68 +62,36 @@
                 >{{ (Math.round(item.mpm * 100) / 100).toFixed(3) }}</span>
             </template>
 
-            <template v-slot:item.place_club="{ item }">
+            <template v-slot:item.place_regio="{ item }">
                 <span
                     class="tw-whitespace-no-wrap"
-                    v-if="item.place_club && item.place_club != 1000000"
+                    v-if="item.place_regio && item.place_regio != 1000000"
                 >
-                    <strong>{{ item.place_club }}</strong>
-                    / {{ item.race.amount_of_pigeons_club }}
+                    <strong>{{ item.place_regio }}</strong>
+                    / {{ item.race.amount_of_pigeons_regio }}
                 </span>
             </template>
-            <template v-slot:item.coefficient_club="{ item }">
+            <template v-slot:item.coefficient_regio="{ item }">
                 <span
                     class="tw-whitespace-no-wrap"
-                    v-if="item.coefficient_club && item.coefficient_club != 1000000"
-                >{{ (Math.round(item.coefficient_club * 100) / 100).toFixed(2) }}%</span>
+                    v-if="item.coefficient_regio && item.coefficient_regio != 1000000"
+                >{{ (Math.round(item.coefficient_regio * 100) / 100).toFixed(2) }}%</span>
             </template>
 
-            <template v-slot:item.place_provincial="{ item }">
+            <template v-slot:item.place_overkoepeling="{ item }">
                 <span
                     class="tw-whitespace-no-wrap"
-                    v-if="item.place_provincial && item.place_provincial != 1000000"
+                    v-if="item.place_overkoepeling && item.place_overkoepeling != 1000000"
                 >
-                    <strong>{{ item.place_provincial }}</strong>
-                    / {{ item.race.amount_of_pigeons_provincial }}
+                    <strong>{{ item.place_overkoepeling }}</strong>
+                    / {{ item.race.amount_of_pigeons_overkoepeling }}
                 </span>
             </template>
-            <template v-slot:item.coefficient_provincial="{ item }">
+            <template v-slot:item.coefficient_overkoepeling="{ item }">
                 <span
                     class="tw-whitespace-no-wrap"
-                    v-if="item.coefficient_provincial && item.coefficient_provincial != 1000000"
-                >{{ (Math.round(item.coefficient_provincial * 100) / 100).toFixed(2) }}%</span>
-            </template>
-
-            <template v-slot:item.place_zone="{ item }">
-                <span
-                    class="tw-whitespace-no-wrap"
-                    v-if="item.place_zone && item.place_zone  != 1000000"
-                >
-                    <strong>{{ item.place_zone }}</strong>
-                    / {{ item.race.amount_of_pigeons_zone }}
-                </span>
-            </template>
-            <template v-slot:item.coefficient_zone="{ item }">
-                <span
-                    class="tw-whitespace-no-wrap"
-                    v-if="item.coefficient_zone && item.coefficient_zone != 1000000"
-                >{{ (Math.round(item.coefficient_zone * 100) / 100).toFixed(2) }}%</span>
-            </template>
-
-            <template v-slot:item.place_national="{ item }">
-                <span
-                    class="tw-whitespace-no-wrap"
-                    v-if="item.place_national && item.place_national != 1000000"
-                >
-                    <strong>{{ item.place_national }}</strong>
-                    / {{ item.race.amount_of_pigeons_national }}
-                </span>
-            </template>
-            <template v-slot:item.coefficient_national="{ item }">
-                <span
-                    class="tw-whitespace-no-wrap"
-                    v-if="item.coefficient_national && item.coefficient_national != 1000000"
-                >{{ (Math.round(item.coefficient_national * 100) / 100).toFixed(2) }}%</span>
+                    v-if="item.coefficient_overkoepeling && item.coefficient_overkoepeling != 1000000"
+                >{{ (Math.round(item.coefficient_overkoepeling * 100) / 100).toFixed(2) }}%</span>
             </template>
 
             <template v-slot:item.actions="{ item }">
@@ -160,6 +128,7 @@ export default {
             search: "",
             authed: typeof authed !== "undefined",
             headers: [
+                { text: "Actions", sortable: false, value: "actions" },
                 {
                     text: "Place (Personal)",
                     sortable: true,
@@ -174,47 +143,13 @@ export default {
                 { text: "Pigeon", sortable: true, value: "pigeon.ringnumber" },
                 { text: "Arrival Time", value: "arrival_time" },
                 { text: "mpm", value: "mpm", align: "end" },
+                { text: "Place (Regio)", value: "place_regio" },
+                { text: "Coeff (Regio)", value: "coefficient_regio" },
+                { text: "Place (Overkoepeling)", value: "place_overkoepeling" },
                 {
-                    text: "Place (Club)",
-                    value: "place_club",
-                    align: "end"
+                    text: "Coeff (Overkoepeling)",
+                    value: "coefficient_overkoepeling"
                 },
-                {
-                    text: "Coeff (Club)",
-                    value: "coefficient_club",
-                    align: "end"
-                },
-                {
-                    text: "Place (Provincial)",
-                    value: "place_provincial",
-                    align: "end"
-                },
-                {
-                    text: "Coeff (Provincial)",
-                    value: "coefficient_provincial",
-                    align: "end"
-                },
-                {
-                    text: "Place (Zone)",
-                    value: "place_zone",
-                    align: "end"
-                },
-                {
-                    text: "Coeff (Zone)",
-                    value: "coefficient_zone",
-                    align: "end"
-                },
-                {
-                    text: "Place (National)",
-                    value: "place_national",
-                    align: "end"
-                },
-                {
-                    text: "Coeff (National)",
-                    value: "coefficient_national",
-                    align: "end"
-                },
-                { text: "Actions", sortable: false, value: "actions" },
                 {
                     text: "Dropzone",
                     value: "race.dropzone.name",

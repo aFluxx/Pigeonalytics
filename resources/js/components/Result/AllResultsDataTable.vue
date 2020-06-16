@@ -160,6 +160,7 @@ export default {
             search: "",
             authed: typeof authed !== "undefined",
             headers: [
+                { text: "Actions", sortable: false, value: "actions" },
                 {
                     text: "Place (Personal)",
                     sortable: true,
@@ -214,7 +215,14 @@ export default {
                     value: "coefficient_national",
                     align: "end"
                 },
-                { text: "Actions", sortable: false, value: "actions" },
+
+                { text: "Place (Regio)", value: "place_regio" },
+                { text: "Coeff (Regio)", value: "coefficient_regio" },
+                { text: "Place (Overkoepeling)", value: "place_overkoepeling" },
+                {
+                    text: "Coeff (Overkoepeling)",
+                    value: "coefficient_overkoepeling"
+                },
                 {
                     text: "Dropzone",
                     value: "race.dropzone.name",

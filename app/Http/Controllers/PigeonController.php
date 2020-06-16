@@ -15,6 +15,8 @@ class PigeonController extends Controller
     {
         return view('models/pigeon/show')->with([
             'pigeon' => $pigeon,
+            'resultsVit' => $pigeon->resultsVit,
+            'resultsFon' => $pigeon->resultsFon,
             'results' => $pigeon->results,
         ]);
     }

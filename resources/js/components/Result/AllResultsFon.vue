@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-card-title>
-            <span v-text="'All results'"></span>
+            <span v-text="'All results (Kleine Fond, Fond, Grote Fond)'"></span>
             <v-spacer></v-spacer>
             <v-text-field v-model="search" append-icon="mdi-magnify" label="Search"></v-text-field>
         </v-card-title>
@@ -160,6 +160,7 @@ export default {
             search: "",
             authed: typeof authed !== "undefined",
             headers: [
+                { text: "Actions", sortable: false, value: "actions" },
                 {
                     text: "Place (Personal)",
                     sortable: true,
@@ -214,7 +215,6 @@ export default {
                     value: "coefficient_national",
                     align: "end"
                 },
-                { text: "Actions", sortable: false, value: "actions" },
                 {
                     text: "Dropzone",
                     value: "race.dropzone.name",

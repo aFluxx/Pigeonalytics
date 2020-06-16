@@ -10,67 +10,19 @@ class ResultController extends Controller
 {
     public function index()
     {
-        return view('models/result/index')
-            ->with(
-                'results',
-                Result::with(['race', 'race.dropzone', 'pigeon'])
-                    ->get()
-            );
-    }
+        return view('models/result/index')->with([
+            'results' => Result::with(['race', 'race.dropzone', 'pigeon'])->get(),
 
-    public function indexVitesse()
-    {
-        return view('models/result/index-vitesse')
-            ->with(
-                'results',
-                Result::with(['race', 'race.dropzone', 'pigeon'])
-                    ->where('race.dropzone.discipline', 'vit')
-                    ->get()
-            );
-    }
+            'resultsVit' => Result::with(['race', 'race.dropzone', 'pigeon'])
+                ->whereHas('race.dropzone', function ($query) {
+                    $query->whereIn('discipline', ['vit', 'hfo']);
+                })->get(),
 
-    public function indexHalveFond()
-    {
-        return view('models/result/index-halve-fond')
-            ->with(
-                'results',
-                Result::with(['race', 'race.dropzone', 'pigeon'])
-                    ->where('race.dropzone.discipline', 'hfo')
-                    ->get()
-            );
-    }
-
-    public function indexKleineFond()
-    {
-        return view('models/result/index-kleine-fond')
-            ->with(
-                'results',
-                Result::with(['race', 'race.dropzone', 'pigeon'])
-                    ->where('race.dropzone.discipline', 'kle')
-                    ->get()
-            );
-    }
-
-    public function indexFond()
-    {
-        return view('models/result/index-fond')
-            ->with(
-                'results',
-                Result::with(['race', 'race.dropzone', 'pigeon'])
-                    ->where('race.dropzone.discipline', 'fon')
-                    ->get()
-            );
-    }
-
-    public function indexGroteFond()
-    {
-        return view('models/result/index-grote-fond')
-            ->with(
-                'results',
-                Result::with(['race', 'race.dropzone', 'pigeon'])
-                    ->where('race.dropzone.discipline', 'gfo')
-                    ->get()
-            );
+            'resultsFon' => Result::with(['race', 'race.dropzone', 'pigeon'])
+                ->whereHas('race.dropzone', function ($query) {
+                    $query->whereIn('discipline', ['kle', 'fon', 'gfo']);
+                })->get(),
+        ]);
     }
 
     public function edit(Result $result)
