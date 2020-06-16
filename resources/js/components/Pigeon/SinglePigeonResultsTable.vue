@@ -165,7 +165,7 @@
             </template>
 
             <template v-slot:item.actions="{ item }">
-                <div class="tw-flex tw-my-2">
+                <div class="tw-flex tw-my-2" v-if="authed">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn
@@ -216,6 +216,7 @@ export default {
         return {
             expanded: [],
             search: "",
+            authed: typeof authed !== "undefined",
             headers: [
                 { text: "Actions", sortable: false, value: "actions" },
                 {

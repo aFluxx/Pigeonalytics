@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', 'ResultController@index');
 
 Route::get('/dropzone', 'DropzoneController@index')->name('dropzone.list');
@@ -45,8 +34,10 @@ Route::post('/result/upload/store', 'ResultUploadController@store')->name('resul
 Route::get('/result/{result}/edit', 'ResultController@edit')->name('result.edit');
 Route::post('/result/{result}/update', 'ResultController@update')->name('result.update');
 
-
 Route::get('/rapport/average-year-mpm', 'BestPigeonController@averageYearMpm')->name('rapport.average-year-mpm');
 
-
 Route::get('/api/dropzone/{dropzone}/get-discipline', 'DropzoneApiController@getDiscipline');
+
+Auth::routes(['register' => false]);
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -53,7 +53,7 @@
             </template>
 
             <template v-slot:item.actions="{ item }">
-                <v-tooltip bottom>
+                <v-tooltip bottom v-if="authed">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn
                             :href="'/race/' + item.id + '/edit'"
@@ -84,6 +84,7 @@ export default {
         return {
             racesData: this.races,
             search: "",
+            authed: typeof authed !== "undefined",
             headers: [
                 {
                     text: "Dropzone",

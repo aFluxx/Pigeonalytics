@@ -8,10 +8,12 @@
                     <a class="tw-link" href="{{ route('dropzone.list') }}">All
                         Dropzones</a>
                 </li>
+                @auth
                 <li>
                     <a class="tw-link" href="{{ route('dropzone.create') }}">Create
                         Dropzone</a>
                 </li>
+                @endauth
             </ul>
         </div>
 
@@ -21,9 +23,11 @@
                 <li>
                     <a class="tw-link" href="{{ route('race.list') }}">All Races</a>
                 </li>
+                @auth
                 <li>
                     <a class="tw-link" href="{{ route('race.create') }}">Create race</a>
                 </li>
+                @endauth
             </ul>
         </div>
 
@@ -33,6 +37,7 @@
                 <li>
                     <a class="tw-link" href="{{ route('result.list') }}">All Results</a>
                 </li>
+                @auth
                 <li>
                     <a class="tw-link" href="{{ route('result.create.upload') }}">Create
                         Results (upload)</a>
@@ -41,6 +46,7 @@
                     <a class="tw-link" href="{{ route('result.create.manual') }}">Create
                         Results (manual)</a>
                 </li>
+                @endauth
             </ul>
         </div>
 

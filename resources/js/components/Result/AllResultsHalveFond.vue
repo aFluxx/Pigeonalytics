@@ -127,7 +127,7 @@
             </template>
 
             <template v-slot:item.actions="{ item }">
-                <v-tooltip bottom>
+                <v-tooltip bottom v-if="authed">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn
                             :href="'/result/' + item.id + '/edit'"
@@ -158,6 +158,7 @@ export default {
         return {
             expanded: [],
             search: "",
+            authed: typeof authed !== "undefined",
             headers: [
                 {
                     text: "Place (Personal)",

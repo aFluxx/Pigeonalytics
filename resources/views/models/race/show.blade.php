@@ -28,5 +28,8 @@
 <halve-fond-results :results="{{ $race->results }}"></halve-fond-results>
 @endif
 
+@auth
 <a href="{{ route('race.close', $race->id) }}">Close race</a>
+@endauth
+
 @endsection

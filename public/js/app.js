@@ -59,6 +59,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       search: "",
       dropzonesData: this.dropzones,
+      authed: typeof authed !== "undefined",
       headers: [{
         text: "Name",
         sortable: true,
@@ -360,6 +361,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       expanded: [],
       search: "",
+      authed: typeof authed !== "undefined",
       headers: [{
         text: "Actions",
         sortable: false,
@@ -600,6 +602,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       expanded: [],
       search: "",
+      authed: typeof authed !== "undefined",
       headers: [{
         text: "Place (Personal)",
         sortable: true,
@@ -788,6 +791,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       expanded: [],
       search: "",
+      authed: typeof authed !== "undefined",
       headers: [{
         text: "Place (Personal)",
         sortable: true,
@@ -923,6 +927,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       racesData: this.races,
       search: "",
+      authed: typeof authed !== "undefined",
       headers: [{
         text: "Dropzone",
         sortable: true,
@@ -1221,6 +1226,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       expanded: [],
       search: "",
+      authed: typeof authed !== "undefined",
       headers: [{
         text: "Place (Personal)",
         sortable: true,
@@ -1360,64 +1366,70 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c(
-                  "div",
-                  { staticClass: "tw-flex tw-my-2" },
-                  [
-                    _c(
-                      "v-tooltip",
-                      {
-                        attrs: { bottom: "" },
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "activator",
-                              fn: function(ref) {
-                                var on = ref.on
-                                var attrs = ref.attrs
-                                return [
-                                  _c(
-                                    "v-btn",
-                                    _vm._g(
-                                      _vm._b(
-                                        {
-                                          staticClass: "mx-2",
-                                          attrs: {
-                                            href:
-                                              "/dropzone/" + item.id + "/edit",
-                                            target: "_blank",
-                                            fab: "",
-                                            "x-small": "",
-                                            link: "",
-                                            color: "green lighten-2"
-                                          }
-                                        },
+                _vm.authed
+                  ? _c(
+                      "div",
+                      { staticClass: "tw-flex tw-my-2" },
+                      [
+                        _c(
+                          "v-tooltip",
+                          {
+                            attrs: { bottom: "" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "activator",
+                                  fn: function(ref) {
+                                    var on = ref.on
+                                    var attrs = ref.attrs
+                                    return [
+                                      _c(
                                         "v-btn",
-                                        attrs,
-                                        false
-                                      ),
-                                      on
-                                    ),
-                                    [
-                                      _c("v-icon", { attrs: { dark: "" } }, [
-                                        _vm._v("mdi-table-large")
-                                      ])
-                                    ],
-                                    1
-                                  )
-                                ]
-                              }
-                            }
-                          ],
-                          null,
-                          true
+                                        _vm._g(
+                                          _vm._b(
+                                            {
+                                              staticClass: "mx-2",
+                                              attrs: {
+                                                href:
+                                                  "/dropzone/" +
+                                                  item.id +
+                                                  "/edit",
+                                                target: "_blank",
+                                                fab: "",
+                                                "x-small": "",
+                                                link: "",
+                                                color: "green lighten-2"
+                                              }
+                                            },
+                                            "v-btn",
+                                            attrs,
+                                            false
+                                          ),
+                                          on
+                                        ),
+                                        [
+                                          _c(
+                                            "v-icon",
+                                            { attrs: { dark: "" } },
+                                            [_vm._v("mdi-pencil")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  }
+                                }
+                              ],
+                              null,
+                              true
+                            )
+                          },
+                          [_vm._v(" "), _c("span", [_vm._v("Edit dropzone")])]
                         )
-                      },
-                      [_vm._v(" "), _c("span", [_vm._v("Edit dropzone")])]
+                      ],
+                      1
                     )
-                  ],
-                  1
-                )
+                  : _vm._e()
               ]
             }
           }
@@ -1921,115 +1933,126 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c(
-                  "div",
-                  { staticClass: "tw-flex tw-my-2" },
-                  [
-                    _c(
-                      "v-tooltip",
-                      {
-                        attrs: { bottom: "" },
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "activator",
-                              fn: function(ref) {
-                                var on = ref.on
-                                var attrs = ref.attrs
-                                return [
-                                  _c(
-                                    "v-btn",
-                                    _vm._g(
-                                      _vm._b(
-                                        {
-                                          staticClass: "mx-2",
-                                          attrs: {
-                                            href:
-                                              "/result/" + item.id + "/edit",
-                                            target: "_blank",
-                                            fab: "",
-                                            "x-small": "",
-                                            link: "",
-                                            color: "green lighten-2"
-                                          }
-                                        },
+                _vm.authed
+                  ? _c(
+                      "div",
+                      { staticClass: "tw-flex tw-my-2" },
+                      [
+                        _c(
+                          "v-tooltip",
+                          {
+                            attrs: { bottom: "" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "activator",
+                                  fn: function(ref) {
+                                    var on = ref.on
+                                    var attrs = ref.attrs
+                                    return [
+                                      _c(
                                         "v-btn",
-                                        attrs,
-                                        false
-                                      ),
-                                      on
-                                    ),
-                                    [
-                                      _c("v-icon", { attrs: { dark: "" } }, [
-                                        _vm._v("mdi-pencil")
-                                      ])
-                                    ],
-                                    1
-                                  )
-                                ]
-                              }
-                            }
-                          ],
-                          null,
-                          true
-                        )
-                      },
-                      [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-tooltip",
-                      {
-                        attrs: { bottom: "" },
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "activator",
-                              fn: function(ref) {
-                                var on = ref.on
-                                var attrs = ref.attrs
-                                return [
-                                  _c(
-                                    "v-btn",
-                                    _vm._g(
-                                      _vm._b(
-                                        {
-                                          staticClass: "mx-2",
-                                          attrs: {
-                                            href: "/race/" + item.race.id,
-                                            target: "_blank",
-                                            fab: "",
-                                            "x-small": "",
-                                            link: "",
-                                            color: "red"
-                                          }
-                                        },
+                                        _vm._g(
+                                          _vm._b(
+                                            {
+                                              staticClass: "mx-2",
+                                              attrs: {
+                                                href:
+                                                  "/result/" +
+                                                  item.id +
+                                                  "/edit",
+                                                target: "_blank",
+                                                fab: "",
+                                                "x-small": "",
+                                                link: "",
+                                                color: "green lighten-2"
+                                              }
+                                            },
+                                            "v-btn",
+                                            attrs,
+                                            false
+                                          ),
+                                          on
+                                        ),
+                                        [
+                                          _c(
+                                            "v-icon",
+                                            { attrs: { dark: "" } },
+                                            [_vm._v("mdi-pencil")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  }
+                                }
+                              ],
+                              null,
+                              true
+                            )
+                          },
+                          [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-tooltip",
+                          {
+                            attrs: { bottom: "" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "activator",
+                                  fn: function(ref) {
+                                    var on = ref.on
+                                    var attrs = ref.attrs
+                                    return [
+                                      _c(
                                         "v-btn",
-                                        attrs,
-                                        false
-                                      ),
-                                      on
-                                    ),
-                                    [
-                                      _c("v-icon", { attrs: { dark: "" } }, [
-                                        _vm._v("mdi-table-large")
-                                      ])
-                                    ],
-                                    1
-                                  )
-                                ]
-                              }
-                            }
-                          ],
-                          null,
-                          true
+                                        _vm._g(
+                                          _vm._b(
+                                            {
+                                              staticClass: "mx-2",
+                                              attrs: {
+                                                href: "/race/" + item.race.id,
+                                                target: "_blank",
+                                                fab: "",
+                                                "x-small": "",
+                                                link: "",
+                                                color: "red"
+                                              }
+                                            },
+                                            "v-btn",
+                                            attrs,
+                                            false
+                                          ),
+                                          on
+                                        ),
+                                        [
+                                          _c(
+                                            "v-icon",
+                                            { attrs: { dark: "" } },
+                                            [_vm._v("mdi-table-large")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  }
+                                }
+                              ],
+                              null,
+                              true
+                            )
+                          },
+                          [
+                            _vm._v(" "),
+                            _c("span", [_vm._v("See race details")])
+                          ]
                         )
-                      },
-                      [_vm._v(" "), _c("span", [_vm._v("See race details")])]
+                      ],
+                      1
                     )
-                  ],
-                  1
-                )
+                  : _vm._e()
               ]
             }
           }
@@ -2364,56 +2387,59 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c(
-                  "v-tooltip",
-                  {
-                    attrs: { bottom: "" },
-                    scopedSlots: _vm._u(
-                      [
-                        {
-                          key: "activator",
-                          fn: function(ref) {
-                            var on = ref.on
-                            var attrs = ref.attrs
-                            return [
-                              _c(
-                                "v-btn",
-                                _vm._g(
-                                  _vm._b(
-                                    {
-                                      staticClass: "mx-2",
-                                      attrs: {
-                                        href: "/result/" + item.id + "/edit",
-                                        target: "_blank",
-                                        fab: "",
-                                        "x-small": "",
-                                        link: "",
-                                        color: "green lighten-2"
-                                      }
-                                    },
+                _vm.authed
+                  ? _c(
+                      "v-tooltip",
+                      {
+                        attrs: { bottom: "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
                                     "v-btn",
-                                    attrs,
-                                    false
-                                  ),
-                                  on
-                                ),
-                                [
-                                  _c("v-icon", { attrs: { dark: "" } }, [
-                                    _vm._v("mdi-pencil")
-                                  ])
-                                ],
-                                1
-                              )
-                            ]
-                          }
-                        }
-                      ],
-                      null,
-                      true
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          staticClass: "mx-2",
+                                          attrs: {
+                                            href:
+                                              "/result/" + item.id + "/edit",
+                                            target: "_blank",
+                                            fab: "",
+                                            "x-small": "",
+                                            link: "",
+                                            color: "green lighten-2"
+                                          }
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", { attrs: { dark: "" } }, [
+                                        _vm._v("mdi-pencil")
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          true
+                        )
+                      },
+                      [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
                     )
-                  },
-                  [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
-                )
+                  : _vm._e()
               ]
             }
           }
@@ -2674,56 +2700,59 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c(
-                  "v-tooltip",
-                  {
-                    attrs: { bottom: "" },
-                    scopedSlots: _vm._u(
-                      [
-                        {
-                          key: "activator",
-                          fn: function(ref) {
-                            var on = ref.on
-                            var attrs = ref.attrs
-                            return [
-                              _c(
-                                "v-btn",
-                                _vm._g(
-                                  _vm._b(
-                                    {
-                                      staticClass: "mx-2",
-                                      attrs: {
-                                        href: "/result/" + item.id + "/edit",
-                                        target: "_blank",
-                                        fab: "",
-                                        "x-small": "",
-                                        link: "",
-                                        color: "green lighten-2"
-                                      }
-                                    },
+                _vm.authed
+                  ? _c(
+                      "v-tooltip",
+                      {
+                        attrs: { bottom: "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
                                     "v-btn",
-                                    attrs,
-                                    false
-                                  ),
-                                  on
-                                ),
-                                [
-                                  _c("v-icon", { attrs: { dark: "" } }, [
-                                    _vm._v("mdi-pencil")
-                                  ])
-                                ],
-                                1
-                              )
-                            ]
-                          }
-                        }
-                      ],
-                      null,
-                      true
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          staticClass: "mx-2",
+                                          attrs: {
+                                            href:
+                                              "/result/" + item.id + "/edit",
+                                            target: "_blank",
+                                            fab: "",
+                                            "x-small": "",
+                                            link: "",
+                                            color: "green lighten-2"
+                                          }
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", { attrs: { dark: "" } }, [
+                                        _vm._v("mdi-pencil")
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          true
+                        )
+                      },
+                      [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
                     )
-                  },
-                  [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
-                )
+                  : _vm._e()
               ]
             }
           }
@@ -2917,56 +2946,58 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c(
-                  "v-tooltip",
-                  {
-                    attrs: { bottom: "" },
-                    scopedSlots: _vm._u(
-                      [
-                        {
-                          key: "activator",
-                          fn: function(ref) {
-                            var on = ref.on
-                            var attrs = ref.attrs
-                            return [
-                              _c(
-                                "v-btn",
-                                _vm._g(
-                                  _vm._b(
-                                    {
-                                      staticClass: "mx-2",
-                                      attrs: {
-                                        href: "/race/" + item.id + "/edit",
-                                        target: "_blank",
-                                        fab: "",
-                                        "x-small": "",
-                                        link: "",
-                                        color: "green lighten-2"
-                                      }
-                                    },
+                _vm.authed
+                  ? _c(
+                      "v-tooltip",
+                      {
+                        attrs: { bottom: "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
                                     "v-btn",
-                                    attrs,
-                                    false
-                                  ),
-                                  on
-                                ),
-                                [
-                                  _c("v-icon", { attrs: { dark: "" } }, [
-                                    _vm._v("mdi-pencil")
-                                  ])
-                                ],
-                                1
-                              )
-                            ]
-                          }
-                        }
-                      ],
-                      null,
-                      true
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          staticClass: "mx-2",
+                                          attrs: {
+                                            href: "/race/" + item.id + "/edit",
+                                            target: "_blank",
+                                            fab: "",
+                                            "x-small": "",
+                                            link: "",
+                                            color: "green lighten-2"
+                                          }
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", { attrs: { dark: "" } }, [
+                                        _vm._v("mdi-pencil")
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          true
+                        )
+                      },
+                      [_vm._v(" "), _c("span", [_vm._v("Edit race")])]
                     )
-                  },
-                  [_vm._v(" "), _c("span", [_vm._v("Edit race")])]
-                )
+                  : _vm._e()
               ]
             }
           }
@@ -3412,56 +3443,59 @@ var render = function() {
             fn: function(ref) {
               var item = ref.item
               return [
-                _c(
-                  "v-tooltip",
-                  {
-                    attrs: { bottom: "" },
-                    scopedSlots: _vm._u(
-                      [
-                        {
-                          key: "activator",
-                          fn: function(ref) {
-                            var on = ref.on
-                            var attrs = ref.attrs
-                            return [
-                              _c(
-                                "v-btn",
-                                _vm._g(
-                                  _vm._b(
-                                    {
-                                      staticClass: "mx-2",
-                                      attrs: {
-                                        href: "/result/" + item.id + "/edit",
-                                        target: "_blank",
-                                        fab: "",
-                                        "x-small": "",
-                                        link: "",
-                                        color: "green lighten-2"
-                                      }
-                                    },
+                _vm.authed
+                  ? _c(
+                      "v-tooltip",
+                      {
+                        attrs: { bottom: "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
                                     "v-btn",
-                                    attrs,
-                                    false
-                                  ),
-                                  on
-                                ),
-                                [
-                                  _c("v-icon", { attrs: { dark: "" } }, [
-                                    _vm._v("mdi-pencil")
-                                  ])
-                                ],
-                                1
-                              )
-                            ]
-                          }
-                        }
-                      ],
-                      null,
-                      true
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          staticClass: "mx-2",
+                                          attrs: {
+                                            href:
+                                              "/result/" + item.id + "/edit",
+                                            target: "_blank",
+                                            fab: "",
+                                            "x-small": "",
+                                            link: "",
+                                            color: "green lighten-2"
+                                          }
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", { attrs: { dark: "" } }, [
+                                        _vm._v("mdi-pencil")
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          true
+                        )
+                      },
+                      [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
                     )
-                  },
-                  [_vm._v(" "), _c("span", [_vm._v("Edit result")])]
-                )
+                  : _vm._e()
               ]
             }
           }

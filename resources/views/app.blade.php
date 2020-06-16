@@ -10,6 +10,11 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
     @stack('css-after-main')
+    @auth
+    <script>
+        var authed = 1;
+    </script>
+    @endauth
 </head>
 
 <body style="font-family: 'Roboto';">

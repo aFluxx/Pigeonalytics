@@ -17,7 +17,7 @@
                 <a :href="'/pigeon/' + item.id">{{ item.ringnumber }}</a>
             </template>
             <template v-slot:item.actions="{ item }">
-                <div class="tw-flex tw-my-2">
+                <div class="tw-flex tw-my-2" v-if="authed">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn
@@ -31,7 +31,7 @@
                                 v-bind="attrs"
                                 v-on="on"
                             >
-                                <v-icon dark>mdi-table-large</v-icon>
+                                <v-icon dark>mdi-pencil</v-icon>
                             </v-btn>
                         </template>
                         <span>Edit dropzone</span>
@@ -50,6 +50,7 @@ export default {
         return {
             search: "",
             dropzonesData: this.dropzones,
+            authed: typeof authed !== "undefined",
             headers: [
                 {
                     text: "Name",
