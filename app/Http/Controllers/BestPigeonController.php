@@ -2,34 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Pigeon;
 use App\Result;
 
 class BestPigeonController extends Controller
 {
     public function averageYearMpm()
     {
-
-        $resultsInYear = Result::with(['pigeon', 'race' => function ($query) {
+        $results2020 = Result::with(['pigeon', 'race' => function ($query) {
             $query->whereYear('races.unloading_time', '=', 2020);
-        }])
-            ->get();
+        }])->get();
 
-        $groupedPerPigeon = $resultsInYear->mapToGroups(function ($item, $key) {
+        $resultsGroupedPerPigeon = $results2020->mapToGroups(function ($item, $key) {
             return [$item->pigeon->ringnumber => $item['mpm']];
         });
 
-        $toSend = [];
-
-        foreach ($groupedPerPigeon as $ringnumber => $results) {
-            $toSend[] = [
+        foreach ($resultsGroupedPerPigeon as $ringnumber => $mpms) {
+            $data[] = [
                 'ringnumber' => $ringnumber,
-                'average' => array_sum($results->toArray()) / count($results),
-                'count' => count($results)
+                'average' => array_sum($mpms->toArray()) / count($mpms),
+                'count' => count($mpms)
             ];
         }
 
-        return view('rapport/average-year-mpm')->with([
-            'data' => $toSend
-        ]);
+        return view('rapport/average-year-mpm')->with('data', $data);
     }
 }

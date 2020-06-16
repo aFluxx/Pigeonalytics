@@ -25,9 +25,9 @@
     <p><strong>Type:</strong> {{ $race->type_formatted }}</p>
 </div>
 @if($race->amount_of_pigeons_regio === 1000000 || $race->amount_of_pigeons_regio === null)
-<race-results-hfo :results="{{ $race->results }}"></race-results-hfo>
-@else
 <race-results-fon :results="{{ $race->results }}"></race-results-fon>
+@else
+<race-results-hfo :results="{{ $race->results }}"></race-results-hfo>
 @endif
 
 @auth
