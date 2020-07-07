@@ -30,6 +30,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "moment": "^2.27.0",
         "tailwindcss": "^1.4.6",
         "vuetify": "^2.2.32"
     }

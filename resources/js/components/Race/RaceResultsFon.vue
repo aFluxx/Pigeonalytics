@@ -44,7 +44,11 @@
             </template>
 
             <template v-slot:item.arrival_time="{ item }">
-                <span class="tw-whitespace-no-wrap">{{ item.arrival_time }}</span>
+                <span>
+                    {{ moment(item.arrival_time).format('DD MMM YYYY') }}
+                    <br />
+                    <strong>{{ moment(item.arrival_time).format('HH:mm:ss') }}</strong>
+                </span>
             </template>
 
             <template v-slot:item.interval="{ item }">
@@ -160,7 +164,7 @@ export default {
             authed: typeof authed !== "undefined",
             headers: [
                 {
-                    text: "Place (Personal)",
+                    text: "Place",
                     sortable: true,
                     value: "place_personal"
                 },
@@ -178,13 +182,13 @@ export default {
                 { text: "mpm", value: "mpm" },
                 { text: "Place (Club)", value: "place_club" },
                 { text: "Coeff (Club)", value: "coefficient_club" },
-                { text: "Place (Provincial)", value: "place_provincial" },
-                { text: "Coeff (Provincial)", value: "coefficient_provincial" },
+                { text: "Place (Prov)", value: "place_provincial" },
+                { text: "Coeff (Prov)", value: "coefficient_provincial" },
                 { text: "Place (Zone)", value: "place_zone" },
                 { text: "Coeff (Zone)", value: "coefficient_zone" },
-                { text: "Place (National)", value: "place_national" },
-                { text: "Coeff (National)", value: "coefficient_national" },
-                { text: "Actions", sortable: false, value: "actions" }
+                { text: "Place (Nat)", value: "place_national" },
+                { text: "Coeff (Nat)", value: "coefficient_national" },
+                { text: "", sortable: false, value: "actions" }
             ],
             resultsData: this.results
         };

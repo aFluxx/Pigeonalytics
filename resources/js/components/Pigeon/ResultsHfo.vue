@@ -148,7 +148,7 @@ export default {
             search: "",
             authed: typeof authed !== "undefined",
             headers: [
-                { text: "Actions", sortable: false, value: "actions" },
+                { text: "", sortable: false, value: "actions" },
                 {
                     text: "Dropzone",
                     sortable: true,

@@ -218,7 +218,7 @@ export default {
             search: "",
             authed: typeof authed !== "undefined",
             headers: [
-                { text: "Actions", sortable: false, value: "actions" },
+                { text: "", sortable: false, value: "actions" },
                 {
                     text: "Dropzone",
                     sortable: true,
@@ -248,12 +248,12 @@ export default {
                     align: "end"
                 },
                 {
-                    text: "Place (Provincial)",
+                    text: "Place (Prov)",
                     value: "place_provincial",
                     align: "end"
                 },
                 {
-                    text: "Coeff (Provincial)",
+                    text: "Coeff (Prov)",
                     value: "coefficient_provincial",
                     align: "end"
                 },
@@ -268,12 +268,12 @@ export default {
                     align: "end"
                 },
                 {
-                    text: "Place (National)",
+                    text: "Place (Nat)",
                     value: "place_national",
                     align: "end"
                 },
                 {
-                    text: "Coeff (National)",
+                    text: "Coeff (Nat)",
                     value: "coefficient_national",
                     align: "end"
                 }

@@ -62,7 +62,7 @@ export default {
                     sortable: true,
                     value: "distance"
                 },
-                { text: "Actions", sortable: false, value: "actions" }
+                { text: "", sortable: false, value: "actions" }
             ]
         };
     }

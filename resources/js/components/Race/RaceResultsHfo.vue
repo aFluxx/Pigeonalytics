@@ -44,7 +44,11 @@
             </template>
 
             <template v-slot:item.arrival_time="{ item }">
-                <span class="tw-whitespace-no-wrap">{{ item.arrival_time }}</span>
+                <span>
+                    {{ moment(item.arrival_time).format('DD MMM YYYY') }}
+                    <br />
+                    <strong>{{ moment(item.arrival_time).format('HH:mm:ss') }}</strong>
+                </span>
             </template>
 
             <template v-slot:item.interval="{ item }">
@@ -128,7 +132,7 @@ export default {
             authed: typeof authed !== "undefined",
             headers: [
                 {
-                    text: "Place (Personal)",
+                    text: "Place",
                     sortable: true,
                     value: "place_personal"
                 },
@@ -146,15 +150,24 @@ export default {
                 { text: "mpm", value: "mpm" },
                 { text: "Place (Regio)", value: "place_regio" },
                 { text: "Coeff (Regio)", value: "coefficient_regio" },
-                { text: "Place (Overkoepeling)", value: "place_overkoepeling" },
+                { text: "Place (OK)", value: "place_overkoepeling" },
                 {
-                    text: "Coeff (Overkoepeling)",
+                    text: "Coeff (OK)",
                     value: "coefficient_overkoepeling"
                 },
-                { text: "Actions", sortable: false, value: "actions" }
+                { text: "", sortable: false, value: "actions" }
             ],
             resultsData: this.results
         };
     }
 };
 </script>
+<style>
+table th + th {
+    border-left: 1px solid #ddd;
+}
+
+table td + td {
+    border-left: 1px solid #ddd;
+}
+</style>

@@ -34,6 +34,13 @@
                     label
                 >{{ item.dropzone.name }}</v-chip>
             </template>
+            <template v-slot:item.unloading_time="{ item }">
+                <span>
+                    {{ moment(item.unloading_time).format('DD MMM YYYY') }}
+                    <br />
+                    <strong>{{ moment(item.unloading_time).format('HH:mm:ss') }}</strong>
+                </span>
+            </template>
             <template v-slot:item.category_formatted="{ item }">
                 <v-chip
                     @click="search = item.category_formatted"
@@ -48,7 +55,7 @@
             </template>
             <template v-slot:item.race_details="{ item }">
                 <div class="my-2">
-                    <v-btn text small :href="'/race/' + item.id" color="primary">See race details</v-btn>
+                    <v-btn small :href="'/race/' + item.id" color="primary">Race details</v-btn>
                 </div>
             </template>
 
@@ -92,14 +99,19 @@ export default {
                     value: "dropzone.name"
                 },
                 {
+                    text: "Released",
+                    sortable: true,
+                    value: "unloading_time"
+                },
+                {
+                    text: "Category",
+                    sortable: true,
+                    value: "category_formatted"
+                },
+                {
                     text: "# Pigeons",
                     sortable: true,
                     value: "amount_of_pigeons_personal"
-                },
-                {
-                    text: "Unloading Time",
-                    sortable: true,
-                    value: "unloading_time"
                 },
                 {
                     text: "Wind Strength",
@@ -122,21 +134,11 @@ export default {
                     value: "rainfall_formatted"
                 },
                 {
-                    text: "Category",
-                    sortable: true,
-                    value: "category_formatted"
-                },
-                {
-                    text: "Type",
-                    sortable: true,
-                    value: "type_formatted"
-                },
-                {
                     text: "Details",
                     sortable: true,
                     value: "race_details"
                 },
-                { text: "Actions", sortable: false, value: "actions" }
+                { text: "", sortable: false, value: "actions" }
             ]
         };
     },

@@ -2,6 +2,8 @@ require('./bootstrap');
 
 import Vue from 'vue';
 import vuetify from './plugins/vuetify';
+import moment from 'moment';
+Vue.prototype.moment = moment;
 
 // Dropzone
 Vue.component('dropzone-list', require('./components/Dropzone/DropzoneList.vue').default);

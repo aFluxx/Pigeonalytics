@@ -128,7 +128,7 @@ export default {
             search: "",
             authed: typeof authed !== "undefined",
             headers: [
-                { text: "Actions", sortable: false, value: "actions" },
+                { text: "", sortable: false, value: "actions" },
                 {
                     text: "Place (Personal)",
                     sortable: true,
@@ -153,12 +153,12 @@ export default {
                 {
                     text: "Dropzone",
                     value: "race.dropzone.name",
-                    align: " d-none"
+                    align: "d-none"
                 },
                 {
                     text: "Type",
                     value: "race.type",
-                    align: " d-none"
+                    align: "d-none"
                 }
             ],
             resultsData: this.results
