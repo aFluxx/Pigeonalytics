@@ -64,7 +64,8 @@
     </div>
 
     <div class="tw-container tw-flex tw-flex-row tw-justify-between tw-mx-auto">
-        <a href="javascript:history.back()">Go Back</a>
+        <a class="tw-block" href="javascript:history.back()">Go Back</a>
+        @auth<p>Logged in</p>@endauth
     </div>
 
 </nav>

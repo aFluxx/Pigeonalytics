@@ -26,6 +26,14 @@
             multi-sort
             class="elevation-1"
         >
+            <template v-slot:item.ringnumber="{ item }">
+                <a
+                    target="_blank"
+                    :href="'/pigeon/' + item.pigeon_id"
+                    class="tw-whitespace-no-wrap"
+                >{{ item.ringnumber }}</a>
+            </template>
+
             <template v-slot:item.average="{ item }">
                 <span
                     class="tw-whitespace-no-wrap"

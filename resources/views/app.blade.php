@@ -10,11 +10,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
     @stack('css-after-main')
-    @auth
+    @if(Auth::check())
     <script>
-        var authed = 1;
+        var authed = 1
     </script>
-    @endauth
+    @else
+    <script>
+        var authed = 0
+    </script>
+    @endif
 </head>
 
 <body style="font-family: 'Roboto';">
@@ -27,6 +31,8 @@
             </div>
         </v-app>
     </div> <!-- #app -->
+    @auth
+    @endauth
 
     <div id="scripts">
         @stack('scripts-before-main')

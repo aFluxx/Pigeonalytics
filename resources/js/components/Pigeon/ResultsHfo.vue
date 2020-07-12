@@ -13,11 +13,10 @@
             :expanded.sync="expanded"
             :footer-props="{'items-per-page-options':[10, 30, 50, 100, -1]}"
             item-key="id"
-            show-expand
             multi-sort
             class="elevation-1"
         >
-            <template v-slot:expanded-item="{ headers, item }">
+            <!-- <template v-slot:expanded-item="{ headers, item }">
                 <td :colspan="headers.length">
                     <p class="tw-mt-2">
                         <strong>Dropzone:</strong>
@@ -38,6 +37,14 @@
                         {{ item.arrival_time }}
                     </p>
                 </td>
+            </template>-->
+
+            <template v-slot:item.race.unloading_time="{ item }">
+                <span>
+                    {{ moment(item.race.unloading_time).format('DD MMM YYYY') }}
+                    <br />
+                    <strong>{{ moment(item.race.unloading_time).format('HH:mm:ss') }}</strong>
+                </span>
             </template>
 
             <template v-slot:item.place_personal="{ item }">
@@ -95,7 +102,7 @@
             </template>
 
             <template v-slot:item.actions="{ item }">
-                <div class="tw-flex tw-my-2" v-if="authed">
+                <div class="tw-flex tw-my-2">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn
@@ -146,13 +153,23 @@ export default {
         return {
             expanded: [],
             search: "",
-            authed: typeof authed !== "undefined",
-            headers: [
-                { text: "", sortable: false, value: "actions" },
+            authedVue: authed == 1,
+            resultsData: this.results
+        };
+    },
+
+    computed: {
+        headers() {
+            let headers = [
                 {
                     text: "Dropzone",
                     sortable: true,
                     value: "race.dropzone.name"
+                },
+                {
+                    text: "Released",
+                    sortable: true,
+                    value: "race.unloading_time"
                 },
                 {
                     text: "Place (Personal)",
@@ -174,9 +191,18 @@ export default {
                     text: "Coeff (Overkoepeling)",
                     value: "coefficient_overkoepeling"
                 }
-            ],
-            resultsData: this.results
-        };
+            ];
+
+            if (this.authedVue) {
+                headers.unshift({
+                    text: "",
+                    sortable: false,
+                    value: "actions"
+                });
+            }
+
+            return headers;
+        }
     }
 };
 </script>

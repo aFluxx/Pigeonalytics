@@ -86,34 +86,41 @@ Create New Race
         </div>
 
         <div>
-            <div id="fon_races" class="tw-hidden">
+            <div>
                 <label for="race_amount_pigeons_personal" class="tw-label">Amount of pigeons (Personal)</label>
                 <input type="number" id="race_amount_pigeons_personal" name="race_amount_pigeons_personal"
                     class="tw-input" />
-
-                <label for="race_amount_pigeons_club" class="tw-label">Amount of pigeons (Club):</label>
-                <input type="number" id="race_amount_pigeons_club" name="race_amount_pigeons_club" class="tw-input" />
-
-                <label for="race_amount_pigeons_provincial" class="tw-label">Amount of pigeons (Provincial):</label>
-                <input type="number" id="race_amount_pigeons_provincial" name="race_amount_pigeons_provincial"
-                    class="tw-input" />
-
-                <label for="race_amount_pigeons_zone" class="tw-label">Amount of pigeons (Zone):</label>
-                <input type="number" id="race_amount_pigeons_zone" name="race_amount_pigeons_zone" class="tw-input" />
-
-                <label for="race_amount_pigeons_national" class="tw-label">Amount of pigeons (National):</label>
-                <input type="number" id="race_amount_pigeons_national" name="race_amount_pigeons_national"
-                    class="tw-input" />
             </div>
 
-            <div id="hfo_races" class="tw-hidden">
-                <label for="race_amount_pigeons_regio" class="tw-label">Amount of pigeons (Regio):</label>
-                <input type="number" id="race_amount_pigeons_regio" name="race_amount_pigeons_regio" class="tw-input" />
+            <div>
+                <div id="fon_races" class="tw-hidden">
+                    <label for="race_amount_pigeons_club" class="tw-label">Amount of pigeons (Club):</label>
+                    <input type="number" id="race_amount_pigeons_club" name="race_amount_pigeons_club"
+                        class="tw-input" />
 
-                <label for="race_amount_pigeons_overkoepeling" class="tw-label">Amount of pigeons
-                    (Overkoepeling):</label>
-                <input type="number" id="race_amount_pigeons_overkoepeling" name="race_amount_pigeons_overkoepeling"
-                    class="tw-input" />
+                    <label for="race_amount_pigeons_provincial" class="tw-label">Amount of pigeons (Provincial):</label>
+                    <input type="number" id="race_amount_pigeons_provincial" name="race_amount_pigeons_provincial"
+                        class="tw-input" />
+
+                    <label for="race_amount_pigeons_zone" class="tw-label">Amount of pigeons (Zone):</label>
+                    <input type="number" id="race_amount_pigeons_zone" name="race_amount_pigeons_zone"
+                        class="tw-input" />
+
+                    <label for="race_amount_pigeons_national" class="tw-label">Amount of pigeons (National):</label>
+                    <input type="number" id="race_amount_pigeons_national" name="race_amount_pigeons_national"
+                        class="tw-input" />
+                </div>
+
+                <div id="hfo_races" class="tw-hidden">
+                    <label for="race_amount_pigeons_regio" class="tw-label">Amount of pigeons (Regio):</label>
+                    <input type="number" id="race_amount_pigeons_regio" name="race_amount_pigeons_regio"
+                        class="tw-input" />
+
+                    <label for="race_amount_pigeons_overkoepeling" class="tw-label">Amount of pigeons
+                        (Overkoepeling):</label>
+                    <input type="number" id="race_amount_pigeons_overkoepeling" name="race_amount_pigeons_overkoepeling"
+                        class="tw-input" />
+                </div>
             </div>
         </div>
     </div>

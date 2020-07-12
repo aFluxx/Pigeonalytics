@@ -17,7 +17,7 @@
                 <a :href="'/pigeon/' + item.id">{{ item.ringnumber }}</a>
             </template>
             <template v-slot:item.actions="{ item }">
-                <div class="tw-flex tw-my-2" v-if="authed">
+                <div class="tw-flex tw-my-2">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn
@@ -50,8 +50,13 @@ export default {
         return {
             search: "",
             dropzonesData: this.dropzones,
-            authed: typeof authed !== "undefined",
-            headers: [
+            authedVue: authed == 1
+        };
+    },
+
+    computed: {
+        headers() {
+            let headers = [
                 {
                     text: "Name",
                     sortable: true,
@@ -61,10 +66,19 @@ export default {
                     text: "Distance (in meter)",
                     sortable: true,
                     value: "distance"
-                },
-                { text: "", sortable: false, value: "actions" }
-            ]
-        };
+                }
+            ];
+
+            if (this.authedVue) {
+                headers.unshift({
+                    text: "",
+                    sortable: false,
+                    value: "actions"
+                });
+            }
+
+            return headers;
+        }
     }
 };
 </script>

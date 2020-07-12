@@ -12,11 +12,10 @@
             :expanded.sync="expanded"
             :footer-props="{'items-per-page-options':[10, 30, 50, 100, -1]}"
             item-key="id"
-            show-expand
             multi-sort
             class="elevation-1"
         >
-            <template v-slot:expanded-item="{ headers, item }">
+            <!-- <template v-slot:expanded-item="{ headers, item }">
                 <td :colspan="headers.length">
                     <p class="tw-mt-2">
                         <strong>Dropzone:</strong>
@@ -27,7 +26,7 @@
                         {{ item.race.type }}
                     </p>
                 </td>
-            </template>
+            </template>-->
 
             <template v-slot:item.place_personal="{ item }">
                 <span class="tw-whitespace-no-wrap" v-if="item.place_personal != 1000000">
@@ -130,7 +129,7 @@
             </template>
 
             <template v-slot:item.actions="{ item }">
-                <v-tooltip bottom v-if="authed">
+                <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn
                             :href="'/result/' + item.id + '/edit'"
@@ -161,8 +160,14 @@ export default {
         return {
             expanded: [],
             search: "",
-            authed: typeof authed !== "undefined",
-            headers: [
+            authedVue: authed == 1,
+            resultsData: this.results
+        };
+    },
+
+    computed: {
+        headers() {
+            let headers = [
                 {
                     text: "Place",
                     sortable: true,
@@ -187,11 +192,19 @@ export default {
                 { text: "Place (Zone)", value: "place_zone" },
                 { text: "Coeff (Zone)", value: "coefficient_zone" },
                 { text: "Place (Nat)", value: "place_national" },
-                { text: "Coeff (Nat)", value: "coefficient_national" },
-                { text: "", sortable: false, value: "actions" }
-            ],
-            resultsData: this.results
-        };
+                { text: "Coeff (Nat)", value: "coefficient_national" }
+            ];
+
+            if (this.authedVue) {
+                headers.unshift({
+                    text: "",
+                    sortable: false,
+                    value: "actions"
+                });
+            }
+
+            return headers;
+        }
     }
 };
 </script>
