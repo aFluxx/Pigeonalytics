@@ -65,16 +65,6 @@ class ResultController extends Controller
             ? calculateCoefficient($request->result_place_national, $race->amount_of_pigeons_national)
             : 1000000;
 
-        $result->place_regio = $request->result_place_national ?: 1000000;
-        $result->coefficient_national = $race->amount_of_pigeons_national
-            ? calculateCoefficient($request->result_place_national, $race->amount_of_pigeons_national)
-            : 1000000;
-
-        $result->place_national = $request->result_place_national ?: 1000000;
-        $result->coefficient_national = $race->amount_of_pigeons_national
-            ? calculateCoefficient($request->result_place_national, $race->amount_of_pigeons_national)
-            : 1000000;
-
         $result->place_regio = $request->result_place_regio ?: 1000000;
         $result->coefficient_regio = $race->amount_of_pigeons_national
             ? calculateCoefficient($request->result_place_regio, $race->amount_of_pigeons_regio)

@@ -2,7 +2,7 @@
 
 function calculateCoefficient($place, $amountOfPigeons)
 {
-    if (!$place || !$amountOfPigeons) {
+    if (!$place || !$amountOfPigeons || $place == 0) {
         return 1000000;
     }
 

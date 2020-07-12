@@ -46,6 +46,10 @@
                     <a class="tw-link" href="{{ route('result.create.manual') }}">Create
                         Results (manual)</a>
                 </li>
+                <li>
+                    <a class="tw-link" href="{{ route('result.create.kbdb') }}">Create
+                        Results (KBDB)</a>
+                </li>
                 @endauth
             </ul>
         </div>
@@ -65,7 +69,7 @@
 
     <div class="tw-container tw-flex tw-flex-row tw-justify-between tw-mx-auto">
         <a class="tw-block" href="javascript:history.back()">Go Back</a>
-        @auth<p>Logged in</p>@endauth
+        @auth<p>Logged in</p>@else<a class="tw-block" href="/login">Login</a>@endauth
     </div>
 
 </nav>

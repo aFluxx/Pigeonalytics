@@ -31,6 +31,8 @@ Route::get('/result/manual/create', 'ResultManualController@create')->name('resu
 Route::post('/result/manual/store', 'ResultManualController@store')->name('result.store.manual');
 Route::get('/result/upload/create', 'ResultUploadController@create')->name('result.create.upload');
 Route::post('/result/upload/store', 'ResultUploadController@store')->name('result.store.upload');
+Route::get('/result/kbdb/create', 'ResultKbdbController@create')->name('result.create.kbdb');
+Route::post('/result/kbdb/store', 'ResultKbdbController@store')->name('result.store.kbdb');
 Route::get('/result/{result}/edit', 'ResultController@edit')->name('result.edit');
 Route::post('/result/{result}/update', 'ResultController@update')->name('result.update');
 
