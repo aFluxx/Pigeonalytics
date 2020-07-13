@@ -8,3 +8,12 @@ function calculateCoefficient($place, $amountOfPigeons)
 
     return ($place * 100) / $amountOfPigeons;
 }
+
+function setPlace($place)
+{
+    if ($place != '-') {
+        return $place;
+    }
+
+    return 1000000;
+}

@@ -39,12 +39,12 @@
                 </li>
                 @auth
                 <li>
-                    <a class="tw-link" href="{{ route('result.create.upload') }}">Create
-                        Results (upload)</a>
-                </li>
-                <li>
                     <a class="tw-link" href="{{ route('result.create.manual') }}">Create
                         Results (manual)</a>
+                </li>
+                <li>
+                    <a class="tw-link" href="{{ route('result.create.upload') }}">Create
+                        Results (upload)</a>
                 </li>
                 <li>
                     <a class="tw-link" href="{{ route('result.create.kbdb') }}">Create

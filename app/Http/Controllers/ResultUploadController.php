@@ -29,7 +29,7 @@ class ResultUploadController extends Controller
                 'pigeon_id' => $pigeon->id,
                 'race_id' => $race->id,
                 'place_personal' => $record['place'],
-                'arrival_time' => $record['arrival'],
+                'arrival_time' => $record['arrival'] ?: null,
                 'interval' =>  $interval,
                 'mpm' => calculateMeterPerMinute($race, $interval),
                 'place_club' => 1000000,
