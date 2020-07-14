@@ -31,7 +31,7 @@ class ResultUploadController extends Controller
                 'place_personal' => $record['place'],
                 'arrival_time' => $record['arrival'] ?: null,
                 'interval' =>  $record['arrival'] ? $interval : null,
-                'mpm' => $record['arrival'] ? calculateMeterPerMinute($race, $interval) : null,
+                'mpm' => $record['arrival'] ? calculateMeterPerMinute($race, $interval) : 0,
                 'place_club' => 1000000,
                 'coefficient_club' => 1000000,
                 'place_provincial' => 1000000,
