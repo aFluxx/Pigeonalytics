@@ -23,13 +23,20 @@ class ResultKbdbController extends Controller
             $pigeon = Pigeon::firstOrCreate(['ringnumber' => $record['ring']]);
             $race = Race::where('id', $request->result_race)->first();
 
+            if ($record['speed'] == 0) {
+                $interval = calculateInterval($race->unloading_time, $record['uur']);
+                $speed = calculateMeterPerMinute($race, $interval);
+            } else {
+                $speed = $record['speed'];
+            }
+
             Result::firstOrCreate([
                 'pigeon_id' => $pigeon->id,
                 'race_id' => $race->id,
                 'place_personal' => $record['pl'],
                 'arrival_time' => $record['uur'] ? date_create_from_format('d-m-Y H:i:s', $record['uur']) : null,
                 'interval' =>  null,
-                'mpm' => $record['speed'],
+                'mpm' => $speed,
                 'nominated' => $record['get'],
                 'place_club' => setPlace($record['pclub']),
                 'coefficient_club' => calculateCoefficient($record['pclub'], $race->amount_of_pigeons_club),
