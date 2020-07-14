@@ -42,13 +42,21 @@ Create New Race
             <select name="race_wind" id="race_wind" class="tw-input">
                 <option value="na">Not applicable</option>
                 <option value="north">North</option>
+                <option value="north_north_east">North North East</option>
                 <option value="north_east">North East</option>
+                <option value="east_north_east">East North East</option>
                 <option value="east">East</option>
+                <option value="east_south_east">East South East</option>
                 <option value="south_east">South East</option>
+                <option value="south_south_east">South South East</option>
                 <option value="south">South</option>
+                <option value="south_south_west">South South West</option>
                 <option value="south_west">South West</option>
+                <option value="west_south_west">West South West</option>
                 <option value="west">West</option>
+                <option value="west_north_west">West North West</option>
                 <option value="north_west">North West</option>
+                <option value="north_north_west">North North West</option>
             </select>
 
             <label for="race_wind_strength" class="tw-label">Wind Strength</label>
