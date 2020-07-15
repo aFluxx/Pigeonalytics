@@ -44,15 +44,57 @@ Edit race
 
             <label for="race_wind" class="tw-label">Wind</label>
             <select name="race_wind" id="race_wind" class="tw-input">
-                <option value="na" {{($race->wind === 'na') ? 'selected' : ''}}>Not applicable</option>
-                <option value="north" {{($race->wind === 'north') ? 'selected' : ''}}>North</option>
-                <option value="north_east" {{($race->wind === 'north_east') ? 'selected' : ''}}>North East</option>
-                <option value="east" {{($race->wind === 'east') ? 'selected' : ''}}>East</option>
-                <option value="south_east" {{($race->wind === 'south_east') ? 'selected' : ''}}>South East</option>
-                <option value="south" {{($race->wind === 'south') ? 'selected' : ''}}>South</option>
-                <option value="south_west" {{($race->wind === 'south_west') ? 'selected' : ''}}>South West</option>
-                <option value="west" {{($race->wind === 'west') ? 'selected' : ''}}>West</option>
-                <option value="north_west" {{($race->wind === 'north_west') ? 'selected' : ''}}>North West</option>
+                <option value="na" {{($race->wind === 'na') ? 'selected' : ''}}>
+                    Not applicable
+                </option>
+                <option value="north" {{($race->wind === 'north') ? 'selected' : ''}}>
+                    North
+                </option>
+                <option value="north_north_east" {{($race->wind === 'north_north_east') ? 'selected' : ''}}>
+                    North North East
+                </option>
+                <option value="north_east" {{($race->wind === 'north_east') ? 'selected' : ''}}>
+                    North East
+                </option>
+                <option value="east_north_east" {{($race->wind === 'east_north_east') ? 'selected' : ''}}>
+                    East North East
+                </option>
+                <option value="east" {{($race->wind === 'east') ? 'selected' : ''}}>
+                    East
+                </option>
+                <option value="east_south_east" {{($race->wind === 'east') ? 'selected' : ''}}>
+                    East South East
+                </option>
+                <option value="south_east" {{($race->wind === 'south_east') ? 'selected' : ''}}>
+                    South East
+                </option>
+                <option value="south_south_east" {{($race->wind === 'south_south_east') ? 'selected' : ''}}>
+                    South South East
+                </option>
+                <option value="south" {{($race->wind === 'south') ? 'selected' : ''}}>
+                    South
+                </option>
+                <option value="south_south_west" {{($race->wind === 'south_south_west') ? 'selected' : ''}}>
+                    South South West
+                </option>
+                <option value="south_west" {{($race->wind === 'south_west') ? 'selected' : ''}}>
+                    South West
+                </option>
+                <option value="west_south_west" {{($race->wind === 'west_south_west') ? 'selected' : ''}}>
+                    West South West
+                </option>
+                <option value="west" {{($race->wind === 'west') ? 'selected' : ''}}>
+                    West
+                </option>
+                <option value="west_north_west" {{($race->wind === 'west_north_west') ? 'selected' : ''}}>
+                    West North West
+                </option>
+                <option value="north_west" {{($race->wind === 'north_west') ? 'selected' : ''}}>
+                    North West
+                </option>
+                <option value="north_north_west" {{($race->wind === 'north_north_west') ? 'selected' : ''}}>
+                    North North West
+                </option>
             </select>
 
             <label for="race_wind_strength" class="tw-label">Wind Strength</label>
