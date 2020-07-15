@@ -7,7 +7,7 @@ use App\Result;
 
 class AverageYearMpmController extends Controller
 {
-    public function averageYearMpm()
+    public function index()
     {
         // $results2020 = Result::with(['pigeon', 'race' => function ($query) {
         //     $query->whereYear('races.unloading_time', '=', 2020);
