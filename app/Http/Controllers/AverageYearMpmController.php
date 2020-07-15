@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Pigeon;
 use App\Result;
 
-class BestPigeonController extends Controller
+class AverageYearMpmController extends Controller
 {
     public function averageYearMpm()
     {

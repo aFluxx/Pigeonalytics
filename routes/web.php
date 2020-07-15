@@ -36,7 +36,7 @@ Route::post('/result/kbdb/store', 'ResultKbdbController@store')->name('result.st
 Route::get('/result/{result}/edit', 'ResultController@edit')->name('result.edit');
 Route::post('/result/{result}/update', 'ResultController@update')->name('result.update');
 
-Route::get('/rapport/average-year-mpm', 'BestPigeonController@averageYearMpm')->name('rapport.average-year-mpm');
+Route::get('/rapport/average-year-mpm', 'AverageYearMpmController@index')->name('rapport.average-year-mpm');
 
 Route::get('/api/dropzone/{dropzone}/get-discipline', 'DropzoneApiController@getDiscipline');
 
