@@ -54,28 +54,36 @@ class Race extends Model
                 return 'North';
             case 'north_east':
                 return "North East";
-                break;
+            case 'north_north_east':
+                return 'North North East';
             case 'north_east':
                 return "North East";
-                break;
+            case 'east_north_east':
+                return 'East North East';
             case 'east':
                 return "East";
-                break;
+            case 'east_south_east':
+                return 'East South East';
             case 'south_east':
                 return "South East";
-                break;
+            case 'south_south_east':
+                return 'South South East';
             case 'south':
                 return "South";
-                break;
+            case 'south_south_west':
+                return 'South South West';
             case 'south_west':
                 return "South West";
-                break;
+            case 'west_south_west':
+                return 'West South West';
             case 'west':
                 return "West";
-                break;
+            case 'west_north_west':
+                return 'West North West';
             case 'north_west':
                 return "North West";
-                break;
+            case 'north_north_west':
+                return 'North North West';
         }
     }
 
