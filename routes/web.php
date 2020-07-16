@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'ResultController@index');
+Route::get('/', 'RaceController@index');
 
 Route::get('/dropzone', 'DropzoneController@index')->name('dropzone.list');
 Route::get('/dropzone/create', 'DropzoneController@create')->name('dropzone.create');
