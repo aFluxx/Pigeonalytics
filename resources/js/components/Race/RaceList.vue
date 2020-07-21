@@ -60,7 +60,7 @@
             </template>
 
             <template v-slot:item.actions="{ item }">
-                <v-tooltip bottom v-if="authed">
+                <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn
                             :href="'/race/' + item.id + '/edit'"
@@ -91,8 +91,13 @@ export default {
         return {
             racesData: this.races,
             search: "",
-            authed: typeof authed !== "undefined",
-            headers: [
+            authedVue: authed == 1
+        };
+    },
+
+    computed: {
+        headers() {
+            let headers = [
                 {
                     text: "Dropzone",
                     sortable: true,
@@ -137,10 +142,19 @@ export default {
                     text: "Details",
                     sortable: true,
                     value: "race_details"
-                },
-                { text: "", sortable: false, value: "actions" }
-            ]
-        };
+                }
+            ];
+
+            if (this.authedVue) {
+                headers.unshift({
+                    text: "",
+                    sortable: false,
+                    value: "actions"
+                });
+            }
+
+            return headers;
+        }
     },
 
     methods: {

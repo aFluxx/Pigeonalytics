@@ -5,6 +5,22 @@
             <v-spacer></v-spacer>
             <v-text-field v-model="search" append-icon="mdi-magnify" label="Search"></v-text-field>
         </v-card-title>
+        <v-card-title>
+            <v-row align="center">
+                <v-col cols="3">
+                    <v-select
+                        v-model="search"
+                        :items="items"
+                        :clearable="true"
+                        menu-props="auto"
+                        hide-details
+                        label="Filter by wind"
+                        single-line
+                        @input="enteringWindDirection"
+                    ></v-select>
+                </v-col>
+            </v-row>
+        </v-card-title>
         <v-data-table
             :headers="headers"
             :items="resultsData"
@@ -12,6 +28,7 @@
             :single-expand="false"
             :expanded.sync="expanded"
             :footer-props="{'items-per-page-options':[10, 30, 50, 100, -1]}"
+            :show-expand="true"
             item-key="id"
             multi-sort
             class="elevation-1"
@@ -32,7 +49,20 @@
                         <strong>Arrived:</strong>
                         {{ item.arrival_time }}
                     </p>
+
+                    <p class="tw-whitespace-no-wrap text-md">
+                        <strong>Wind:</strong>
+                        {{ item.race.wind_formatted }}
+                    </p>
                 </td>
+            </template>
+
+            <template v-slot:item.race.dropzone.name="{ item }">
+                <span v-text="item.race.dropzone.name"></span>
+                <br />
+                <strong>
+                    <span v-if="filteredOnWindDirection" v-text="item.race.wind_formatted"></span>
+                </strong>
             </template>
 
             <template v-slot:item.race.unloading_time="{ item }">
@@ -214,7 +244,13 @@ export default {
             expanded: [],
             search: "",
             authedVue: authed == 1,
-            resultsData: this.results
+            resultsData: this.results,
+            items: [
+                { text: "North" },
+                { text: "East" },
+                { text: "South" },
+                { text: "West" }
+            ]
         };
     },
 
@@ -283,6 +319,11 @@ export default {
                     text: "Coeff (Nat)",
                     value: "coefficient_national",
                     align: "end"
+                },
+                {
+                    text: "Wind",
+                    value: "race.wind_formatted",
+                    align: " d-none"
                 }
             ];
 
@@ -295,6 +336,16 @@ export default {
             }
 
             return headers;
+        }
+    },
+
+    methods: {
+        enteringWindDirection(e) {
+            if (e) {
+                this.filteredOnWindDirection = true;
+            } else {
+                this.filteredOnWindDirection = false;
+            }
         }
     }
 };
