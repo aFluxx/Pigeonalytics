@@ -13,7 +13,7 @@ class UpdateResultsTableWithDefaultData extends Migration
      */
     public function up()
     {
-        Schema::table('results', function (Bleuprint $table) {
+        Schema::table('results', function ($table) {
             $table->unsignedBigInteger('place_personal')->default(1000000)->change();
 
             $table->unsignedBigInteger('place_club')->default(1000000)->change();
@@ -43,7 +43,7 @@ class UpdateResultsTableWithDefaultData extends Migration
      */
     public function down()
     {
-        Schema::table('results', function (Bleuprint $table) {
+        Schema::table('results', function ($table) {
             $table->unsignedBigInteger('place_personal')->default(0)->change();
 
             $table->unsignedBigInteger('place_club')->default(0)->change();
