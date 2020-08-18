@@ -17,22 +17,22 @@ class UpdateResultsTableWithDefaultData extends Migration
             $table->unsignedBigInteger('place_personal')->default(1000000)->change();
 
             $table->unsignedBigInteger('place_club')->default(1000000)->change();
-            $table->double('coefficient_club')->default(1000000)->change();
+            $table->float('coefficient_club')->default(1000000)->change();
 
             $table->unsignedBigInteger('place_provincial')->default(1000000)->change();
-            $table->double('coefficient_provincial')->default(1000000)->change();
+            $table->float('coefficient_provincial')->default(1000000)->change();
 
             $table->unsignedBigInteger('place_zone')->default(1000000)->change();
-            $table->double('coefficient_zone')->default(1000000)->change();
+            $table->float('coefficient_zone')->default(1000000)->change();
 
             $table->unsignedBigInteger('place_national')->default(1000000)->change();
-            $table->double('coefficient_national')->default(1000000)->change();
+            $table->float('coefficient_national')->default(1000000)->change();
 
             $table->unsignedBigInteger('place_regio')->default(1000000)->change();
-            $table->double('coefficient_regio')->default(1000000)->change();
+            $table->float('coefficient_regio')->default(1000000)->change();
 
             $table->unsignedBigInteger('place_overkoepeling')->default(1000000)->change();
-            $table->double('coefficient_overkoepeling')->default(1000000)->change();
+            $table->float('coefficient_overkoepeling')->default(1000000)->change();
         });
     }
 
@@ -47,22 +47,22 @@ class UpdateResultsTableWithDefaultData extends Migration
             $table->unsignedBigInteger('place_personal')->default(0)->change();
 
             $table->unsignedBigInteger('place_club')->default(0)->change();
-            $table->double('coefficient_club')->default(0)->change();
+            $table->float('coefficient_club')->default(0)->change();
 
             $table->unsignedBigInteger('place_provincial')->default(0)->change();
-            $table->double('coefficient_provincial')->default(0)->change();
+            $table->float('coefficient_provincial')->default(0)->change();
 
             $table->unsignedBigInteger('place_zone')->default(0)->change();
-            $table->double('coefficient_zone')->default(0)->change();
+            $table->float('coefficient_zone')->default(0)->change();
 
             $table->unsignedBigInteger('place_national')->default(0)->change();
-            $table->double('coefficient_national')->default(0)->change();
+            $table->float('coefficient_national')->default(0)->change();
 
             $table->unsignedBigInteger('place_regio')->default(0)->change();
-            $table->double('coefficient_regio')->default(0)->change();
+            $table->float('coefficient_regio')->default(0)->change();
 
             $table->unsignedBigInteger('place_overkoepeling')->default(0)->change();
-            $table->double('coefficient_overkoepeling')->default(0)->change();
+            $table->float('coefficient_overkoepeling')->default(0)->change();
         });
     }
 }
