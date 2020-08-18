@@ -133,6 +133,38 @@
                 >{{ (Math.round(item.coefficient_national * 100) / 100).toFixed(2) }}%</span>
             </template>
 
+            <template v-slot:item.place_regio="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.place_regio && item.place_regio != 1000000"
+                >
+                    <strong>{{ item.place_regio }}</strong>
+                    / {{ item.race.amount_of_pigeons_regio }}
+                </span>
+            </template>
+            <template v-slot:item.coefficient_regio="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.coefficient_regio && item.coefficient_regio != 1000000"
+                >{{ (Math.round(item.coefficient_regio * 100) / 100).toFixed(2) }}%</span>
+            </template>
+
+            <template v-slot:item.place_overkoepeling="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.place_overkoepeling && item.place_overkoepeling != 1000000"
+                >
+                    <strong>{{ item.place_overkoepeling }}</strong>
+                    / {{ item.race.amount_of_pigeons_overkoepeling }}
+                </span>
+            </template>
+            <template v-slot:item.coefficient_overkoepeling="{ item }">
+                <span
+                    class="tw-whitespace-no-wrap"
+                    v-if="item.coefficient_overkoepeling && item.coefficient_overkoepeling != 1000000"
+                >{{ (Math.round(item.coefficient_overkoepeling * 100) / 100).toFixed(2) }}%</span>
+            </template>
+
             <template v-slot:item.actions="{ item }">
                 <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
@@ -166,7 +198,7 @@ export default {
             expanded: [],
             search: "",
             authedVue: authed == 1,
-            resultsData: this.results
+            resultsData: this.results,
         };
     },
 
@@ -176,65 +208,65 @@ export default {
                 {
                     text: "Dropzone",
                     sortable: true,
-                    value: "race.dropzone.name"
+                    value: "race.dropzone.name",
                 },
                 {
                     text: "Released",
                     sortable: true,
-                    value: "race.unloading_time"
+                    value: "race.unloading_time",
                 },
                 {
                     text: "Place (Personal)",
                     sortable: true,
                     value: "place_personal",
-                    align: "end"
+                    align: "end",
                 },
                 {
                     text: "GT",
                     sortable: true,
-                    value: "nominated"
+                    value: "nominated",
                 },
                 { text: "Pigeon", sortable: true, value: "pigeon.ringnumber" },
                 { text: "mpm", value: "mpm", align: "end" },
                 {
                     text: "Place (Club)",
                     value: "place_club",
-                    align: "end"
+                    align: "end",
                 },
                 {
                     text: "Coeff (Club)",
                     value: "coefficient_club",
-                    align: "end"
+                    align: "end",
                 },
                 {
                     text: "Place (Prov)",
                     value: "place_provincial",
-                    align: "end"
+                    align: "end",
                 },
                 {
                     text: "Coeff (Prov)",
                     value: "coefficient_provincial",
-                    align: "end"
+                    align: "end",
                 },
                 {
                     text: "Place (Zone)",
                     value: "place_zone",
-                    align: "end"
+                    align: "end",
                 },
                 {
                     text: "Coeff (Zone)",
                     value: "coefficient_zone",
-                    align: "end"
+                    align: "end",
                 },
                 {
                     text: "Place (Nat)",
                     value: "place_national",
-                    align: "end"
+                    align: "end",
                 },
                 {
                     text: "Coeff (Nat)",
                     value: "coefficient_national",
-                    align: "end"
+                    align: "end",
                 },
 
                 { text: "Place (Regio)", value: "place_regio" },
@@ -242,25 +274,25 @@ export default {
                 { text: "Place (OK)", value: "place_overkoepeling" },
                 {
                     text: "Coeff (OK)",
-                    value: "coefficient_overkoepeling"
+                    value: "coefficient_overkoepeling",
                 },
                 {
                     text: "Type",
                     value: "race.type",
-                    align: " d-none"
-                }
+                    align: " d-none",
+                },
             ];
 
             if (this.authedVue) {
                 headers.unshift({
                     text: "",
                     sortable: false,
-                    value: "actions"
+                    value: "actions",
                 });
             }
 
             return headers;
-        }
-    }
+        },
+    },
 };
 </script>

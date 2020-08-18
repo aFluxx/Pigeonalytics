@@ -10,7 +10,7 @@
                 <v-col cols="3">
                     <v-select
                         v-model="search"
-                        :items="items"
+                        :items="windDirections"
                         :clearable="true"
                         menu-props="auto"
                         hide-details
@@ -245,7 +245,8 @@ export default {
             search: "",
             authedVue: authed == 1,
             resultsData: this.results,
-            items: [
+            filteredOnWindDirection: false,
+            windDirections: [
                 { text: "North" },
                 { text: "East" },
                 { text: "South" },

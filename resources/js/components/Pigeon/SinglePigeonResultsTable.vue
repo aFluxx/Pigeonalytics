@@ -249,6 +249,7 @@ export default {
             search: "",
             authedVue: authed == 1,
             resultsData: this.results,
+            filteredOnWindDirection: false,
             items: [
                 { text: "North" },
                 { text: "East" },
