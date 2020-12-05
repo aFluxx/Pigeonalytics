@@ -78,7 +78,7 @@ export const isAdmin = [
 export const isNotAdmin = [
     {
         title: "Losplaats",
-        action: "mid-upload-multiple",
+        action: "mdi-upload-multiple",
         items: [
             {
                 title: "Alle lostplaatsen",
