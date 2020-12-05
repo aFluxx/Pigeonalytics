@@ -1,24 +1,27 @@
 <template>
     <v-card>
         <v-card-title>
-            <span v-text="'My pigeons'"></span>
+            <span v-text="'Mijn duiven'"></span>
             <v-spacer></v-spacer>
-            <v-text-field v-model="search" append-icon="mdi-magnify" label="Search"></v-text-field>
+            <v-text-field
+                v-model="search"
+                append-icon="mdi-magnify"
+                label="Search"
+            ></v-text-field>
         </v-card-title>
         <v-data-table
             :headers="headers"
             :items="pigeonsData"
             :search="search"
-            :footer-props="{'items-per-page-options':[10, 30, 50, 100, -1]}"
-            :pagination.sync="pagination"
+            :footer-props="{ 'items-per-page-options': [10, 30, 50, 100, -1] }"
             multi-sort
             class="elevation-1"
         >
-            <template v-slot:item.ringnumber="{ item }">
+            <template v-slot:[`item.ringnumber`]="{ item }">
                 <a :href="'/pigeon/' + item.id">{{ item.ringnumber }}</a>
             </template>
 
-            <template v-slot:item.results_count="{ item }">
+            <template v-slot:[`item.results_count`]="{ item }">
                 <span v-text="item.results_count"></span>
             </template>
         </v-data-table>
@@ -37,15 +40,15 @@ export default {
                 {
                     text: "Ringnumber",
                     sortable: true,
-                    value: "ringnumber"
+                    value: "ringnumber",
                 },
                 {
                     text: "Amount Result Logged",
                     sortable: true,
-                    value: "results_count"
-                }
-            ]
+                    value: "results_count",
+                },
+            ],
         };
-    }
+    },
 };
 </script>

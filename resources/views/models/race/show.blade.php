@@ -5,33 +5,34 @@
 @endsection
 
 @section('content')
-<div class="tw-flex tw-justify-between">
-    <h2 class="tw-font-bold tw-text-2xl tw-mb-2 tw-text-2xl tw-mb-1">
+<div class="tw-flex tw-justify-between p-4">
+    <h2 class="tw-font-bold tw-text-2xl tw-mb-1">
         {{ $race->dropzone->name }} ({{ $race->category_formatted }})
     </h2>
-    <h2 class="tw-font-bold tw-text-2xl tw-mb-2 tw-text-xl tw-mb-1">
-        Date: {{ Carbon\Carbon::parse($race->unloading_time)->format('Y-m-d') }}
+    <h2 class="tw-font-bold tw-text-xl tw-mb-1">
+        Datum: {{ Carbon\Carbon::parse($race->unloading_time)->format('Y-m-d') }}
     </h2>
-    <h2 class="tw-font-bold tw-text-2xl tw-mb-2 tw-text-xl tw-mb-3">
-        Unloading time: {{ Carbon\Carbon::parse($race->unloading_time)->format('H:i:s') }}
+    <h2 class="tw-font-bold tw-text-xl tw-mb-3">
+        Lossingsuur: {{ Carbon\Carbon::parse($race->unloading_time)->format('H:i:s') }}
     </h2>
 </div>
-<div class="tw-flex tw-justify-between">
+
+<div class="tw-flex tw-justify-between p-4">
     <p><strong>Wind:</strong> {{ $race->wind_formatted }}</p>
-    <p><strong>Wind Strength:</strong> {{ $race->wind_strength_formatted }}</p>
-    <p><strong>Overcast:</strong> {{ $race->overcast_formatted }}</p>
-    <p><strong>Rainfall:</strong> {{ $race->rainfall_formatted }}</p>
-    <p><strong>Year:</strong> {{ $race->year }}</p>
+    <p><strong>Windkracht:</strong> {{ $race->wind_strength_formatted }}</p>
+    <p><strong>Bewolking:</strong> {{ $race->overcast_formatted }}</p>
+    <p><strong>Regen:</strong> {{ $race->rainfall_formatted }}</p>
+    <p><strong>Jaar:</strong> {{ $race->year }}</p>
     <p><strong>Type:</strong> {{ $race->type_formatted }}</p>
 </div>
-@if($race->amount_of_pigeons_regio === 1000000 || $race->amount_of_pigeons_regio === null)
-<race-results-fon :results="{{ $race->results }}"></race-results-fon>
-@else
-<race-results-hfo :results="{{ $race->results }}"></race-results-hfo>
-@endif
 
-@auth
-<a href="{{ route('race.close', $race->id) }}">Close race</a>
-@endauth
+<results-table type="race" discipline="{{ $race->dropzone->discipline }}" :results="{{ $race->results }}">
+</results-table>
+
+<div class="tw-flex tw-justify-between p-4">
+    @auth
+    <a href="{{ route('race.close', $race->id) }}">Race afsluiten</a>
+    @endauth
+</div>
 
 @endsection

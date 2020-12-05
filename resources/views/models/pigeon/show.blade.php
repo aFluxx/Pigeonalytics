@@ -5,9 +5,8 @@
 @endsection
 
 @section('content')
-<results-hfo :pigeon="{{ $pigeon }}" :results="{{ $resultsVit }}"></results-hfo>
-<hr class="tw-my-12" />
-<results-fon :pigeon="{{ $pigeon }}" :results="{{ $resultsFon }}"></results-fon>
-<hr class="tw-my-12" />
-<single-pigeon-results-table :pigeon="{{ $pigeon }}" :results="{{ $results }}"></single-pigeon-results-table>
+<pigeon-overview :pigeon="{{ $pigeon }}" :results-vitesse="{{ $resultsVitesse }}"
+    :results-halve-fond="{{ $resultsHalveFond }}" :results-kleine-fond="{{ $resultsKleineFond }}"
+    :results-fond="{{ $resultsFond }}" :results-grote-fond="{{ $resultsGroteFond }}" :all-results="{{ $allResults }}">
+</pigeon-overview>
 @endsection

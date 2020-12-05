@@ -15,7 +15,11 @@
                 <v-icon left>mdi-close-circle</v-icon>Cancel search
             </v-btn>
             <v-spacer></v-spacer>
-            <v-text-field v-model="search" append-icon="mdi-magnify" label="Search"></v-text-field>
+            <v-text-field
+                v-model="search"
+                append-icon="mdi-magnify"
+                label="Search"
+            ></v-text-field>
         </v-card-title>
         <v-data-table
             :headers="headers"
@@ -23,7 +27,7 @@
             :search="search"
             :sort-by="['unloading_time']"
             :sort-desc="true"
-            :footer-props="{'items-per-page-options':[10, 30, 50, 100, -1]}"
+            :footer-props="{ 'items-per-page-options': [10, 30, 50, 100, -1] }"
             multi-sort
             class="elevation-1"
         >
@@ -32,30 +36,37 @@
                     @click="search = item.dropzone.name"
                     class="ma-2"
                     label
-                >{{ item.dropzone.name }}</v-chip>
+                    >{{ item.dropzone.name }}</v-chip
+                >
             </template>
             <template v-slot:item.unloading_time="{ item }">
                 <span>
-                    {{ moment(item.unloading_time).format('DD MMM YYYY') }}
+                    {{ moment(item.unloading_time).format("DD MMM YYYY") }}
                     <br />
-                    <strong>{{ moment(item.unloading_time).format('HH:mm:ss') }}</strong>
+                    <strong>{{
+                        moment(item.unloading_time).format("HH:mm:ss")
+                    }}</strong>
                 </span>
             </template>
             <template v-slot:item.category_formatted="{ item }">
                 <v-chip
                     @click="search = item.category_formatted"
                     :color="getColorCategory(item.category_formatted)"
-                >{{ item.category_formatted }}</v-chip>
+                    >{{ item.category_formatted }}</v-chip
+                >
             </template>
             <template v-slot:item.type_formatted="{ item }">
                 <v-chip
                     @click="search = item.type_formatted"
                     :color="getColorType(item.type_formatted)"
-                >{{ item.type_formatted }}</v-chip>
+                    >{{ item.type_formatted }}</v-chip
+                >
             </template>
             <template v-slot:item.race_details="{ item }">
                 <div class="my-2">
-                    <v-btn small :href="'/race/' + item.id" color="primary">Race details</v-btn>
+                    <v-btn small :href="'/race/' + item.id" color="primary"
+                        >Race details</v-btn
+                    >
                 </div>
             </template>
 
@@ -64,7 +75,6 @@
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn
                             :href="'/race/' + item.id + '/edit'"
-                            target="_blank"
                             class="mx-2"
                             fab
                             x-small
@@ -91,7 +101,7 @@ export default {
         return {
             racesData: this.races,
             search: "",
-            authedVue: authed == 1
+            authedVue: authed == 1,
         };
     },
 
@@ -101,60 +111,60 @@ export default {
                 {
                     text: "Dropzone",
                     sortable: true,
-                    value: "dropzone.name"
+                    value: "dropzone.name",
                 },
                 {
                     text: "Released",
                     sortable: true,
-                    value: "unloading_time"
+                    value: "unloading_time",
                 },
                 {
                     text: "Category",
                     sortable: true,
-                    value: "category_formatted"
+                    value: "category_formatted",
                 },
                 {
                     text: "# Pigeons",
                     sortable: true,
-                    value: "amount_of_pigeons_personal"
+                    value: "amount_of_pigeons_personal",
                 },
                 {
                     text: "Wind Strength",
                     sortable: true,
-                    value: "wind_strength_formatted"
+                    value: "wind_strength_formatted",
                 },
                 {
                     text: "Wind",
                     sortable: true,
-                    value: "wind_formatted"
+                    value: "wind_formatted",
                 },
                 {
                     text: "Overcast",
                     sortable: true,
-                    value: "overcast_formatted"
+                    value: "overcast_formatted",
                 },
                 {
                     text: "Rainfall",
                     sortable: true,
-                    value: "rainfall_formatted"
+                    value: "rainfall_formatted",
                 },
                 {
                     text: "Details",
                     sortable: true,
-                    value: "race_details"
-                }
+                    value: "race_details",
+                },
             ];
 
             if (this.authedVue) {
                 headers.unshift({
                     text: "",
                     sortable: false,
-                    value: "actions"
+                    value: "actions",
                 });
             }
 
             return headers;
-        }
+        },
     },
 
     methods: {
@@ -170,7 +180,7 @@ export default {
         getColorType(type) {
             if (type == "Competition") return "green lighten-3";
             else if (type == "Training") return "pink lighten-4";
-        }
-    }
+        },
+    },
 };
 </script>

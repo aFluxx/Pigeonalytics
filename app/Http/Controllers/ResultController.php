@@ -11,17 +11,12 @@ class ResultController extends Controller
     public function index()
     {
         return view('models/result/index')->with([
-            'results' => Result::with(['race', 'race.dropzone', 'pigeon'])->get(),
-
-            'resultsVit' => Result::with(['race', 'race.dropzone', 'pigeon'])
-                ->whereHas('race.dropzone', function ($query) {
-                    $query->whereIn('discipline', ['vit', 'hfo']);
-                })->get(),
-
-            'resultsFon' => Result::with(['race', 'race.dropzone', 'pigeon'])
-                ->whereHas('race.dropzone', function ($query) {
-                    $query->whereIn('discipline', ['kle', 'fon', 'gfo']);
-                })->get(),
+            'resultsVitesse'    => $this->getResultFor('vit'),
+            'resultsHalveFond'  => $this->getResultFor('hfo'),
+            'resultsKleineFond' => $this->getResultFor('kle'),
+            'resultsFond'       => $this->getResultFor('fon'),
+            'resultsGroteFond'  => $this->getResultFor('gfo'),
+            // 'allResults'        => Result::with(['race', 'race.dropzone', 'pigeon'])->get(),
         ]);
     }
 
@@ -82,5 +77,13 @@ class ResultController extends Controller
             'result' => $result,
             'races' => Race::with(['dropzone'])->orderBy('unloading_time', 'DESC')->get(),
         ]);
+    }
+
+    private function getResultFor($discipline)
+    {
+        return Result::with(['race', 'race.dropzone', 'pigeon'])
+            ->whereHas('race.dropzone', function ($query) use ($discipline) {
+                $query->whereIn('discipline', [$discipline]);
+            })->get();
     }
 }

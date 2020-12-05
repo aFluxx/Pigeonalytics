@@ -1,11 +1,11 @@
 @extends('app')
 
 @section('title')
-Edit result
+Resultaat bewerken
 @endsection
 
 @section('content')
-<h2 class="tw-font-bold tw-text-2xl tw-mb-2">Edit result</h2>
+<h2 class="tw-font-bold tw-text-2xl tw-mb-2">Resultaat bewerken</h2>
 
 <form action="{{ route('result.update', $result->id) }}" enctype="multipart/form-data" method="POST" class="tw-w-full">
     @if($message ?? '')
@@ -15,7 +15,7 @@ Edit result
 
     <div class="tw-flex">
         <div class="tw-w-1/2 tw-pr-2">
-            <label for="result_race" class="tw-label">Choose race:</label>
+            <label for="result_race" class="tw-label">Kies race:</label>
             <select name="result_race" id="result_race" class="tw-input">
                 @foreach($races as $race)
                 <option value="{{ $race->id }}" {{($race->id === $result->race->id) ? 'selected' : '' }}>
@@ -24,7 +24,7 @@ Edit result
                 @endforeach
             </select>
 
-            <label for="result_place_personal" class="tw-label">Place (Personal):</label>
+            <label for="result_place_personal" class="tw-label">Plaats (Persoonlijk):</label>
             @if($result->place_personal === 1000000)
             <input type="number" name="result_place_personal" id="result_place_personal" class="tw-input"
                 value="{{ old('result_place_personal') }}">
@@ -33,15 +33,15 @@ Edit result
                 value="{{ old('result_place_personal', $result->place_personal) }}">
             @endif
 
-            <label for="result_ringnumber" class="tw-label">Ringnumber:</label>
+            <label for="result_ringnumber" class="tw-label">Ringnummer:</label>
             <input type="text" name="result_ringnumber" id="result_ringnumber" class="tw-input"
                 value="{{ old('result_ringnumber', $result->pigeon->ringnumber) }}" disabled>
 
-            <label for="result_arrival_time" class="tw-label">Arrival time:</label>
+            <label for="result_arrival_time" class="tw-label">Aankomstuur:</label>
             <input type="datetime-local" name="result_arrival_time" id="result_arrival_time" step="1" class="tw-input"
                 value="{{ old('result_arrival_time', \Carbon\Carbon::parse($result->arrival_time)->toDateTimeLocalString()) }}">
 
-            <label for="result_nominated" class="tw-label">Nominated (GT):</label>
+            <label for="result_nominated" class="tw-label">Getekende:</label>
             <input type="number" name="result_nominated" id="result_nominated" class="tw-input"
                 value="{{ old('result_nominated', $result->nominated) }}">
         </div>
@@ -49,7 +49,7 @@ Edit result
         @if(in_array($result->race->dropzone->discipline, ['gfo', 'fon', 'kle']))
         <div class="tw-flex tw-w-1/2 tw-pl-2">
             <div class="tw-w-1/2">
-                <label for="result_place_club" class="tw-label">Place (Club):</label>
+                <label for="result_place_club" class="tw-label">Plaats (Club):</label>
                 @if($result->place_club === 1000000)
                 <input type="number" name="result_place_club" id="result_place_club" class="tw-input"
                     value="{{ old('result_place_club') }}">
@@ -58,7 +58,7 @@ Edit result
                     value="{{ old('result_place_club', $result->place_club) }}">
                 @endif
 
-                <label for="result_place_provincial" class="tw-label">Place (Provincial):</label>
+                <label for="result_place_provincial" class="tw-label">Plaats (Provinciaal):</label>
                 @if($result->place_provincial === 1000000)
                 <input type="number" name="result_place_provincial" id="result_place_provincial" class="tw-input"
                     value="{{ old('result_place_provincial') }}">
@@ -69,7 +69,7 @@ Edit result
             </div>
 
             <div>
-                <label for="result_place_zone" class="tw-label">Place (Zone):</label>
+                <label for="result_place_zone" class="tw-label">Plaats (Zone):</label>
                 @if($result->place_zone === 1000000)
                 <input type="number" name="result_place_zone" id="result_place_zone" class="tw-input"
                     value="{{ old('result_place_zone') }}">
@@ -78,7 +78,7 @@ Edit result
                     value="{{ old('result_place_zone', $result->place_zone) }}">
                 @endif
 
-                <label for="result_place_national" class="tw-label">Place (National):</label>
+                <label for="result_place_national" class="tw-label">Plaats (Nationaal):</label>
                 @if($result->place_national === 1000000)
                 <input type="number" name="result_place_national" id="result_place_national" class="tw-input"
                     value="{{ old('result_place_national') }}">
@@ -93,7 +93,7 @@ Edit result
         @if(in_array($result->race->dropzone->discipline, ['vit', 'hfo']))
         <div class="tw-flex tw-w-1/2 tw-pl-2">
             <div class="tw-w-1/2">
-                <label for="result_place_regio" class="tw-label">Place (Regio):</label>
+                <label for="result_place_regio" class="tw-label">Plaats (Regio):</label>
                 @if($result->place_regio === 1000000)
                 <input type="number" name="result_place_regio" id="result_place_regio" class="tw-input"
                     value="{{ old('result_place_regio') }}">
@@ -104,7 +104,7 @@ Edit result
             </div>
 
             <div>
-                <label for="result_place_overkoepeling" class="tw-label">Place (Overkoepeling):</label>
+                <label for="result_place_overkoepeling" class="tw-label">Plaats (Overkoepeling):</label>
                 @if($result->place_overkoepeling === 1000000)
                 <input type="number" name="result_place_overkoepeling" id="result_place_overkoepeling" class="tw-input"
                     value="{{ old('result_place_overkoepeling') }}">

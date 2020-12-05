@@ -5,24 +5,23 @@ import vuetify from './plugins/vuetify';
 import moment from 'moment';
 Vue.prototype.moment = moment;
 
+// Navigation
+Vue.component('navigation-drawer', require('./components/Navigation/NavigationDrawer.vue').default);
+
 // Dropzone
 Vue.component('dropzone-list', require('./components/Dropzone/DropzoneList.vue').default);
 
 // Race
 Vue.component('race-list', require('./components/Race/RaceList.vue').default);
-Vue.component('race-results-hfo', require('./components/Race/RaceResultsHfo.vue').default);
-Vue.component('race-results-fon', require('./components/Race/RaceResultsFon.vue').default);
 
 // Result
-Vue.component('all-results-data-table', require('./components/Result/AllResultsDataTable.vue').default);
-Vue.component('all-results-hfo', require('./components/Result/AllResultsHfo.vue').default);
-Vue.component('all-results-fon', require('./components/Result/AllResultsFOn.vue').default);
+Vue.component('result-overview', require('./components/Result/ResultOverview.vue').default);
+Vue.component('results-table', require('./components/Result/ResultsTable.vue').default);
 
 // Pigeon
 Vue.component('pigeon-list', require('./components/Pigeon/PigeonList.vue').default);
-Vue.component('single-pigeon-results-table', require('./components/Pigeon/SinglePigeonResultsTable.vue').default);
-Vue.component('results-hfo', require('./components/Pigeon/ResultsHfo.vue').default);
-Vue.component('results-fon', require('./components/Pigeon/ResultsFon.vue').default);
+Vue.component('pigeon-overview', require('./components/Pigeon/PigeonOverview.vue').default);
+Vue.component('pigeon-search', require('./components/Pigeon/PigeonSearch.vue').default);
 
 // Varia
 Vue.component('average-year-mpm', require('./components/Rapport/AverageYearMpm.vue').default);

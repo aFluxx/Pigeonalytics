@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-My Races
+Mijn races
 @endsection
 
 @section('content')

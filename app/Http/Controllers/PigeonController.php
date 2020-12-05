@@ -15,9 +15,12 @@ class PigeonController extends Controller
     {
         return view('models/pigeon/show')->with([
             'pigeon' => $pigeon,
-            'resultsVit' => $pigeon->resultsVit,
-            'resultsFon' => $pigeon->resultsFon,
-            'results' => $pigeon->results,
+            'resultsVitesse' => $pigeon->resultsVitesse,
+            'resultsHalveFond' => $pigeon->resultsHalveFond,
+            'resultsKleineFond' => $pigeon->resultsKleineFond,
+            'resultsFond' => $pigeon->resultsFond,
+            'resultsGroteFond' => $pigeon->resultsGroteFond,
+            'allResults' => $pigeon->results,
         ]);
     }
 }

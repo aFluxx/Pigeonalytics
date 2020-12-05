@@ -15,30 +15,33 @@
                 <v-icon left>mdi-close-circle</v-icon>Cancel search
             </v-btn>
             <v-spacer></v-spacer>
-            <v-text-field v-model="search" append-icon="mdi-magnify" label="Search"></v-text-field>
+            <v-text-field
+                v-model="search"
+                append-icon="mdi-magnify"
+                label="Search"
+            ></v-text-field>
         </v-card-title>
         <v-data-table
             :headers="headers"
             :items="resultsData"
             :search="search"
             :sort-desc="true"
-            :footer-props="{'items-per-page-options':[10, 30, 50, 100, -1]}"
+            :footer-props="{ 'items-per-page-options': [10, 30, 50, 100, -1] }"
             multi-sort
             class="elevation-1"
         >
             <template v-slot:item.ringnumber="{ item }">
                 <a
-                    target="_blank"
                     :href="'/pigeon/' + item.pigeon_id"
                     class="tw-whitespace-no-wrap"
-                >{{ item.ringnumber }}</a>
+                    >{{ item.ringnumber }}</a
+                >
             </template>
 
             <template v-slot:item.average="{ item }">
-                <span
-                    class="tw-whitespace-no-wrap"
-                    v-if="item.average"
-                >{{ (Math.round(item.average * 100) / 100).toFixed(3) }}</span>
+                <span class="tw-whitespace-no-wrap" v-if="item.average">{{
+                    (Math.round(item.average * 100) / 100).toFixed(3)
+                }}</span>
             </template>
         </v-data-table>
     </v-card>
@@ -56,20 +59,20 @@ export default {
                 {
                     text: "Pigeon",
                     sortable: true,
-                    value: "ringnumber"
+                    value: "ringnumber",
                 },
                 {
                     text: "Average MPM",
                     sortable: true,
-                    value: "average"
+                    value: "average",
                 },
                 {
                     text: "Amount of races",
                     sortable: true,
-                    value: "count"
-                }
-            ]
+                    value: "count",
+                },
+            ],
         };
-    }
+    },
 };
 </script>
