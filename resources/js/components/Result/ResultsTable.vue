@@ -391,11 +391,13 @@ export default {
             let headers = this.figureOutHeaders();
 
             if (this.authedVue) {
-                headers.unshift({
-                    text: "",
-                    sortable: false,
-                    value: "actions",
-                });
+                if (!headers.find((header) => header["value"] === "actions")) {
+                    headers.unshift({
+                        text: "",
+                        sortable: false,
+                        value: "actions",
+                    });
+                }
             }
 
             return headers;

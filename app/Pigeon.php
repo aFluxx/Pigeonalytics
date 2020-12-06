@@ -46,7 +46,7 @@ class Pigeon extends Model
         return $this->hasMany(Result::class)
             ->with('race', 'race.dropzone')
             ->whereHas('race.dropzone', function ($query) {
-                $query->whereIn('discipline', ['fon', 'gfo']);
+                $query->whereIn('discipline', ['fon']);
             });
     }
 

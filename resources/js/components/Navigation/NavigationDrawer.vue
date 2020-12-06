@@ -6,7 +6,6 @@
                     <v-btn
                         v-if="!authed"
                         depressed
-                        @click="clickEvent"
                         class="primary"
                         href="/login"
                         v-text="'Inloggen'"
