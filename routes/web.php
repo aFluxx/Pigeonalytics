@@ -43,3 +43,6 @@ Route::get('/api/dropzone/{dropzone}/get-discipline', 'DropzoneApiController@get
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/import/compu', 'ImportController@showImportPage')->name('import.compu');
+Route::get('/import/compu/handle', 'ImportController@handleImportCompu')->name('import.compu.handle');

@@ -15,8 +15,16 @@ class CreatePigeonsTable extends Migration
     {
         Schema::create('pigeons', function (Blueprint $table) {
             $table->id();
+
             $table->string('ringnumber');
+
+            $table->string('ringnumber_father')->nullable();
+            $table->unsignedBigInteger('father_id')->nullable();
+            $table->string('ringnumber_mother')->nullable();
+            $table->unsignedBigInteger('mother_id')->nullable();
+
             $table->string('gender');
+
             $table->timestamps();
         });
     }
