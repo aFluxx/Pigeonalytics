@@ -15,7 +15,9 @@ class AddParentsController extends Controller
         })->orWhere(function ($query) {
             $query->where('ringnumber_father', null)
                 ->where('year', '>=', 2018);
-        })->get();
+        })
+            ->orderBy('ringnumber', 'ASC')
+            ->get();
 
         return view('models.pigeon.add-parents.index')->with('pigeons', $pigeons);
     }
