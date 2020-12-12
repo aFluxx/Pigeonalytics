@@ -71,6 +71,16 @@ export const isAdmin = [
                 href: route("rapport.average-year-mpm"),
                 authed: false,
             },
+            {
+                title: "Beste kwekers",
+                href: route("best-breeders.index"),
+                authed: false,
+            },
+            {
+                title: "Ouders toevoegen",
+                href: route("add-parents.index"),
+                authed: true,
+            },
         ],
     },
 ];
@@ -122,6 +132,16 @@ export const isNotAdmin = [
                 title: "Gemiddelde jaarlijkse snelheid",
                 href: route("rapport.average-year-mpm"),
                 authed: false,
+            },
+            {
+                title: "Beste kwekers",
+                href: route("best-breeders.index"),
+                authed: false,
+            },
+            {
+                title: "Ouders toevoegen",
+                href: route("add-parents.index"),
+                authed: true,
             },
         ],
     },

@@ -6,6 +6,7 @@
             <v-tab>Kleine Fond</v-tab>
             <v-tab>Fond</v-tab>
             <v-tab>Grote Fond</v-tab>
+            <v-tab>Kinderen</v-tab>
         </v-tabs>
 
         <v-tabs-items v-model="tab">
@@ -17,6 +18,7 @@
                     :results="resultsVitesse"
                 ></results-table>
             </v-tab-item>
+
             <v-tab-item>
                 <results-table
                     type="pigeon"
@@ -25,6 +27,7 @@
                     :results="resultsHalveFond"
                 ></results-table>
             </v-tab-item>
+
             <v-tab-item>
                 <results-table
                     type="pigeon"
@@ -33,6 +36,7 @@
                     :results="resultsKleineFond"
                 ></results-table>
             </v-tab-item>
+
             <v-tab-item>
                 <results-table
                     type="pigeon"
@@ -41,6 +45,7 @@
                     :results="resultsFond"
                 ></results-table>
             </v-tab-item>
+
             <v-tab-item>
                 <results-table
                     type="pigeon"
@@ -49,13 +54,17 @@
                     :results="resultsGroteFond"
                 ></results-table>
             </v-tab-item>
+
             <v-tab-item>
-                <results-table
-                    type="pigeon"
-                    discipline="all"
-                    :pigeon="pigeon"
-                    :results="allResults"
-                ></results-table>
+                <v-list-item v-for="(child, i) in children" :key="i">
+                    <v-list-item-content>
+                        <v-list-item-title>
+                            <a :href="`/pigeon/` + child.id">
+                                {{ child.ringnumber }}
+                            </a>
+                        </v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
             </v-tab-item>
         </v-tabs-items>
     </v-card>
@@ -73,6 +82,7 @@ export default {
         "resultsFond",
         "resultsGroteFond",
         "allResults",
+        "children",
     ],
 
     components: {

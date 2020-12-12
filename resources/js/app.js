@@ -22,6 +22,9 @@ Vue.component('results-table', require('./components/Result/ResultsTable.vue').d
 Vue.component('pigeon-list', require('./components/Pigeon/PigeonList.vue').default);
 Vue.component('pigeon-overview', require('./components/Pigeon/PigeonOverview.vue').default);
 Vue.component('pigeon-search', require('./components/Pigeon/PigeonSearch.vue').default);
+Vue.component('best-breeders', require('./components/Pigeon/BestBreeders.vue').default);
+Vue.component('add-parents', require('./components/Pigeon/AddParents.vue').default);
+Vue.component('parent-select', require('./components/Pigeon/ParentSelect.vue').default);
 
 // Varia
 Vue.component('average-year-mpm', require('./components/Rapport/AverageYearMpm.vue').default);

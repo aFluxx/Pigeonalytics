@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePigeonsTable extends Migration
+class UpdatePigeonsTableWithYearColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreatePigeonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pigeons', function (Blueprint $table) {
-            $table->id();
-            $table->string('ringnumber');
-            $table->string('gender');
-            $table->timestamps();
+        Schema::table('pigeons', function (Blueprint $table) {
+            $table->unsignedBigInteger('year')->nullable();
         });
     }
 
@@ -28,6 +25,6 @@ class CreatePigeonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pigeons');
+        //
     }
 }

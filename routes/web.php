@@ -44,5 +44,13 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/import/compu', 'ImportController@showImportPage')->name('import.compu');
-Route::get('/import/compu/handle', 'ImportController@handleImportCompu')->name('import.compu.handle');
+Route::get('/import/compu', 'ImportController@index')->name('import.compu');
+Route::get('/import/compu/handle', 'ImportController@handle')->name('import.compu.handle');
+
+
+Route::get('/best-breeders', 'BestBreedersController@index')->name('best-breeders.index');
+Route::get('/best-breeders/show', 'BestBreedersController@show')->name('best-breeders.show');
+
+Route::get('/add-parents', 'AddParentsController@index')->name('add-parents.index');
+Route::get('/add-parents/pigeon/{pigeon}', 'AddParentsController@edit')->name('add-parents.edit');
+Route::post('/add-parents/pigeon/{pigeon}', 'AddParentsController@store')->name('add-parents.store');

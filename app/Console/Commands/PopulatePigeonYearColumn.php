@@ -2,26 +2,25 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\ImportController;
+use App\Pigeon;
+use DateTime;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
-use ParseCsv\Csv;
 
-class ImportCompu extends Command
+class PopulatePigeonYearColumn extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'import:compu {path}';
+    protected $signature = 'populate:year';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Import pigeons from compuclub';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -40,6 +39,15 @@ class ImportCompu extends Command
      */
     public function handle()
     {
-        (new ImportController())->handle($this->argument('path'));
+        $pigeons = Pigeon::all();
+
+        foreach ($pigeons as $pigeon) {
+            if ($pigeon->ringnumber) {
+                $subbedYear = substr($pigeon->ringnumber, 3, 2);
+                $year = DateTime::createFromFormat('y', $subbedYear);
+                $pigeon->year = $year->format('Y');
+                $pigeon->save();
+            }
+        }
     }
 }
