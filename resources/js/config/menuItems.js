@@ -6,12 +6,10 @@ export const isAdmin = [
             {
                 title: "Alle losplaatsen",
                 href: route("dropzone.list"),
-                authed: false,
             },
             {
                 title: "Losplaats aanmaken",
                 href: route("dropzone.create"),
-                authed: true,
             },
         ],
     },
@@ -22,12 +20,10 @@ export const isAdmin = [
             {
                 title: "Alle races",
                 href: route("race.list"),
-                authed: false,
             },
             {
                 title: "Race aanmaken",
                 href: route("race.create"),
-                authed: true,
             },
         ],
     },
@@ -38,22 +34,18 @@ export const isAdmin = [
             {
                 title: "Alle resultaten",
                 href: route("result.list"),
-                authed: false,
             },
             {
                 title: "Resultaat aanmaken (manueel)",
                 href: route("result.create.manual"),
-                authed: true,
             },
             {
                 title: "Resultaat aanmaken (upload)",
                 href: route("result.create.upload"),
-                authed: true,
             },
             {
                 title: "Resultaat aanmaken (KBDB)",
                 href: route("result.create.kbdb"),
-                authed: true,
             },
         ],
     },
@@ -64,22 +56,18 @@ export const isAdmin = [
             {
                 title: "Alle duiven",
                 href: route("pigeon.list"),
-                authed: false,
             },
             {
                 title: "Gemiddelde jaarlijkse snelheid",
                 href: route("rapport.average-year-mpm"),
-                authed: false,
             },
             {
                 title: "Beste kwekers",
                 href: route("best-breeders.index"),
-                authed: false,
             },
             {
                 title: "Ouders toevoegen",
                 href: route("add-parents.index"),
-                authed: true,
             },
         ],
     },
@@ -93,7 +81,6 @@ export const isNotAdmin = [
             {
                 title: "Alle lostplaatsen",
                 href: route("dropzone.list"),
-                authed: false,
             },
         ],
     },
@@ -104,7 +91,6 @@ export const isNotAdmin = [
             {
                 title: "Alle races",
                 href: route("race.list"),
-                authed: false,
             },
         ],
     },
@@ -115,7 +101,6 @@ export const isNotAdmin = [
             {
                 title: "Alle resultaten",
                 href: route("result.list"),
-                authed: false,
             },
         ],
     },
@@ -126,22 +111,14 @@ export const isNotAdmin = [
             {
                 title: "Alle duiven",
                 href: route("pigeon.list"),
-                authed: false,
             },
             {
                 title: "Gemiddelde jaarlijkse snelheid",
                 href: route("rapport.average-year-mpm"),
-                authed: false,
             },
             {
                 title: "Beste kwekers",
                 href: route("best-breeders.index"),
-                authed: false,
-            },
-            {
-                title: "Ouders toevoegen",
-                href: route("add-parents.index"),
-                authed: true,
             },
         ],
     },

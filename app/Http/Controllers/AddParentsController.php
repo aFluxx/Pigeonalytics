@@ -9,7 +9,13 @@ class AddParentsController extends Controller
 {
     public function index()
     {
-        $pigeons = Pigeon::where('ringnumber_father', null)->orWhere('ringnumber_mother', null)->get();
+        $pigeons = Pigeon::where(function ($query) {
+            $query->where('ringnumber_father', null)
+                ->where('year', '>=', 2018);
+        })->orWhere(function ($query) {
+            $query->where('ringnumber_father', null)
+                ->where('year', '>=', 2018);
+        })->get();
 
         return view('models.pigeon.add-parents.index')->with('pigeons', $pigeons);
     }
