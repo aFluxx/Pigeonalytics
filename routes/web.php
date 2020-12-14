@@ -54,3 +54,5 @@ Route::get('/best-breeders/show', 'BestBreedersController@show')->name('best-bre
 Route::get('/add-parents', 'AddParentsController@index')->name('add-parents.index');
 Route::get('/add-parents/pigeon/{pigeon}', 'AddParentsController@edit')->name('add-parents.edit');
 Route::post('/add-parents/pigeon/{pigeon}', 'AddParentsController@store')->name('add-parents.store');
+
+Route::get('/best-wind', 'BestWindController@index')->name('best-wind.index');

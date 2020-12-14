@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Pigeon;
+use App\Race;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,7 +20,7 @@ class Result extends Model
 
     public function race()
     {
-        return $this->belongsTo(Race::class);
+        return $this->belongsTo(Race::class, 'race_id', 'id');
     }
 
     public function pigeon()

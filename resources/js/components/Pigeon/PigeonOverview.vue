@@ -82,7 +82,8 @@ export default {
         "resultsFond",
         "resultsGroteFond",
         "allResults",
-        "children",
+        "childrenFather",
+        "childrenMother",
     ],
 
     components: {
@@ -93,6 +94,12 @@ export default {
         return {
             tab: null,
         };
+    },
+
+    computed: {
+        children() {
+            return this.childrenFather.concat(this.childrenMother);
+        },
     },
 };
 </script>

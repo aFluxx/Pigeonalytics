@@ -24,6 +24,16 @@ class Pigeon extends Model
         return $this->hasOne(self::class, 'id', 'mother_id');
     }
 
+    public function fatherChildren()
+    {
+        return $this->hasMany(Pigeon::class, 'father_id');
+    }
+
+    public function motherChildren()
+    {
+        return $this->hasMany(Pigeon::class, 'mother_id');
+    }
+
     public function resultsVitesse()
     {
         return $this->hasMany(Result::class)
@@ -67,19 +77,5 @@ class Pigeon extends Model
             ->whereHas('race.dropzone', function ($query) {
                 $query->whereIn('discipline', ['gfo']);
             });
-    }
-
-    public function children()
-    {
-        return $this->hasMany(Pigeon::class, $this->buildGenderForChildrenRelation() . '_id');
-    }
-
-    public function buildGenderForChildrenRelation()
-    {
-        if ($this->gender === 'm') {
-            return 'father';
-        } else if ($this->gender === 'f') {
-            return 'mother';
-        }
     }
 }

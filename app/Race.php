@@ -20,7 +20,14 @@ class Race extends Model
      *
      * @var array
      */
-    protected $appends = ['wind_formatted', 'wind_strength_formatted', 'overcast_formatted', 'rainfall_formatted', 'type_formatted', 'category_formatted'];
+    protected $appends = [
+        'wind_formatted',
+        'wind_strength_formatted',
+        'overcast_formatted',
+        'rainfall_formatted',
+        'type_formatted',
+        'category_formatted'
+    ];
 
     protected $guarded = [];
 
