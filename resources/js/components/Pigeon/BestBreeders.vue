@@ -39,7 +39,7 @@
                     </tr>
                     <tr v-for="(result, i) in item.results" :key="i">
                         <td>
-                            <a :href="result.pigeon.id">
+                            <a :href="'/pigeon/' + result.pigeon.id">
                                 {{ result.pigeon.ringnumber }}
                             </a>
                         </td>
@@ -50,7 +50,13 @@
                             {{ result.race.amount_of_pigeons_national }}
                         </td>
                         <td>
-                            {{ result.coefficient_national }}
+                            {{
+                                Math.round(
+                                    (result.coefficient_national +
+                                        Number.EPSILON) *
+                                        100
+                                ) / 100
+                            }}
                         </td>
                         <td>
                             {{ result.race.id }}
