@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Result;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class BestWindController extends Controller
