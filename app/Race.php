@@ -48,11 +48,8 @@ class Race extends Model
 
     /**
      * Properly format the wind attribute
-     *
-     * @param  string  $value
-     * @return string
      */
-    public function getWindFormattedAttribute()
+    public function getWindFormattedAttribute(): string
     {
         switch ($this->wind) {
             case 'na':
@@ -96,11 +93,8 @@ class Race extends Model
 
     /**
      * Properly format the wind strength attribute
-     *
-     * @param  string  $value
-     * @return string
      */
-    public function getWindStrengthFormattedAttribute()
+    public function getWindStrengthFormattedAttribute(): string
     {
         switch ($this->wind_strength) {
             case 'na':
@@ -124,11 +118,8 @@ class Race extends Model
 
     /**
      * Properly format the overcast attribute
-     *
-     * @param  string  $value
-     * @return string
      */
-    public function getOvercastFormattedAttribute()
+    public function getOvercastFormattedAttribute(): string
     {
         switch ($this->overcast) {
             case 'na':
@@ -155,11 +146,8 @@ class Race extends Model
 
     /**
      * Properly format the rainfall attribute
-     *
-     * @param  string  $value
-     * @return string
      */
-    public function getRainfallFormattedAttribute()
+    public function getRainfallFormattedAttribute(): string
     {
         switch ($this->rainfall) {
             case 'na':
@@ -189,11 +177,8 @@ class Race extends Model
 
     /**
      * Properly format the type attribute
-     *
-     * @param  string  $value
-     * @return string
      */
-    public function getTypeFormattedAttribute()
+    public function getTypeFormattedAttribute(): string
     {
         switch ($this->type) {
             case 'training':
@@ -206,11 +191,8 @@ class Race extends Model
 
     /**
      * Properly format the category attribute
-     *
-     * @param  string  $value
-     * @return string
      */
-    public function getCategoryFormattedAttribute()
+    public function getCategoryFormattedAttribute(): string
     {
         switch ($this->category) {
             case 'mix':

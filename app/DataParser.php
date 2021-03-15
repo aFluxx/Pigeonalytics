@@ -2,12 +2,16 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use ParseCsv\Csv;
 
 class DataParser extends Model
 {
-    public function parse($path)
+    /**
+     * Wrapper around Parse\Csv
+     */
+    public function parse(string $path): Collection
     {
         $csv = new Csv();
 

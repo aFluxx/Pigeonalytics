@@ -22,8 +22,7 @@ class BestBreedersController extends Controller
                 $q->where($request->which_coefficient, '<', $request->threshold);
             }])->get();
 
-        $bestBreeders = new BestBreeders($pigeons);
-        $bestBreeders->getBestBreeders();
+        $bestBreeders = new BestBreeders($pigeons, $request->threshold, $request->which_coefficient);
 
         return view('models.pigeon.best-breeders.show')->with([
             'requestData' => [
@@ -32,7 +31,7 @@ class BestBreedersController extends Controller
                 'coeff' => $request->which_coefficient,
                 'threshold' => $request->threshold,
             ],
-            'weight' => $bestBreeders->getBestBreeders()
+            'weight' => $bestBreeders->getBestBreeders(),
         ]);
     }
 }

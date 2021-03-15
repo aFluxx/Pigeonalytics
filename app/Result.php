@@ -30,10 +30,6 @@ class Result extends Model
 
     /**
      * Calculate the interval in minutes for a given result
-     *
-     * @param Race $raceObject
-     * @param string $arrivalTime
-     * @return float $interval
      */
     public function calculateInterval(string $unloadingTime, string $arrivalTime): float
     {
@@ -46,10 +42,6 @@ class Result extends Model
 
     /**
      * Calculate the meters per minutes for a given result
-     *
-     * @param Race $raceObject
-     * @param float $interval
-     * @return float $mpm
      */
     public function calculateMeterPerMinute(Race $raceObject, float $interval): float
     {
