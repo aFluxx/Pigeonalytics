@@ -27,9 +27,7 @@
             multi-sort
         >
             <template v-slot:[`item.ringnumber`]="{ item }">
-                <a :href="'/pigeon/' + item.pigeon_iid">{{
-                    item.ringnumber
-                }}</a>
+                <a :href="'/pigeon/' + item.pigeon_id">{{ item.ringnumber }}</a>
             </template>
 
             <template v-slot:[`item.coefficient`]="{ item }">
