@@ -20,13 +20,6 @@ Asduiven
         <option value="2023">2023</option>
     </select>
 
-    <label for="which_coefficient" class="tw-label">Categorie</label>
-    <select name="which_coefficient" id="which_coefficient" class="tw-input">
-        <option value="coefficient_provincial">Provinciaal</option>
-        <option value="coefficient_zone">Zone</option>
-        <option value="coefficient_national">Nationaal</option>
-    </select>
-
     <label for="which_category" class="tw-label">Klasse</label>
     <select name="which_category" id="which_category" class="tw-input">
         <option value="youngster">Jongen</option>

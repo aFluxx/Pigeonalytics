@@ -29,9 +29,17 @@ class AcePigeonController extends Controller
             $aceResults[] = $this->getXBestResults($pigeon, $request->amount_of_races);
         }
 
+        $aceResultsFiltered = $aceResults->filter(function ($value, $key) {
+            return $value['coefficient'] != 0;
+        });
+
         return view('models.pigeon.ace-pigeons.show')->with([
-            'requestData' => [],
-            'acePigeons' => $aceResults,
+            'requestData' => [
+                'category' => $request->which_category,
+                'year' => $request->year,
+                'amountOfRaces' => $request->amount_of_races,
+            ],
+            'acePigeons' => $aceResultsFiltered,
         ]);
     }
 
@@ -65,9 +73,9 @@ class AcePigeonController extends Controller
         $calculatedCoefficient = $coeffsToWorkWith->sort()->take($x)->sum();
         $calculated['amountOfRacesWithValidCoefficient'] = $coeffsToWorkWith->sort()->take($x)->count();
 
-        if ($calculatedCoefficient != 0 && $calculatedCoefficient != null) {
-            $calculated['coefficient'] = $calculatedCoefficient;
-        }
+        $calculated['coefficient'] = $calculatedCoefficient;
+        // if ($calculatedCoefficient != 0 && $calculatedCoefficient != null) {
+        // }
 
         return $calculated;
     }

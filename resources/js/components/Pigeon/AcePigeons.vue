@@ -9,11 +9,10 @@
                 label="Zoeken"
             ></v-text-field>
         </v-card-title>
+        <v-card-text> </v-card-text>
         <v-card-text>
-            Van: {{ data.van_jaar }} - Tot: {{ data.tot_jaar }}
-        </v-card-text>
-        <v-card-text>
-            Categorie: {{ data.coeff }} | Threshold: {{ data.threshold }}
+            Categorie: {{ data.category }} | Jaar: {{ data.year }} | Aantal
+            races: {{ data.amountOfRaces }}
         </v-card-text>
         <v-data-table
             :headers="headers"
@@ -21,58 +20,20 @@
             :search="search"
             :single-expand="false"
             :expanded.sync="expanded"
-            :show-expand="true"
-            :sort-desc="true"
             :footer-props="{ 'items-per-page-options': [10, 30, 50, 100, -1] }"
-            sort-by="weigth"
-            item-key="pigeon.ringnumber"
+            :sort-by="['amountOfRacesWithValidCoefficient', 'coefficient']"
+            :sort-desc="[true, false]"
+            item-key="ringnumber"
             multi-sort
         >
-            <template v-slot:expanded-item="{ headers, item }">
-                <td :colspan="headers.length">
-                    <tr>
-                        <td>Duif</td>
-                        <td>Plaats</td>
-                        <td>Aantal duiven</td>
-                        <td>Coefficient</td>
-                        <td>Race ID</td>
-                    </tr>
-                    <tr v-for="(result, i) in item.results" :key="i">
-                        <td>
-                            <a :href="'/pigeon/' + result.pigeon.id">
-                                {{ result.pigeon.ringnumber }}
-                            </a>
-                        </td>
-                        <td>
-                            {{ result["place_" + keyword] }}
-                        </td>
-                        <td>
-                            {{ result.race["amount_of_pigeons_" + keyword] }}
-                        </td>
-                        <td>
-                            {{
-                                Math.round(
-                                    (result["coefficient_" + keyword] +
-                                        Number.EPSILON) *
-                                        100
-                                ) / 100
-                            }}
-                        </td>
-                        <td>
-                            {{ result.race.id }}
-                        </td>
-                    </tr>
-                </td>
-            </template>
-
-            <template v-slot:[`item.pigeon.ringnumber`]="{ item }">
-                <a :href="'/pigeon/' + item.pigeon.id">{{
-                    item.pigeon.ringnumber
+            <template v-slot:[`item.ringnumber`]="{ item }">
+                <a :href="'/pigeon/' + item.pigeon_iid">{{
+                    item.ringnumber
                 }}</a>
             </template>
 
-            <template v-slot:[`item.weigth`]="{ item }">
-                <span v-text="item.weigth"></span>
+            <template v-slot:[`item.coefficient`]="{ item }">
+                {{ parseFloat(item.coefficient).toFixed(4) }}
             </template>
         </v-data-table>
     </v-card>
