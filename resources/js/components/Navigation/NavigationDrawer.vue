@@ -1,6 +1,6 @@
 <template>
     <v-card class="mx-auto">
-        <v-navigation-drawer permanent expand-on-hover>
+        <v-navigation-drawer permanent>
             <v-list-item>
                 <v-list-item-content>
                     <v-btn
@@ -19,8 +19,9 @@
 
             <v-list-item>
                 <v-list-item-content>
-                    <v-list-item-title class="title">
-                        De Belser Racing Pigeons
+                    <v-list-item-title class="title" align="center">
+                        De Belser <br />
+                        Racing Pigeons
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>

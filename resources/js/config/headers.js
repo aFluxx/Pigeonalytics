@@ -185,6 +185,36 @@ export const headersPigeon3 = [
     },
 ];
 
+export const headersPigeon4 = [
+    {
+        text: "Dropzone",
+        sortable: true,
+        value: "race.dropzone.name",
+    },
+    {
+        text: "Released",
+        sortable: true,
+        value: "race.unloading_time",
+    },
+    {
+        text: "Arrival",
+        sortable: true,
+        value: "arrival_time",
+    },
+    {
+        text: "Place (Personal)",
+        sortable: true,
+        value: "place_personal",
+        align: "end",
+    },
+    { text: "mpm", value: "mpm", align: "end" },
+    {
+        text: "Wind",
+        value: "race.wind_formatted",
+        align: " d-none",
+    },
+];
+
 
 export const headersResult1 = [
     {

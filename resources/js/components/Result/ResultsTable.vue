@@ -353,6 +353,7 @@ import {
     headersPigeon1,
     headersPigeon2,
     headersPigeon3,
+    headersPigeon4,
     headersResult1,
     headersResult2,
     headersResult3,
@@ -361,7 +362,7 @@ import {
 } from "../../config/headers.js";
 
 export default {
-    props: ["type", "discipline", "pigeon", "results"],
+    props: ["type", "category", "discipline", "pigeon", "results"],
 
     data() {
         return {
@@ -424,6 +425,11 @@ export default {
         figureOutHeaders() {
             switch (this.type) {
                 case "pigeon":
+                    // Handle special headers for training table
+                    if (this.category == "training") {
+                        return headersPigeon4;
+                    }
+
                     switch (this.discipline) {
                         case "vit":
                         case "hfo":

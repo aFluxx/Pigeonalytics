@@ -7,7 +7,8 @@
 @section('content')
 <pigeon-overview :pigeon="{{ $pigeon }}" :results-vitesse="{{ $resultsVitesse }}"
     :results-halve-fond="{{ $resultsHalveFond }}" :results-kleine-fond="{{ $resultsKleineFond }}"
-    :results-fond="{{ $resultsFond }}" :results-grote-fond="{{ $resultsGroteFond }}" :all-results="{{ $allResults }}"
+    :results-fond="{{ $resultsFond }}" :results-grote-fond="{{ $resultsGroteFond }}"
+    :results-training="{{ $resultsTraining }}" :all-results="{{ $allResults }}"
     :children-father="{{ $pigeon->fatherChildren }}" :children-mother="{{ $pigeon->motherChildren }}">
 </pigeon-overview>
 @endsection

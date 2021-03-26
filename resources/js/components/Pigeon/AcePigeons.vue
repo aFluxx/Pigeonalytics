@@ -90,12 +90,17 @@ export default {
                 {
                     text: "Ringnumber",
                     sortable: true,
-                    value: "pigeon.ringnumber",
+                    value: "ringnumber",
                 },
                 {
-                    text: "Gewicht",
+                    text: "Coefficient",
                     sortable: true,
-                    value: "weigth",
+                    value: "coefficient",
+                },
+                {
+                    text: "Aantal races geteld",
+                    sortable: true,
+                    value: "amountOfRacesWithValidCoefficient",
                 },
             ],
         };
@@ -106,10 +111,6 @@ export default {
             return Object.keys(this.items).map((key) => {
                 return this.items[key];
             });
-        },
-
-        keyword() {
-            return this.data.coeff.split("_")[1];
         },
     },
 };

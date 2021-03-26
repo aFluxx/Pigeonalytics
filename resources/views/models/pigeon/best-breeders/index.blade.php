@@ -5,6 +5,7 @@ Beste kwekers
 @endsection
 
 @section('content')
+<h3 class="tw-text-xl tw-p-4">Beste kwekers opzoeken</h3>
 <form action="{{ route('best-breeders.show') }}" method="GET" class="tw-p-4">
     <label for="van_jaar" class="tw-label">Van</label>
     <select name="van_jaar" id="van_jaar" class="tw-input">

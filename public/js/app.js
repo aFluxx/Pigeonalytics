@@ -175,6 +175,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["authed"],
@@ -183,6 +184,129 @@ __webpack_require__.r(__webpack_exports__);
       active: "",
       items: this.authed ? _config_menuItems_js__WEBPACK_IMPORTED_MODULE_0__["isAdmin"] : _config_menuItems_js__WEBPACK_IMPORTED_MODULE_0__["isNotAdmin"]
     };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Pigeon/AcePigeons.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Pigeon/AcePigeons.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["items", "data"],
+  data: function data() {
+    return {
+      expanded: [],
+      search: "",
+      headers: [{
+        text: "Ringnumber",
+        sortable: true,
+        value: "ringnumber"
+      }, {
+        text: "Coefficient",
+        sortable: true,
+        value: "coefficient"
+      }, {
+        text: "Aantal races geteld",
+        sortable: true,
+        value: "amountOfRacesWithValidCoefficient"
+      }]
+    };
+  },
+  computed: {
+    arrayItems: function arrayItems() {
+      var _this = this;
+
+      return Object.keys(this.items).map(function (key) {
+        return _this.items[key];
+      });
+    }
   }
 });
 
@@ -329,6 +453,9 @@ __webpack_require__.r(__webpack_exports__);
       return Object.keys(this.items).map(function (key) {
         return _this.items[key];
       });
+    },
+    keyword: function keyword() {
+      return this.data.coeff.split("_")[1];
     }
   }
 });
@@ -548,9 +675,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["pigeon", "resultsVitesse", "resultsHalveFond", "resultsKleineFond", "resultsFond", "resultsGroteFond", "allResults", "childrenFather", "childrenMother"],
+  props: ["pigeon", "resultsVitesse", "resultsHalveFond", "resultsKleineFond", "resultsFond", "resultsGroteFond", "resultsTraining", "allResults", "childrenFather", "childrenMother"],
   components: {
     ResultsTable: _Result_ResultsTable__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -1348,7 +1486,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["type", "discipline", "pigeon", "results"],
+  props: ["type", "category", "discipline", "pigeon", "results"],
   data: function data() {
     return {
       expanded: [],
@@ -1415,6 +1553,11 @@ __webpack_require__.r(__webpack_exports__);
     figureOutHeaders: function figureOutHeaders() {
       switch (this.type) {
         case "pigeon":
+          // Handle special headers for training table
+          if (this.category == "training") {
+            return _config_headers_js__WEBPACK_IMPORTED_MODULE_0__["headersPigeon4"];
+          }
+
           switch (this.discipline) {
             case "vit":
             case "hfo":
@@ -1980,7 +2123,7 @@ var render = function() {
     [
       _c(
         "v-navigation-drawer",
-        { attrs: { permanent: "", "expand-on-hover": "" } },
+        { attrs: { permanent: "" } },
         [
           _c(
             "v-list-item",
@@ -2019,11 +2162,17 @@ var render = function() {
               _c(
                 "v-list-item-content",
                 [
-                  _c("v-list-item-title", { staticClass: "title" }, [
-                    _vm._v(
-                      "\n                    De Belser Racing Pigeons\n                "
-                    )
-                  ])
+                  _c(
+                    "v-list-item-title",
+                    { staticClass: "title", attrs: { align: "center" } },
+                    [
+                      _vm._v("\n                    De Belser "),
+                      _c("br"),
+                      _vm._v(
+                        "\n                    Racing Pigeons\n                "
+                      )
+                    ]
+                  )
                 ],
                 1
               )
@@ -2131,6 +2280,211 @@ var render = function() {
         ],
         1
       )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Pigeon/AcePigeons.vue?vue&type=template&id=6ed0a190&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Pigeon/AcePigeons.vue?vue&type=template&id=6ed0a190& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-card",
+    [
+      _c(
+        "v-card-title",
+        [
+          _c("span", { domProps: { textContent: _vm._s("Beste kwekers") } }),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
+          _c("v-text-field", {
+            attrs: { "append-icon": "mdi-magnify", label: "Zoeken" },
+            model: {
+              value: _vm.search,
+              callback: function($$v) {
+                _vm.search = $$v
+              },
+              expression: "search"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("v-card-text", [
+        _vm._v(
+          "\n        Van: " +
+            _vm._s(_vm.data.van_jaar) +
+            " - Tot: " +
+            _vm._s(_vm.data.tot_jaar) +
+            "\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("v-card-text", [
+        _vm._v(
+          "\n        Categorie: " +
+            _vm._s(_vm.data.coeff) +
+            " | Threshold: " +
+            _vm._s(_vm.data.threshold) +
+            "\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("v-data-table", {
+        attrs: {
+          headers: _vm.headers,
+          items: _vm.arrayItems,
+          search: _vm.search,
+          "single-expand": false,
+          expanded: _vm.expanded,
+          "show-expand": true,
+          "sort-desc": true,
+          "footer-props": { "items-per-page-options": [10, 30, 50, 100, -1] },
+          "sort-by": "weigth",
+          "item-key": "pigeon.ringnumber",
+          "multi-sort": ""
+        },
+        on: {
+          "update:expanded": function($event) {
+            _vm.expanded = $event
+          }
+        },
+        scopedSlots: _vm._u(
+          [
+            {
+              key: "expanded-item",
+              fn: function(ref) {
+                var headers = ref.headers
+                var item = ref.item
+                return [
+                  _c(
+                    "td",
+                    { attrs: { colspan: headers.length } },
+                    [
+                      _c("tr", [
+                        _c("td", [_vm._v("Duif")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Plaats")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Aantal duiven")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Coefficient")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Race ID")])
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(item.results, function(result, i) {
+                        return _c("tr", { key: i }, [
+                          _c("td", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "/pigeon/" + result.pigeon.id }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(result.pigeon.ringnumber) +
+                                    "\n                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(result["place_" + _vm.keyword]) +
+                                "\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(
+                                  result.race[
+                                    "amount_of_pigeons_" + _vm.keyword
+                                  ]
+                                ) +
+                                "\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(
+                                  Math.round(
+                                    (result["coefficient_" + _vm.keyword] +
+                                      Number.EPSILON) *
+                                      100
+                                  ) / 100
+                                ) +
+                                "\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(result.race.id) +
+                                "\n                    "
+                            )
+                          ])
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]
+              }
+            },
+            {
+              key: "item.pigeon.ringnumber",
+              fn: function(ref) {
+                var item = ref.item
+                return [
+                  _c("a", { attrs: { href: "/pigeon/" + item.pigeon.id } }, [
+                    _vm._v(_vm._s(item.pigeon.ringnumber))
+                  ])
+                ]
+              }
+            },
+            {
+              key: "item.weigth",
+              fn: function(ref) {
+                var item = ref.item
+                return [
+                  _c("span", { domProps: { textContent: _vm._s(item.weigth) } })
+                ]
+              }
+            }
+          ],
+          null,
+          true
+        )
+      })
     ],
     1
   )
@@ -2306,7 +2660,7 @@ var render = function() {
                           _c("td", [
                             _vm._v(
                               "\n                        " +
-                                _vm._s(result.place_national) +
+                                _vm._s(result["place_" + _vm.keyword]) +
                                 "\n                    "
                             )
                           ]),
@@ -2314,7 +2668,11 @@ var render = function() {
                           _c("td", [
                             _vm._v(
                               "\n                        " +
-                                _vm._s(result.race.amount_of_pigeons_national) +
+                                _vm._s(
+                                  result.race[
+                                    "amount_of_pigeons_" + _vm.keyword
+                                  ]
+                                ) +
                                 "\n                    "
                             )
                           ]),
@@ -2324,7 +2682,7 @@ var render = function() {
                               "\n                        " +
                                 _vm._s(
                                   Math.round(
-                                    (result.coefficient_national +
+                                    (result["coefficient_" + _vm.keyword] +
                                       Number.EPSILON) *
                                       100
                                   ) / 100
@@ -2564,7 +2922,11 @@ var render = function() {
           _vm._v(" "),
           _c("v-tab", [_vm._v("Grote Fond")]),
           _vm._v(" "),
-          _c("v-tab", [_vm._v("Kinderen")])
+          _c("v-spacer"),
+          _vm._v(" "),
+          _c("v-tab", [_vm._v("Kinderen")]),
+          _vm._v(" "),
+          _c("v-tab", [_vm._v("Training")])
         ],
         1
       ),
@@ -2682,6 +3044,21 @@ var render = function() {
                 1
               )
             }),
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-tab-item",
+            [
+              _c("results-table", {
+                attrs: {
+                  type: "pigeon",
+                  category: "training",
+                  pigeon: _vm.pigeon,
+                  results: _vm.resultsTraining
+                }
+              })
+            ],
             1
           )
         ],
@@ -4063,6 +4440,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('pigeon-list', __webpack_re
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('pigeon-overview', __webpack_require__(/*! ./components/Pigeon/PigeonOverview.vue */ "./resources/js/components/Pigeon/PigeonOverview.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('pigeon-search', __webpack_require__(/*! ./components/Pigeon/PigeonSearch.vue */ "./resources/js/components/Pigeon/PigeonSearch.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('best-breeders', __webpack_require__(/*! ./components/Pigeon/BestBreeders.vue */ "./resources/js/components/Pigeon/BestBreeders.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ace-pigeons', __webpack_require__(/*! ./components/Pigeon/AcePigeons.vue */ "./resources/js/components/Pigeon/AcePigeons.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('add-parents', __webpack_require__(/*! ./components/Pigeon/AddParents.vue */ "./resources/js/components/Pigeon/AddParents.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('parent-select', __webpack_require__(/*! ./components/Pigeon/ParentSelect.vue */ "./resources/js/components/Pigeon/ParentSelect.vue")["default"]); // Varia
 
@@ -4252,6 +4630,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavigationDrawer_vue_vue_type_template_id_f6237076___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavigationDrawer_vue_vue_type_template_id_f6237076___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Pigeon/AcePigeons.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/Pigeon/AcePigeons.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AcePigeons_vue_vue_type_template_id_6ed0a190___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AcePigeons.vue?vue&type=template&id=6ed0a190& */ "./resources/js/components/Pigeon/AcePigeons.vue?vue&type=template&id=6ed0a190&");
+/* harmony import */ var _AcePigeons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AcePigeons.vue?vue&type=script&lang=js& */ "./resources/js/components/Pigeon/AcePigeons.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AcePigeons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AcePigeons_vue_vue_type_template_id_6ed0a190___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AcePigeons_vue_vue_type_template_id_6ed0a190___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Pigeon/AcePigeons.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Pigeon/AcePigeons.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/Pigeon/AcePigeons.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AcePigeons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AcePigeons.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Pigeon/AcePigeons.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AcePigeons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Pigeon/AcePigeons.vue?vue&type=template&id=6ed0a190&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/Pigeon/AcePigeons.vue?vue&type=template&id=6ed0a190& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AcePigeons_vue_vue_type_template_id_6ed0a190___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AcePigeons.vue?vue&type=template&id=6ed0a190& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Pigeon/AcePigeons.vue?vue&type=template&id=6ed0a190&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AcePigeons_vue_vue_type_template_id_6ed0a190___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AcePigeons_vue_vue_type_template_id_6ed0a190___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -4969,7 +5416,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************!*\
   !*** ./resources/js/config/headers.js ***!
   \****************************************/
-/*! exports provided: headersPigeon1, headersPigeon2, headersPigeon3, headersResult1, headersResult2, headersResult3, headersRace1, headersRace2 */
+/*! exports provided: headersPigeon1, headersPigeon2, headersPigeon3, headersPigeon4, headersResult1, headersResult2, headersResult3, headersRace1, headersRace2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4977,6 +5424,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "headersPigeon1", function() { return headersPigeon1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "headersPigeon2", function() { return headersPigeon2; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "headersPigeon3", function() { return headersPigeon3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "headersPigeon4", function() { return headersPigeon4; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "headersResult1", function() { return headersResult1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "headersResult2", function() { return headersResult2; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "headersResult3", function() { return headersResult3; });
@@ -5146,6 +5594,32 @@ var headersPigeon3 = [{
 }, {
   text: "Coeff (OK)",
   value: "coefficient_overkoepeling"
+}, {
+  text: "Wind",
+  value: "race.wind_formatted",
+  align: " d-none"
+}];
+var headersPigeon4 = [{
+  text: "Dropzone",
+  sortable: true,
+  value: "race.dropzone.name"
+}, {
+  text: "Released",
+  sortable: true,
+  value: "race.unloading_time"
+}, {
+  text: "Arrival",
+  sortable: true,
+  value: "arrival_time"
+}, {
+  text: "Place (Personal)",
+  sortable: true,
+  value: "place_personal",
+  align: "end"
+}, {
+  text: "mpm",
+  value: "mpm",
+  align: "end"
 }, {
   text: "Wind",
   value: "race.wind_formatted",
@@ -5466,6 +5940,9 @@ var isAdmin = [{
     title: "Beste kwekers",
     href: route("best-breeders.index")
   }, {
+    title: "Asduiven",
+    href: route("ace-pigeons.index")
+  }, {
     title: "Ouders toevoegen",
     href: route("add-parents.index")
   }]
@@ -5503,6 +5980,9 @@ var isNotAdmin = [{
   }, {
     title: "Beste kwekers",
     href: route("best-breeders.index")
+  }, {
+    title: "Asduiven",
+    href: route("ace-pigeons.index")
   }]
 }];
 

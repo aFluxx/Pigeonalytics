@@ -20,6 +20,7 @@ class PigeonController extends Controller
             'resultsKleineFond' => $pigeon->resultsKleineFond,
             'resultsFond' => $pigeon->resultsFond,
             'resultsGroteFond' => $pigeon->resultsGroteFond,
+            'resultsTraining' => $pigeon->resultsTraining,
             'allResults' => $pigeon->results,
         ]);
     }

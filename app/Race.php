@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Dropzone;
+use App\Pigeon;
 use App\Result;
 use Illuminate\Database\Eloquent\Model;
 

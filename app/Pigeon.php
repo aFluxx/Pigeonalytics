@@ -40,6 +40,9 @@ class Pigeon extends Model
             ->with('race', 'race.dropzone')
             ->whereHas('race.dropzone', function ($query) {
                 $query->whereIn('discipline', ['vit']);
+            })
+            ->whereHas('race', function ($query) {
+                $query->where('type', 'competition');
             });
     }
 
@@ -49,6 +52,9 @@ class Pigeon extends Model
             ->with('race', 'race.dropzone')
             ->whereHas('race.dropzone', function ($query) {
                 $query->whereIn('discipline', ['hfo']);
+            })
+            ->whereHas('race', function ($query) {
+                $query->where('type', 'competition');
             });
     }
 
@@ -58,6 +64,9 @@ class Pigeon extends Model
             ->with('race', 'race.dropzone')
             ->whereHas('race.dropzone', function ($query) {
                 $query->whereIn('discipline', ['kle']);
+            })
+            ->whereHas('race', function ($query) {
+                $query->where('type', 'competition');
             });
     }
 
@@ -67,6 +76,9 @@ class Pigeon extends Model
             ->with('race', 'race.dropzone')
             ->whereHas('race.dropzone', function ($query) {
                 $query->whereIn('discipline', ['fon']);
+            })
+            ->whereHas('race', function ($query) {
+                $query->where('type', 'competition');
             });
     }
 
@@ -76,6 +88,18 @@ class Pigeon extends Model
             ->with('race', 'race.dropzone')
             ->whereHas('race.dropzone', function ($query) {
                 $query->whereIn('discipline', ['gfo']);
+            })
+            ->whereHas('race', function ($query) {
+                $query->where('type', 'competition');
+            });
+    }
+
+    public function resultsTraining()
+    {
+        return $this->hasMany(Result::class)
+            ->with('race', 'race.dropzone')
+            ->whereHas('race', function ($query) {
+                $query->where('type', 'training');
             });
     }
 }

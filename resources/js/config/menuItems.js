@@ -66,6 +66,10 @@ export const isAdmin = [
                 href: route("best-breeders.index"),
             },
             {
+                title: "Asduiven",
+                href: route("ace-pigeons.index"),
+            },
+            {
                 title: "Ouders toevoegen",
                 href: route("add-parents.index"),
             },
@@ -119,6 +123,10 @@ export const isNotAdmin = [
             {
                 title: "Beste kwekers",
                 href: route("best-breeders.index"),
+            },
+            {
+                title: "Asduiven",
+                href: route("ace-pigeons.index"),
             },
         ],
     },

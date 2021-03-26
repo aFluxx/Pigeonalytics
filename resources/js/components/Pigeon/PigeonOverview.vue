@@ -6,7 +6,9 @@
             <v-tab>Kleine Fond</v-tab>
             <v-tab>Fond</v-tab>
             <v-tab>Grote Fond</v-tab>
+            <v-spacer />
             <v-tab>Kinderen</v-tab>
+            <v-tab>Training</v-tab>
         </v-tabs>
 
         <v-tabs-items v-model="tab">
@@ -66,6 +68,15 @@
                     </v-list-item-content>
                 </v-list-item>
             </v-tab-item>
+
+            <v-tab-item>
+                <results-table
+                    type="pigeon"
+                    category="training"
+                    :pigeon="pigeon"
+                    :results="resultsTraining"
+                ></results-table>
+            </v-tab-item>
         </v-tabs-items>
     </v-card>
 </template>
@@ -81,6 +92,7 @@ export default {
         "resultsKleineFond",
         "resultsFond",
         "resultsGroteFond",
+        "resultsTraining",
         "allResults",
         "childrenFather",
         "childrenMother",

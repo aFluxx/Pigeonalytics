@@ -51,6 +51,9 @@ Route::get('/import/compu/handle', 'ImportController@handle')->name('import.comp
 Route::get('/best-breeders', 'BestBreedersController@index')->name('best-breeders.index');
 Route::get('/best-breeders/show', 'BestBreedersController@show')->name('best-breeders.show');
 
+Route::get('/ace-pigeons', 'AcePigeonController@index')->name('ace-pigeons.index');
+Route::get('/ace-pigeons/show', 'AcePigeonController@show')->name('ace-pigeons.show');
+
 Route::get('/add-parents', 'AddParentsController@index')->name('add-parents.index');
 Route::get('/add-parents/pigeon/{pigeon}', 'AddParentsController@edit')->name('add-parents.edit');
 Route::post('/add-parents/pigeon/{pigeon}', 'AddParentsController@store')->name('add-parents.store');
