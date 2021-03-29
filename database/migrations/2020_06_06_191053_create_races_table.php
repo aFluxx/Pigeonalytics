@@ -30,6 +30,7 @@ class CreateRacesTable extends Migration
             $table->unsignedBigInteger('amount_of_pigeons_regio')->nullable();
             $table->unsignedBigInteger('amount_of_pigeons_overkoepeling')->nullable();
             $table->datetime('unloading_time');
+            $table->boolean('no_ace')->default(false);
             $table->unsignedBigInteger('year')->nullable();
             $table->timestamps();
 
