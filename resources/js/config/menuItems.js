@@ -70,6 +70,10 @@ export const isAdmin = [
                 href: route("ace-pigeons.index"),
             },
             {
+                title: "Beste duif per vlucht/wind",
+                href: route("best-pigeon-per.index"),
+            },
+            {
                 title: "Ouders toevoegen",
                 href: route("add-parents.index"),
             },
@@ -127,6 +131,10 @@ export const isNotAdmin = [
             {
                 title: "Asduiven",
                 href: route("ace-pigeons.index"),
+            },
+            {
+                title: "Beste duif per vlucht/wind",
+                href: route("best-pigeon-per.index"),
             },
         ],
     },

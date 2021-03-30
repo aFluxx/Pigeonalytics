@@ -24,6 +24,7 @@ Vue.component('pigeon-overview', require('./components/Pigeon/PigeonOverview.vue
 Vue.component('pigeon-search', require('./components/Pigeon/PigeonSearch.vue').default);
 Vue.component('best-breeders', require('./components/Pigeon/BestBreeders.vue').default);
 Vue.component('ace-pigeons', require('./components/Pigeon/AcePigeons.vue').default);
+Vue.component('best-pigeon-per', require('./components/Pigeon/BestPigeonPer.vue').default);
 Vue.component('add-parents', require('./components/Pigeon/AddParents.vue').default);
 Vue.component('parent-select', require('./components/Pigeon/ParentSelect.vue').default);
 
@@ -33,4 +34,10 @@ Vue.component('average-year-mpm', require('./components/Rapport/AverageYearMpm.v
 const app = new Vue({
     el: '#app',
     vuetify,
+});
+
+Vue.mixin({
+    methods: {
+        route: route
+    }
 });
