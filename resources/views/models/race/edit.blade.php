@@ -103,19 +103,20 @@ Race bewerken
                 <label for="race_wind_strength" class="tw-label">Wind Strength</label>
                 <select name="race_wind_strength" id="race_wind_strength" class="tw-input">
                     <option value="na" {{($race->wind_strength ==='na') ? 'selected' : ''}}>Not applicable</option>
-                    <option value="windless" {{($race->wind_strength ==='windless') ? 'selected' : ''}}>Windless
+                    <option value="windless" {{($race->wind_strength ==='windless') ? 'selected' : ''}}>Windless (0 bft)
                     </option>
                     <option value="light_breeze" {{($race->wind_strength ==='light_breeze') ? 'selected' : ''}}>Light
                         breeze
-                        (licht)
+                        (licht 1-3 bft)
                     </option>
                     <option value="gentle_breeze" {{($race->wind_strength ==='gentle_breeze') ? 'selected' : ''}}>Gentle
                         breeze
-                        (matig)</option>
+                        (matig 4-6 bft)</option>
                     <option value="strong_wind" {{($race->wind_strength ==='strong_wind') ? 'selected' : ''}}>Strong
-                        wind
+                        wind (7-8 bft)
                     </option>
                     <option value="storm_wind" {{($race->wind_strength ==='storm_wind') ? 'selected' : ''}}>Storm wind
+                        (9-11 bft)
                     </option>
                 </select>
 

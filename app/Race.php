@@ -101,18 +101,18 @@ class Race extends Model
             case 'na':
                 return '';
             case 'windless':
-                return 'Windless';
+                return 'Windless (0 bft)';
             case 'light_breeze':
-                return "Light breeze (licht)";
+                return "Light breeze (licht 1-3 bft)";
                 break;
             case 'gentle_breeze':
-                return "Gentle breeze (matig)";
+                return "Gentle breeze (matig 4-6 bft)";
                 break;
             case 'strong_wind':
-                return "Strong wind";
+                return "Strong wind (7-8 bft)";
                 break;
             case 'storm_wind':
-                return "Storm wind";
+                return "Storm wind (9-11 bft)";
                 break;
         }
     }

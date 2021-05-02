@@ -64,11 +64,11 @@ Nieuwe race aanmaken
                 <label for="race_wind_strength" class="tw-label">Wind Strength</label>
                 <select name="race_wind_strength" id="race_wind_strength" class="tw-input">
                     <option value="na">Not applicable</option>
-                    <option value="windless">Windless</option>
-                    <option value="light_breeze">Light breeze (licht)</option>
-                    <option value="gentle_breeze">Gentle breeze (matig)</option>
-                    <option value="strong_wind">Strong wind</option>
-                    <option value="storm_wind">Storm wind</option>
+                    <option value="windless">Windless (0 bft)</option>
+                    <option value="light_breeze">Light breeze (licht 1-3 bft)</option>
+                    <option value="gentle_breeze">Gentle breeze (matig 4-6 bft)</option>
+                    <option value="strong_wind">Strong wind (7-8 bft)</option>
+                    <option value="storm_wind">Storm wind (9-11 bft)</option>
                 </select>
 
                 <label for="race_overcast" class="tw-label">Overcast</label>
