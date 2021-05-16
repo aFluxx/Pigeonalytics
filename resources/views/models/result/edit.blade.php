@@ -7,6 +7,9 @@ Resultaat bewerken
 @section('content')
 <h2 class="tw-font-bold tw-text-2xl tw-mb-2">Resultaat bewerken</h2>
 
+<div class="tw-py-4">Gevlogen snelheid: <strong><span class="tw-text-purple-600">{{ $result->mpm }}</span></strong>
+</div>
+
 <form action="{{ route('result.update', $result->id) }}" enctype="multipart/form-data" method="POST" class="tw-w-full">
     @if($message ?? '')
     <p class="tw-bg-green-300 tw-text-green-700">{{ $message ?? '' }}</p>
@@ -14,7 +17,7 @@ Resultaat bewerken
     @csrf
 
     <div class="tw-flex">
-        <div class="tw-w-1/2 tw-pr-2">
+        <div class="tw-pr-2">
             <label for="result_race" class="tw-label">Kies race:</label>
             <select name="result_race" id="result_race" class="tw-input">
                 @foreach($races as $race)
@@ -47,8 +50,8 @@ Resultaat bewerken
         </div>
 
         @if(in_array($result->race->dropzone->discipline, ['gfo', 'fon', 'kle']))
-        <div class="tw-flex tw-w-1/2 tw-pl-2">
-            <div class="tw-w-1/2">
+        <div class="tw-flex">
+            <div class="tw-w-1/2 tw-px-2">
                 <label for="result_place_club" class="tw-label">Plaats (Club):</label>
                 @if($result->place_club === 1000000)
                 <input type="number" name="result_place_club" id="result_place_club" class="tw-input"
@@ -91,8 +94,8 @@ Resultaat bewerken
         @endif
 
         @if(in_array($result->race->dropzone->discipline, ['vit', 'hfo']))
-        <div class="tw-flex tw-w-1/2 tw-pl-2">
-            <div class="tw-w-1/2">
+        <div class="tw-flex">
+            <div class="tw-w-1/2 tw-px-2">
                 <label for="result_place_regio" class="tw-label">Plaats (Regio):</label>
                 @if($result->place_regio === 1000000)
                 <input type="number" name="result_place_regio" id="result_place_regio" class="tw-input"

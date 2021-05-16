@@ -41,7 +41,9 @@
 
                 <div class="tw-w-full">
                     <pigeon-search :pigeons="{{ json_encode($navigationPigeons) }}"></pigeon-search>
-                    @yield('content')
+                    <div class="tw-p-4">
+                        @yield('content')
+                    </div>
                 </div>
 
             </div>
