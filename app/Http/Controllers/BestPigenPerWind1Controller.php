@@ -42,7 +42,6 @@ class BestPigenPerWind1Controller extends Controller
             ];
         });
 
-        dd($mapped);
         return view('models.pigeon.best-pigeon-per.show-wind')->with([
             'requestData' => [
                 'wind' => $request->race_wind,
