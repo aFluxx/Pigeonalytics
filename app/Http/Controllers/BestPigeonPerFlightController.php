@@ -7,7 +7,7 @@ use App\Dropzone;
 use App\Result;
 use Illuminate\Http\Request;
 
-class BestPigeonPerController extends Controller
+class BestPigeonPerFlightController extends Controller
 {
     public function index()
     {
@@ -52,7 +52,7 @@ class BestPigeonPerController extends Controller
             $bestPigeonsPer->push($pigeon);
         }
 
-        return view('models.pigeon.best-pigeon-per.show')->with([
+        return view('models.pigeon.best-pigeon-per.show-wind')->with([
             'requestData' => [
                 'dropzone' => Dropzone::where('id', $request->dropzone)->first()->name,
                 'year' => $request->year,

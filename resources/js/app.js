@@ -25,6 +25,7 @@ Vue.component('pigeon-search', require('./components/Pigeon/PigeonSearch.vue').d
 Vue.component('best-breeders', require('./components/Pigeon/BestBreeders.vue').default);
 Vue.component('ace-pigeons', require('./components/Pigeon/AcePigeons.vue').default);
 Vue.component('best-pigeon-per', require('./components/Pigeon/BestPigeonPer.vue').default);
+Vue.component('best-pigeon-per-wind', require('./components/Pigeon/BestPigeonPerWind.vue').default);
 Vue.component('add-parents', require('./components/Pigeon/AddParents.vue').default);
 Vue.component('parent-select', require('./components/Pigeon/ParentSelect.vue').default);
 
