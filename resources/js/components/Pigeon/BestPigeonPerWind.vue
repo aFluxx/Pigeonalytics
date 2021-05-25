@@ -18,38 +18,40 @@
             :items="arrayItems"
             :search="search"
             :single-expand="false"
-            :expanded.sync="expanded"
             :show-expand="true"
             :footer-props="{ 'items-per-page-options': [10, 30, 50, 100, -1] }"
-            :sort-by="['amountOfRacesThatCount', 'avgCoefficient']"
+            :sort-by="['amount_races', 'avg']"
             :sort-desc="[true, false]"
             item-key="ringnumber"
             multi-sort
         >
-            <template v-slot:expanded-item="{ headers, item }">
-                <td :colspan="headers.length" class="tw-p-4">
-                    <tr>
-                        <td class="tw-p-2">Race ID</td>
-                        <td class="tw-p-2">Plaats</td>
-                        <td class="tw-p-2">Aantal duiven</td>
-                        <td class="tw-p-2">Coefficient</td>
-                        <td class="tw-p-2">Wind</td>
-                        <td class="tw-p-2">Result ID</td>
-                    </tr>
-                    <tr v-for="(result, i) in item.results" :key="i">
-                        <td class="tw-p-2">
-                            <a :href="raceUrl('race.show', result.race.id)">
-                                {{ result.race.id }}
-                            </a>
-                        </td>
-                        <td class="tw-p-2">
-                            {{ result.race.wind_formatted }}
-                        </td>
-                        <td class="tw-p-2">
-                            {{ result.id }}
-                        </td>
-                    </tr>
-                </td>
+            <template v-slot:expanded-item="{ item }">
+                <v-data-table
+                    :headers="headersInner"
+                    :items="item.results"
+                    :search="search"
+                    :footer-props="{
+                        'items-per-page-options': [30, 50, 100, -1],
+                    }"
+                    :sort-by="['race.unloading_time']"
+                    :sort-desc="[true]"
+                    item-key="id"
+                    multi-sort
+                >
+                    <template v-slot:[`item.race.id`]="{ item }">
+                        <a :href="raceUrl('race.show', item.race.id)">
+                            {{ item.race.id }}
+                        </a>
+                    </template>
+                    <template v-slot:[`item.race.unloading_time`]="{ item }">
+                        <span class="tw-whitespace-no-wrap">
+                            {{ item.race.unloading_time }}
+                        </span>
+                    </template>
+                    <template v-slot:[`item.mpm`]="{ item }">
+                        {{ parseFloat(item.mpm).toFixed(4) }}
+                    </template>
+                </v-data-table>
             </template>
 
             <template v-slot:[`item.ringnumber`]="{ item }">
@@ -86,6 +88,41 @@ export default {
                     text: "Aantal races",
                     sortable: true,
                     value: "amount_races",
+                },
+            ],
+
+            headersInner: [
+                {
+                    text: "Race ID",
+                    value: "race.id",
+                },
+                {
+                    text: "Plaats",
+                    value: "race.dropzone.name",
+                },
+                {
+                    text: "Datum",
+                    value: "race.unloading_time",
+                },
+                {
+                    text: "Snelheid",
+                    value: "mpm",
+                },
+                {
+                    text: "Wind",
+                    value: "race.wind_formatted",
+                },
+                {
+                    text: "Wolken",
+                    value: "race.overcast_formatted",
+                },
+                {
+                    text: "Regen",
+                    value: "race.rainfall_formatted",
+                },
+                {
+                    text: "Result ID",
+                    value: "id",
                 },
             ],
         };
