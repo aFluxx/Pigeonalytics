@@ -25,33 +25,48 @@
             item-key="ringnumber"
             multi-sort
         >
-            <template v-slot:expanded-item="{ item }">
-                <v-data-table
-                    :headers="headersInner"
-                    :items="item.results"
-                    :search="search"
-                    :footer-props="{
-                        'items-per-page-options': [30, 50, 100, -1],
-                    }"
-                    :sort-by="['race.unloading_time']"
-                    :sort-desc="[true]"
-                    item-key="id"
-                    multi-sort
-                >
-                    <template v-slot:[`item.race.id`]="{ item }">
-                        <a :href="raceUrl('race.show', item.race.id)">
-                            {{ item.race.id }}
-                        </a>
-                    </template>
-                    <template v-slot:[`item.race.unloading_time`]="{ item }">
-                        <span class="tw-whitespace-no-wrap">
-                            {{ item.race.unloading_time }}
-                        </span>
-                    </template>
-                    <template v-slot:[`item.mpm`]="{ item }">
-                        {{ parseFloat(item.mpm).toFixed(4) }}
-                    </template>
-                </v-data-table>
+            <template v-slot:expanded-item="{ headers, item }">
+                <td :colspan="headers.length" class="tw-p-4">
+                    <tr>
+                        <td class="tw-p-2">Race ID</td>
+                        <td class="tw-p-2">Plaats</td>
+                        <td class="tw-p-2">Datum</td>
+                        <td class="tw-p-2">Snelheid</td>
+                        <td class="tw-p-2">Wind</td>
+                        <td class="tw-p-2">Wolken</td>
+                        <td class="tw-p-2">Regen</td>
+                        <td class="tw-p-2">Result ID</td>
+                    </tr>
+                    <tr v-for="(result, i) in item.results" :key="i">
+                        <td class="tw-p-2">
+                            <a :href="raceUrl('race.show', result.race.id)">
+                                {{ result.race.id }}
+                            </a>
+                        </td>
+                        <td class="tw-p-2">
+                            {{ result.race.dropzone.name }}
+                        </td>
+                        <td class="tw-p-2">
+                            {{ parseFloat(result.mpm).toFixed(4) }}
+                        </td>
+                        <td class="tw-p-2">
+                            <strong>{{ result.race.year }}</strong> -
+                            {{ result.race.unloading_time }}
+                        </td>
+                        <td class="tw-p-2">
+                            {{ result.race.wind_formatted }}
+                        </td>
+                        <td class="tw-p-2">
+                            {{ result.race.overcast_formatted }}
+                        </td>
+                        <td class="tw-p-2">
+                            {{ result.race.rainfall_formatted }}
+                        </td>
+                        <td class="tw-p-2">
+                            {{ result.id }}
+                        </td>
+                    </tr>
+                </td>
             </template>
 
             <template v-slot:[`item.ringnumber`]="{ item }">
