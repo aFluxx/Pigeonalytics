@@ -30,13 +30,17 @@ class ResultKbdbController extends Controller
                 $speed = $record['speed'];
             }
 
+            if (gettype($speed) == 'string') {
+                $speed = floatval(str_replace(',', '.', str_replace('.', '', $speed)));
+            }
+
             Result::firstOrCreate([
                 'pigeon_id' => $pigeon->id,
                 'race_id' => $race->id,
                 'place_personal' => $record['pl'],
                 'arrival_time' => $record['uur'] ? date_create_from_format('d-m-Y H:i:s', $record['uur']) : null,
                 'interval' =>  null,
-                'mpm' => $speed,
+                'mpm' => floatval($speed),
                 'nominated' => $record['get'],
                 'place_club' => setPlace($record['pclub']),
                 'coefficient_club' => calculateCoefficient($record['pclub'], $race->amount_of_pigeons_club),
